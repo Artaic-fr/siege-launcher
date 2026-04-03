@@ -1,0 +1,1412 @@
+{
+    "steamapp_id": 359550,
+    "seasons": [
+        {
+            "season_code": "Y1S0",
+            "season_code_full": "Year 1 Season 0",
+            "season_name_short": "Vanilla",
+            "season_name": "Rainbow Six Siege",
+            "season_description": "The original Rainbow Six Siege experience, with all the operators and maps from the first year of the game.",
+            "game_size": 15313491946,
+            "release_date": "12/2015",
+            "season_banner": "./seasons-assets/vanilla-banner.jpg",
+            "season_bg": "./seasons-assets/vanilla-background.jpg",
+            "changes": [],
+            "highRes" : {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "8394183851197739981",
+                "requiredSpace": 8883302400
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "8358812283631269928"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "3893422760579204530"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "940838089858119714",
+                    "langsize": 598876160
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "7179158265062294015",
+                    "langsize": 681115648
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "3953006809848583127",
+                    "langsize": 649756672
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "6248979332984503061",
+                    "langsize": 1389654016
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "4246528818872796970",
+                    "langsize": 687071232
+                },
+                {
+                    "lang": "Polski",
+                    "code": "pl",
+                    "steamdepot_id": 359558,
+                    "steamdepot_manifest_id": "3650448467998593870",
+                    "langsize": 16384
+                },
+                {
+                    "lang": "Nederlands",
+                    "code": "nl",
+                    "steamdepot_id": 377230,
+                    "steamdepot_manifest_id": "434053950562761763",
+                    "langsize": 12288
+                },
+                {
+                    "lang": "čeština",
+                    "code": "cs",
+                    "steamdepot_id": 377231,
+                    "steamdepot_manifest_id": "961787742874674106",
+                    "langsize": 16384
+                },
+                {
+                    "lang": "한국인",
+                    "code": "ko",
+                    "steamdepot_id": 377232,
+                    "steamdepot_manifest_id": "4666462401429503167",
+                    "langsize": 16384
+                },
+                {
+                    "lang": "繁體中文",
+                    "code": "zh-TW",
+                    "steamdepot_id": 377233,
+                    "steamdepot_manifest_id": "8123484057310613369",
+                    "langsize": 12288
+                },
+                {
+                    "lang": "简体中文",
+                    "code": "zh-CN",
+                    "steamdepot_id": 377234,
+                    "steamdepot_manifest_id": "7408437752633543455",
+                    "langsize": 12288
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "3426628477659109421",
+                    "langsize": 616562688
+                },
+                {
+                    "lang": "Русский",
+                    "code": "ru",
+                    "steamdepot_id": 377236,
+                    "steamdepot_manifest_id": "4326401341058506434",
+                    "langsize": 20480
+                }
+            ],
+            "added_operators": [],
+            "released_maps": [
+                {
+                    "map_Name": "House",
+                    "map_Img": "./maps-assets/house.webp"
+                },
+                {
+                    "map_Name": "Oregon",
+                    "map_Img": "./maps-assets/oregon.webp"
+                },
+                {
+                    "map_Name": "Hereford Base",
+                    "map_Img": "./maps-assets/hereford_base.webp"
+                },
+                {
+                    "map_Name": "Clubhouse",
+                    "map_Img": "./maps-assets/clubhouse.jpg"
+                },
+                {
+                    "map_Name": "Presidential Plane",
+                    "map_Img": "./maps-assets/presidential_plane.webp"
+                },
+                {
+                    "map_Name": "Consulate",
+                    "map_Img": "./maps-assets/consulate.webp"
+                },
+                {
+                    "map_Name": "Bank",
+                    "map_Img": "./maps-assets/bank.webp"
+                },
+                {
+                    "map_Name": "Kanal",
+                    "map_Img": "./maps-assets/kanal.webp"
+                },
+                {
+                    "map_Name": "Chalet",
+                    "map_Img": "./maps-assets/chalet.webp"
+                },
+                {
+                    "map_Name": "University Bartlett",
+                    "map_Img": "./maps-assets/university-bartlett.webp"
+                },
+                {
+                    "map_Name": "Kafe Dostoyevsky",
+                    "map_Img": "./maps-assets/kafe_dostoyevsky.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Recruit",
+                    "op_Img": "./operators-assets/character/Recruit.png",
+                    "op_Icon": "./operators-assets/icons/recruit_blue.svg",
+                    "side": "Attacker"
+                },
+                {
+                    "op_Name": "Recruit",
+                    "op_Img": "./operators-assets/character/Recruit.png",
+                    "op_Icon": "./operators-assets/icons/recruit_blue.svg",
+                    "side": "Defender"
+                },
+                {
+                    "op_Name": "Sledge",
+                    "op_UAT": "SAS",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Sledge.webp",
+                    "op_Icon": "./operators-assets/icons/sledge.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M590A1",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m590a1.png"
+                            },
+                            {
+                                "weapon_Name": "L85A2",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/l85a2.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P226 MK 25",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p226_mk_25.png"
+                            },
+                            {
+                                "weapon_Name": "SMG-11",
+                                "weapon_type": "Machine Pistol",
+                                "weapon_Img": "./operators-assets/weapons/smg-11.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Frag Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/frag_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Thatcher",
+                    "op_UAT": "SAS",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Thatcher.webp",
+                    "op_Icon": "./operators-assets/icons/thatcher.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "AR33",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/ar33.png"
+                            },
+                            {
+                                "weapon_Name": "L85A2",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/l85a2.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P226 MK 25",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p226_mk_25.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Smoke",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_UAT": "SAS",
+                    "op_Img": "./operators-assets/character/Smoke.webp",
+                    "op_Icon": "./operators-assets/icons/smoke.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "FMG-9",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/fmg-9.png"
+                            },
+                            {
+                                "weapon_Name": "M590A1",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m590a1.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P226 MK 25",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p226_mk_25.png"
+                            },
+                            {
+                                "weapon_Name": "SMG-11",
+                                "weapon_type": "Machine Pistol",
+                                "weapon_Img": "./operators-assets/weapons/smg-11.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Mute",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_UAT": "SAS",
+                    "op_Img": "./operators-assets/character/Mute.webp",
+                    "op_Icon": "./operators-assets/icons/mute.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "MP5K",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mp5k.png"
+                            },
+                            {
+                                "weapon_Name": "M590A1",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m590a1.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P226 MK 25",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p226_mk_25.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            },
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Ash",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_UAT": "FBI SWAT",
+                    "op_Img": "./operators-assets/character/Ash.webp",
+                    "op_Icon": "./operators-assets/icons/ash.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "R4-C",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/r4-c.png"
+                            },
+                            {
+                                "weapon_Name": "G36C",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/g36c.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "5.7 USG",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/5.7_usg.png"
+                            },
+                            {
+                                "weapon_Name": "M45 MEUSOC",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/m45_meusoc.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Thermite",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_UAT": "FBI SWAT",
+                    "op_Img": "./operators-assets/character/Thermite.webp",
+                    "op_Icon": "./operators-assets/icons/thermite.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M1014",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m1014.png"
+                            },
+                            {
+                                "weapon_Name": "556xi",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/556xi.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "5.7 USG",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/5.7_usg.png"
+                            },
+                            {
+                                "weapon_Name": "M45 MEUSOC",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/m45_meusoc.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Frag Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/frag_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Castle",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_UAT": "FBI SWAT",
+                    "op_Img": "./operators-assets/character/Castle.webp",
+                    "op_Icon": "./operators-assets/icons/castle.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "UMP45",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/ump45.png"
+                            },
+                            {
+                                "weapon_Name": "M1014",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m1014.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "5.7 USG",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/5.7_usg.png"
+                            },
+                            {
+                                "weapon_Name": "M45 MEUSOC",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/m45_meusoc.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Pulse",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_UAT": "FBI SWAT",
+                    "op_Img": "./operators-assets/character/Pulse.webp",
+                    "op_Icon": "./operators-assets/icons/pulse.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "UMP45",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/ump45.png"
+                            },
+                            {
+                                "weapon_Name": "M1014",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m1014.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "5.7 USG",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/5.7_usg.png"
+                            },
+                            {
+                                "weapon_Name": "M45 MEUSOC",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/m45_meusoc.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Twitch",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_UAT": "GIGN",
+                    "op_Img": "./operators-assets/character/Twitch.webp",
+                    "op_Icon": "./operators-assets/icons/twitch.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "F2",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/f2.png"
+                            },
+                            {
+                                "weapon_Name": "417",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/417.png"
+                            },
+                            {
+                                "weapon_Name": "SG-CQB",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sg-cqb.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P9",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p9.png"
+                            },
+                            {
+                                "weapon_Name": "LFP586",
+                                "weapon_type": "Revolver",
+                                "weapon_Img": "./operators-assets/weapons/lfp586.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Montagne",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "GIGN",
+                    "op_Img": "./operators-assets/character/Montagne.webp",
+                    "op_Icon": "./operators-assets/icons/montagne.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Le Roc Shield",
+                                "weapon_type": "Shield",
+                                "weapon_Img": "./operators-assets/abilities/extendable_shield.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P9",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p9.png"
+                            },
+                            {
+                                "weapon_Name": "LFP586",
+                                "weapon_type": "Revolver",
+                                "weapon_Img": "./operators-assets/weapons/lfp586.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Doc",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "GIGN",
+                    "op_Img": "./operators-assets/character/Doc.webp",
+                    "op_Icon": "./operators-assets/icons/doc.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "MP5",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mp5.png"
+                            },
+                            {
+                                "weapon_Name": "P90",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/p90.png"
+                            },
+                            {
+                                "weapon_Name": "SG-CQB",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sg-cqb.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P9",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p9.png"
+                            },
+                            {
+                                "weapon_Name": "LFP586",
+                                "weapon_type": "Revolver",
+                                "weapon_Img": "./operators-assets/weapons/lfp586.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Rook",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "GIGN",
+                    "op_Img": "./operators-assets/character/Rook.webp",
+                    "op_Icon": "./operators-assets/icons/rook.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "MP5",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mp5.png"
+                            },
+                            {
+                                "weapon_Name": "P90",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/p90.png"
+                            },
+                            {
+                                "weapon_Name": "SG-CQB",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sg-cqb.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P9",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p9.png"
+                            },
+                            {
+                                "weapon_Name": "LFP586",
+                                "weapon_type": "Revolver",
+                                "weapon_Img": "./operators-assets/weapons/lfp586.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Glaz",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_UAT": "Spetsnaz",
+                    "op_Img": "./operators-assets/character/Glaz.webp",
+                    "op_Icon": "./operators-assets/icons/glaz.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "OTs-03",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/ots-03.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "PMM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/pmm.png"
+                            },
+                            {
+                                "weapon_Name": "GSh-18",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/gsh-18.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Fuze",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "Spetsnaz",
+                    "op_Img": "./operators-assets/character/Fuze.webp",
+                    "op_Icon": "./operators-assets/icons/fuze.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Ballistic Shield",
+                                "weapon_type": "Shield",
+                                "weapon_Img": "./operators-assets/weapons/ballistic_shield.png"
+                            },
+                            {
+                                "weapon_Name": "6P41",
+                                "weapon_type": "Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/6p41.png"
+                            },
+                            {
+                                "weapon_Name": "AK-12",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/ak-12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "PMM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/pmm.png"
+                            },
+                            {
+                                "weapon_Name": "GSh-18",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/gsh-18.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Kapkan",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "Spetsnaz",
+                    "op_Img": "./operators-assets/character/Kapkan.webp",
+                    "op_Icon": "./operators-assets/icons/kapkan.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "9x19VSN",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/9x19vsn.png"
+                            },
+                            {
+                                "weapon_Name": "SASG-12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sasg-12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "PMM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/pmm.png"
+                            },
+                            {
+                                "weapon_Name": "GSh-18",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/gsh-18.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Tachanka",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "Spetsnaz",
+                    "op_Img": "./operators-assets/character/Tachanka.png",
+                    "op_Icon": "./operators-assets/icons/tachanka.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "9x19VSN",
+                                "weapon_type": "Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/9x19vsn.png"
+                            },
+                            {
+                                "weapon_Name": "SASG-12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sasg-12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "PMM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/pmm.png"
+                            },
+                            {
+                                "weapon_Name": "GSh-18",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/gsh-18.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Blitz",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_UAT": "GSG 9",
+                    "op_Img": "./operators-assets/character/Blitz.webp",
+                    "op_Icon": "./operators-assets/icons/blitz.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "G52-Tactical Shield",
+                                "weapon_type": "Shield",
+                                "weapon_Img": "./operators-assets/abilities/flash_shield.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P12",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p12.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "IQ",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_UAT": "GSG 9",
+                    "op_Img": "./operators-assets/character/IQ.webp",
+                    "op_Icon": "./operators-assets/icons/iq.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Aug A2",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/aug_a2.png"
+                            },
+                            {
+                                "weapon_Name": "552 Commando",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/552_commando.png"
+                            },
+                            {
+                                "weapon_Name": "G8A1",
+                                "weapon_type": "Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/g8a1.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P12",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p12.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Jäger",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_UAT": "GSG 9",
+                    "op_Img": "./operators-assets/character/Jager.webp",
+                    "op_Icon": "./operators-assets/icons/jager.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M870",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m870.png"
+                            },
+                            {
+                                "weapon_Name": "416-C Carbine",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/416-c_carbine.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P12",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p12.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            },
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Bandit",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_UAT": "GSG 9",
+                    "op_Img": "./operators-assets/character/Bandit.webp",
+                    "op_Icon": "./operators-assets/icons/bandit.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M870",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m870.png"
+                            },
+                            {
+                                "weapon_Name": "MP7",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/mp7.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P12",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p12.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y1S1",
+            "season_code_full": "Year 1 Season 1",
+            "season_name_short": "Black Ice",
+            "season_name": "Operation Black Ice",
+            "season_description": "Continue the Siege with the first major content update, Operation Black Ice, which gives you access to the new Yacht map, two new JTF2 operators.",
+            "game_size": 18015166464,
+            "release_date": "02/2016",
+            "season_banner": "./seasons-assets/black-ice-banner.webp",
+            "season_bg": "./seasons-assets/black-ice-background.jpg",
+            "changes": [
+            ],
+            "highRes" : {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "3756048967966286899",
+                "requiredSpace": 13393412096
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "5188997148801516344"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "7932785808040895147"
+                }
+            ],
+            "languages": [
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Buck"
+                },
+                {
+                    "op_Name": "Frost"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Yacht",
+                    "map_Img": "./maps-assets/yacht.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Buck",
+                    "op_UAT": "JTF2",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Buck.webp",
+                    "op_Icon": "./operators-assets/icons/buck.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "C8-SFW",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/c8-sfw.png"
+                            },
+                            {
+                                "weapon_Name": "CAMRS",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/camrs.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "MK19MM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/mk1_9mm.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Frost",
+                    "op_UAT": "JTF2",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Frost.webp",
+                    "op_Icon": "./operators-assets/icons/frost.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "SUPER 90",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/super_90.png"
+                            },
+                            {
+                                "weapon_Name": "9mm C1",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/9mm_c1.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "MK19MM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/mk1_9mm.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y1S2",
+            "season_code_full": "Year 1 Season 2",
+            "season_name_short": "Dust Line",
+            "season_name": "Operation Dust Line",
+            "season_description": "The Siege continues with Operation Dust Line, which introduces the new Border map and two new Navy SEAL operators.",
+            "game_size": 22453796864,
+            "release_date": "05/2016",
+            "season_banner": "./seasons-assets/dust-line-banner.jpg",
+            "season_bg": "./seasons-assets/dust-line-background.jpg",
+            "changes": [
+            ],
+            "highRes" : {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1338949402410764888",
+                "requiredSpace": 18852339712
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "2303064029242396590"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "2206497318678061176"
+                }
+            ],
+            "languages": [
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Blackbeard"
+                },
+                {
+                    "op_Name": "Valkyrie"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Border",
+                    "map_Img": "./maps-assets/border.jpg"
+                }
+            ],
+            "featured_operators": [
+                 {
+                    "op_Name": "Blackbeard",
+                    "op_UAT": "SEALS",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Blackbeard.webp",
+                    "op_Icon": "./operators-assets/icons/blackbeard.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "MK17 CQB",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mk17_cqb.png"
+                            },
+                            {
+                                "weapon_Name": "SR-25",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/sr-25.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "D-50",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/d-50.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Valkyrie",
+                    "op_UAT": "SEALS",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Valkyrie.webp",
+                    "op_Icon": "./operators-assets/icons/valkyrie.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "MPX",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mpx.png"
+                            },
+                            {
+                                "weapon_Name": "SPAS-12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/spas-12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "D-50",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/d-50.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y1S3",
+            "season_code_full": "Year 1 Season 3",
+            "season_name_short": "Skull Rain",
+            "season_name": "Operation Skull Rain",
+            "season_description": "The Siege continues with Operation Skull Rain, which introduces the new favela map and two new BOPE operators.",
+            "game_size": 27035181056,
+            "release_date": "08/2016",
+            "season_banner": "./seasons-assets/skull-rain-banner.jpg",
+            "season_bg": "./seasons-assets/skull-rain-background.png",
+            "changes": [
+            ],
+            "highRes" : {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "3267970968757091405",
+                "requiredSpace": 26455556096
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "5819137024728546741"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "5851804596427790505"
+                }
+            ],
+            "languages": [
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Capitão"
+                },
+                {
+                    "op_Name": "Caveira"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Favela",
+                    "map_Img": "./maps-assets/favela.webp"
+                }
+            ],
+            "featured_operators": [
+                
+            ]
+        },
+        {
+            "season_code": "Y1S4",
+            "season_code_full": "Year 1 Season 4",
+            "season_name_short": "Red Crow",
+            "season_name": "Operation Red Crow",
+            "season_description": "The Siege continues with Operation Red Crow, which introduces the new skyscraper map and two new SAT operators.",
+            "game_size": 30707814400,
+            "release_date": "11/2016",
+            "season_banner": "./seasons-assets/red-crow-banner.jpg",
+            "season_bg": "./seasons-assets/red-crow-background.png",
+            "changes": [
+            ],
+            "highRes" : {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1825939060444887403",
+                "requiredSpace": 35267428352
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "3576607363557872807"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "8569920171217002292"
+                }
+            ],
+            "languages": [
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Hibana"
+                },
+                {
+                    "op_Name": "Echo"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Skyscraper",
+                    "map_Img": "./maps-assets/skyscraper.webp"
+                }
+            ],
+            "featured_operators": [
+                
+            ]
+        }
+    ]
+}
