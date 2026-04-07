@@ -1358,7 +1358,85 @@
                 }
             ],
             "featured_operators": [
-                
+                {
+                    "op_Name": "Capitão",
+                    "op_UAT": "BOPE",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Capitao.webp",
+                    "op_Icon": "./operators-assets/icons/capitao.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "PARA-308",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/para-308.png"
+                            },
+                            {
+                                "weapon_Name": "M249",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/m249.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "PRB92",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/prb92.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Frag Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/frag_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },{
+                    "op_Name": "Caveira",
+                    "op_UAT": "BOPE",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Caveira.webp",
+                    "op_Icon": "./operators-assets/icons/caveira.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M12",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/m12.png"
+                            },
+                            {
+                                "weapon_Name": "SPAS-15",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/spas-15.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Luison",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/luison.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            }
+                        ]
+                    }
+                }
             ]
         },
         {
@@ -1405,7 +1483,96 @@
                 }
             ],
             "featured_operators": [
-                
+                {
+                    "op_Name": "Hibana",
+                    "op_UAT": "SAT",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Hibana.webp",
+                    "op_Icon": "./operators-assets/icons/hibana.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Type-89",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/type-89.png"
+                            },
+                            {
+                                "weapon_Name": "Supernova",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/supernova.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P229",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p229.png"
+                            },
+                            {
+                                "weapon_Name": "Bearing 9",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/bearing_9.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Echo",
+                    "op_UAT": "SAT",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_Img": "./operators-assets/character/Echo.webp",
+                    "op_Icon": "./operators-assets/icons/echo.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Supernova",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/supernova.png"
+                            },
+                            {
+                                "weapon_Name": "MP5SD",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mp5sd.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P229",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p229.png"
+                            },
+                            {
+                                "weapon_Name": "Bearing 9",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/bearing_9.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            },
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            }
+                        ]
+                    }
+                }
             ]
         }
     ]
