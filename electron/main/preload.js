@@ -22,7 +22,9 @@ contextBridge.exposeInMainWorld("settings", {
   getInstalled: () =>
     ipcRenderer.invoke('getInstalled'),
   getDiskSpace: (path) =>
-    ipcRenderer.invoke('getDiskSpace', path)
+    ipcRenderer.invoke('getDiskSpace', path),
+  appVersion: () =>
+    ipcRenderer.invoke('app-version')
 })
 
 //Depot Downloader
@@ -63,11 +65,29 @@ contextBridge.exposeInMainWorld("queue", {
     ipcRenderer.on("job-progress", (_, d) => cb(d)),
   onJobStarted: (cb) =>
     ipcRenderer.on("job-started", (_, d) => cb(d)),
+  onDepotStarted: (cb) =>
+    ipcRenderer.on("depot-started", (_, d) => cb(d)),
   onJobCompleted: (cb) =>
     ipcRenderer.on("job-completed", (_, d) => cb(d)),
   onQueueUpdated: (cb) =>
     ipcRenderer.on("queue-updated", (_, d) => cb(d)),
-  cancelJob: (seasonCode) => ipcRenderer.invoke("queue-cancel-job", seasonCode)
+  cancelJob: (seasonCode) => ipcRenderer.invoke("queue-cancel-job", seasonCode),
+  cancelAllJobs: () => ipcRenderer.invoke("queue-cancel-all-jobs"),
+  resumeJobs: () => ipcRenderer.invoke("queue-resume-jobs"),
+  onLog: (cb) =>
+    ipcRenderer.on("queue-log", (_, d) => cb(d)),
+  onReconnectionRequired: (cb) =>
+    ipcRenderer.on("reconnection-required", (_, d) => cb(d))
+})
+
+contextBridge.exposeInMainWorld("autoUpdate", {
+  checkForUpdates: () => ipcRenderer.invoke("check-for-updates"),
+  onChecking: (cb) => ipcRenderer.on("update-checking", cb),
+  onUpdateAvailable: (cb) => ipcRenderer.on("update-available", (_, d) => cb(d)),
+  onUpdateNotAvailable: (cb) => ipcRenderer.on("update-not-available", (_, d) => cb(d)),
+  onDownloadProgress: (cb) => ipcRenderer.on("update-download-progress", (_, d) => cb(d)),
+  onUpdateDownloaded: (cb) => ipcRenderer.on("update-downloaded", (_, d) => cb(d)),
+  onUpdateError: (cb) => ipcRenderer.on("update-error", (_, d) => cb(d))
 })
 
 contextBridge.exposeInMainWorld("game", {

@@ -64,60 +64,11 @@
                     "langsize": 687071232
                 },
                 {
-                    "lang": "Polski",
-                    "code": "pl",
-                    "steamdepot_id": 359558,
-                    "steamdepot_manifest_id": "3650448467998593870",
-                    "langsize": 16384
-                },
-                {
-                    "lang": "Nederlands",
-                    "code": "nl",
-                    "steamdepot_id": 377230,
-                    "steamdepot_manifest_id": "434053950562761763",
-                    "langsize": 12288
-                },
-                {
-                    "lang": "čeština",
-                    "code": "cs",
-                    "steamdepot_id": 377231,
-                    "steamdepot_manifest_id": "961787742874674106",
-                    "langsize": 16384
-                },
-                {
-                    "lang": "한국인",
-                    "code": "ko",
-                    "steamdepot_id": 377232,
-                    "steamdepot_manifest_id": "4666462401429503167",
-                    "langsize": 16384
-                },
-                {
-                    "lang": "繁體中文",
-                    "code": "zh-TW",
-                    "steamdepot_id": 377233,
-                    "steamdepot_manifest_id": "8123484057310613369",
-                    "langsize": 12288
-                },
-                {
-                    "lang": "简体中文",
-                    "code": "zh-CN",
-                    "steamdepot_id": 377234,
-                    "steamdepot_manifest_id": "7408437752633543455",
-                    "langsize": 12288
-                },
-                {
                     "lang": "日本語",
                     "code": "ja",
                     "steamdepot_id": 377235,
                     "steamdepot_manifest_id": "3426628477659109421",
                     "langsize": 616562688
-                },
-                {
-                    "lang": "Русский",
-                    "code": "ru",
-                    "steamdepot_id": 377236,
-                    "steamdepot_manifest_id": "4326401341058506434",
-                    "langsize": 20480
                 }
             ],
             "added_operators": [],
@@ -1090,6 +1041,48 @@
                 }
             ],
             "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "3933270230638281254",
+                    "langsize": 691871744
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "5760263381471720373",
+                    "langsize": 778645504
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "7470955591961528063",
+                    "langsize": 755027968
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "6534545487175120142",
+                    "langsize": 1582448640
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "5712713603408405370",
+                    "langsize": 783036416
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "7819798899236214261",
+                    "langsize": 707493888
+                }
             ],
             "added_operators": [
                 {
@@ -1216,6 +1209,48 @@
                 }
             ],
             "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "8417670786870682154",
+                    "langsize": 716136448
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "2551476087873566284",
+                    "langsize": 806346752
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "781358903497748263",
+                    "langsize": 779288576
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "8080893511664284255",
+                    "langsize": 1958273024
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "7093312220135270425",
+                    "langsize": 809553920
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "7164006373234658729",
+                    "langsize": 731017216
+                }
             ],
             "added_operators": [
                 {
@@ -1467,6 +1502,48 @@
                 }
             ],
             "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "6096643115970852289",
+                    "langsize": 938205184
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "8822593964618949966",
+                    "langsize": 1042939904
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "7995072742170754868",
+                    "langsize": 1004359680
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3745420316643316529",
+                    "langsize": 2429976576
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "9177769359376990903",
+                    "langsize": 1079009280
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "8573459241975382853",
+                    "langsize": 947884032
+                }
             ],
             "added_operators": [
                 {

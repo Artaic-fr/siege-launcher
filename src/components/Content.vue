@@ -5,7 +5,7 @@ import OperatorCard from './OperatorCard.vue'
 import SteamLoginModal from './SteamLoginModal.vue'
 import GameSettings from './GameSettings.vue';
 import DownloadModal from './DownloadModal.vue'
-import { queue, currentJobId, progressPercent, installedGames, Launched } from "../stores/downloadStore.js"
+import { queue, currentJobId, progressPercent, currentDepotIndex, currentDepotTotal, currentDepotProgress, installedGames, Launched } from "../stores/downloadStore.js"
 
 
 const SeasonContent = ref({})
@@ -159,7 +159,7 @@ function cancelQueue() {
                     <div class="mt-8 flex flex-wrap gap-4">
 
                         <button v-if="isDownloading"
-                            class="group relative px-10 py-4 bg-[#1a232e] text-white font-black uppercase tracking-tighter rounded overflow-hidden cursor-default">
+                            class="group relative w-[300px] px-10 py-4 bg-[#1a232e] text-white font-black uppercase tracking-tighter rounded overflow-hidden cursor-default">
 
                             <!-- Hover effect désactivé visuellement -->
                             <div class="absolute inset-0 bg-white/5 opacity-0"></div>
@@ -170,11 +170,17 @@ function cancelQueue() {
                                 <!-- Ligne principale -->
                                 <div class="flex items-center justify-between gap-2">
 
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="w-4 h-4 border-2 border-white/30 border-t-primary rounded-full animate-spin">
+                                    <div class="flex flex-col gap-1">
+                                        <div class="flex items-center gap-2">
+                                            <div
+                                                class="w-4 h-4 border-2 border-white/30 border-t-primary rounded-full animate-spin">
+                                            </div>
+                                            <span>Downloading</span>
                                         </div>
-                                        <span>Downloading</span>
+                                        <div class="text-xs text-slate-200">
+                                            Depot {{ currentDepotIndex || 1 }}/{{ currentDepotTotal || '...' }} ·
+                                            {{ currentDepotProgress !== null ? Math.floor(currentDepotProgress) : 0 }}%
+                                        </div>
                                     </div>
 
                                     <!-- % -->
@@ -187,7 +193,7 @@ function cancelQueue() {
                                 <!-- Barre -->
                                 <div class="w-full h-1 bg-white/10 rounded overflow-hidden">
                                     <div class="h-full bg-primary transition-all duration-300"
-                                        :style="{ width: progressPercent + '%' }">
+                                        :style="{ width: (progressPercent || 0) + '%' }">
                                     </div>
                                 </div>
                             </div>

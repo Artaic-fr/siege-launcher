@@ -85,6 +85,7 @@ onMounted(async () => {
 })
 
 function closeSettings() {
+    console.log("Lancement du téléchargement...")
     emit('close')
 }
 

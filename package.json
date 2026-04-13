@@ -1,7 +1,7 @@
 {
   "name": "siege-launcher",
   "private": true,
-  "version": "0.7.1",
+  "version": "0.8.0",
   "type": "commonjs",
   "main": "electron/main/main.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "dependencies": {
     "adm-zip": "^0.5.16",
     "electron-store": "^11.0.2",
+    "electron-updater": "^6.8.3",
     "follow-redirects": "^1.15.11",
     "vue": "^3.5.25"
   },
@@ -47,6 +48,13 @@
       "target": "nsis",
       "icon": "shared/icon.png"
     },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Artaic-fr",
+        "repo": "siege-launcher"
+      }
+    ],
     "extraResources": [
       {
         "from": "steam/depotdownloader",

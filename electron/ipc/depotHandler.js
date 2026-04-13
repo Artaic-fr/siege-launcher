@@ -45,6 +45,10 @@ ipcMain.handle("steam-login-password", (event, credentials) => {
     // ✅ Succès
     onSuccess: (data) => {
       event.sender.send("steam-login-success", data)
+      // Reprendre automatiquement les téléchargements après une connexion réussie
+      if (queueManager) {
+        queueManager.resumeJobs()
+      }
     },
 
     // ❌ Erreur
@@ -107,4 +111,28 @@ ipcMain.handle("queue-cancel-job", (event, seasonCode) => {
     return true
   }
   return false
+})
+
+ipcMain.handle("queue-cancel-all-jobs", (event) => {
+  if (queueManager) {
+    queueManager.cancelAllJobs()
+    return true
+  }
+  return false
+})
+
+ipcMain.handle("queue-resume-jobs", (event) => {
+  if (queueManager) {
+    queueManager.resumeJobs()
+    return true
+  }
+  return false
+})
+
+ipcMain.handle('queue-log', (event, log) => {
+  if (queueManager) {
+    queueManager.sendEvent("queue-log", log)
+  } else {
+    console.log("Queue log:", log)
+  }
 })

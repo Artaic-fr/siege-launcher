@@ -1,18 +1,22 @@
 <script setup>
 import { ref, computed } from "vue"
+import { reconnectionRequired } from "../stores/downloadStore.js"
 
-const emit = defineEmits(["close"])
+const emit = defineEmits(["close", "login-success"])
 
 const username = ref("")
 const password = ref("")
 const steamGuardCode = ref("")
+const errorMessage = ref("")
 
 const isLoadingCredentials = ref(false)
 const isLoadingButton = ref(false)
 const guardRequired = ref(false)
 const showLoginButton = ref(true)
 const showGuardButton = ref(false)
-
+const credentialsError = ref(false)
+const steamGuardError = ref(false)
+const maxRateError = ref(false)
 
 const isFormValid = computed(() => {
     return username.value.trim() !== "" && password.value.trim() !== ""
@@ -28,16 +32,26 @@ function setMode(mode) {
     loginMode.value = mode
 }
 
-function closeModal() {
+async function closeModal() {
+    // Si on ferme la modal sans succès pendant une reconnexion
+    if (reconnectionRequired.value) {
+        console.log("Modal fermée pendant reconnexion, annulation de tous les téléchargements")
+        // Annuler tous les téléchargements
+        await window.queue.cancelAllJobs()
+        // Mettre à jour havebeenConnected à false
+        await window.settings.set("steam.havebeenConnected", false)
+        // Réinitialiser le state reconnectionRequired
+        reconnectionRequired.value = false
+    }
     emit("close")
-    window.steam.cancelLogin() // Cancel any ongoing login attempts
+    window.steam.cancelLogin()
 }
 
 async function tryLogin(username, password) {
-    console.log(await window.steam.exePath())
     window.steam.loginPassword(username, password)
     isLoadingCredentials.value = true
     isLoadingButton.value = true
+    maxRateError.value = false
 }
 
 window.steam.onGuardRequired(() => {
@@ -48,12 +62,32 @@ window.steam.onGuardRequired(() => {
 })
 
 window.steam.onLoginError((err) => {
-    console.error(err)
+    console.error('Error : ', err)
+    if (err.includes('InvalidPassword')) {
+        credentialsError.value = true
+        errorMessage.value = 'Invalid username or password.'
+        guardRequired.value = false
+        isLoadingButton.value = false
+        isLoadingCredentials.value = false
+    } else if (err.includes('INVALID_GUARD_CODE')) {
+        steamGuardError.value = true
+        errorMessage.value = 'Invalid Steam Guard code.'
+        isLoadingButton.value = false
+    } else if(err.includes('RateLimitExceeded')){
+        maxRateError.value = true
+        errorMessage.value = 'Too many login attempts. Please wait and try again later.'
+        isLoadingButton.value = false
+        isLoadingCredentials.value = false
+        guardRequired.value = false
+    }
 })
 
 window.steam.onLoginSuccess(async (data) => {
     await window.settings.set("steam.lastUsername", data.username)
     await window.settings.set("steam.havebeenConnected", true)
+    // Réinitialiser re connexion state
+    reconnectionRequired.value = false
+    emit("login-success")
     closeModal()
 })
 
@@ -61,6 +95,14 @@ function submitGuardCode() {
     if (isGuardValid.value) {
         window.steam.sendGuardCode(steamGuardCode.value)
         isLoadingButton.value = true
+    }
+}
+
+function guardFunction() {
+    steamGuardCode.value = steamGuardCode.value.toUpperCase().replace(/[^A-Z0-9]/g, '')
+    steamGuardError.value = false
+    if (steamGuardCode.value.length === 5 && !isGuardValid.value) {
+        steamGuardError.value = true
     }
 }
 
@@ -120,11 +162,13 @@ function submitGuardCode() {
                         </label>
 
                         <input v-model="username" :disabled="isLoadingCredentials" type="text"
-                            placeholder="Enter your Steam username" :class="[
+                            @input="credentialsError = false" placeholder="Enter your Steam username" :class="[
                                 'w-full p-3 rounded text-sm outline-none transition-all',
                                 isLoadingCredentials
                                     ? 'bg-[#1a232e]/50 border border-white/5 text-slate-500 cursor-not-allowed'
-                                    : 'bg-[#1a232e] border border-white/10 text-white focus:border-primary'
+                                    : credentialsError
+                                        ? 'bg-[#1a232e] border border-red-500 text-white focus:border-red-500'
+                                        : 'bg-[#1a232e] border border-white/10 text-white focus:border-primary'
                             ]" />
                     </div>
 
@@ -134,11 +178,13 @@ function submitGuardCode() {
                         </label>
 
                         <input v-model="password" :disabled="isLoadingCredentials" type="password"
-                            placeholder="Enter your password" :class="[
+                            @input="credentialsError = false" placeholder="Enter your password" :class="[
                                 'w-full p-3 rounded text-sm outline-none transition-all',
                                 isLoadingCredentials
                                     ? 'bg-[#1a232e]/50 border border-white/5 text-slate-500 cursor-not-allowed'
-                                    : 'bg-[#1a232e] border border-white/10 text-white focus:border-primary'
+                                    : credentialsError
+                                        ? 'bg-[#1a232e] border border-red-500 text-white focus:border-red-500'
+                                        : 'bg-[#1a232e] border border-white/10 text-white focus:border-primary'
                             ]" />
                     </div>
 
@@ -148,28 +194,35 @@ function submitGuardCode() {
                         </label>
 
                         <input v-model="steamGuardCode" :disabled="isLoading" maxlength="5" placeholder="XXXXX"
-                            @input="steamGuardCode = steamGuardCode.toUpperCase().replace(/[^A-Z0-9]/g, '')" :class="[
-                                'w-full p-3 rounded text-sm outline-none tracking-widest text-center transition-all',
+                            @input="guardFunction()" :class="[
+                                'w-full p-3 rounded text-sm outline-none text-center transition-all',
                                 isLoading
                                     ? 'bg-[#1a232e]/50 border border-white/5 text-slate-500 cursor-not-allowed'
-                                    : 'bg-[#1a232e] border border-white/10 text-white focus:border-primary'
+                                    : steamGuardError
+                                        ? 'bg-[#1a232e] border border-red-500 text-white focus:border-red-500'
+                                        : 'bg-[#1a232e] border border-white/10 text-white focus:border-primary'
                             ]" />
                     </div>
 
-                    <button v-if="showGuardButton" @click="submitGuardCode" :disabled="!isFormValid || isLoadingButton" :class="[
-                        'w-full font-bold py-3 rounded text-sm transition-all flex items-center justify-center gap-2',
+                    <p v-if="credentialsError || steamGuardError || maxRateError" class="text-red-500 text-xs mt-2 font-medium">
+                        {{ errorMessage }}
+                    </p>
 
-                        // 🔴 Champs vides
-                        !isGuardValid && !isLoadingButton
-                            ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                    <button v-if="showGuardButton" @click="submitGuardCode"
+                        :disabled="!isFormValid || isLoadingButton || steamGuardError" :class="[
+                            'w-full font-bold py-3 rounded text-sm transition-all flex items-center justify-center gap-2',
 
-                            // 🔵 Prêt à login
-                            : isGuardValid && !isLoadingButton
-                                ? 'bg-primary hover:bg-primary/80 text-black cursor-pointer'
+                            // 🔴 Champs vides
+                            !isGuardValid && !isLoadingButton || steamGuardError
+                                ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
 
-                                // 🔒 Chargement
-                                : 'bg-primary/70 text-black/70 cursor-not-allowed'
-                    ]">
+                                // 🔵 Prêt à login
+                                : isGuardValid && !isLoadingButton
+                                    ? 'bg-primary hover:bg-primary/80 text-black cursor-pointer'
+
+                                    // 🔒 Chargement
+                                    : 'bg-primary/70 text-black/70 cursor-not-allowed'
+                        ]">
 
                         <!-- Loader -->
                         <span v-if="isLoadingButton"
@@ -183,20 +236,21 @@ function submitGuardCode() {
 
                     </button>
 
-                    <button v-if="showLoginButton" @click="tryLogin(username, password)" :disabled="!isFormValid || isLoadingButton" :class="[
-                        'w-full font-bold py-3 rounded text-sm transition-all flex items-center justify-center gap-2',
+                    <button v-if="showLoginButton" @click="tryLogin(username, password)"
+                        :disabled="!isFormValid || isLoadingButton || credentialsError" :class="[
+                            'w-full font-bold py-3 rounded text-sm transition-all flex items-center justify-center gap-2',
 
-                        // 🔴 Champs vides
-                        !isFormValid && !isLoadingButton
-                            ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                            // 🔴 Champs vides
+                            (!isFormValid && !isLoadingButton) && !credentialsError
+                                ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
 
-                            // 🔵 Prêt à login
-                            : isFormValid && !isLoadingButton
-                                ? 'bg-primary hover:bg-primary/80 text-black cursor-pointer'
+                                // 🔵 Prêt à login
+                                : isFormValid && !isLoadingButton && !credentialsError
+                                    ? 'bg-primary hover:bg-primary/80 text-black cursor-pointer'
 
-                                // 🔒 Chargement
-                                : 'bg-primary/70 text-black/70 cursor-not-allowed'
-                    ]">
+                                    // 🔒 Chargement
+                                    : 'bg-primary/70 text-black/70 cursor-not-allowed'
+                        ]">
 
                         <!-- Loader -->
                         <span v-if="isLoadingButton"
@@ -223,7 +277,7 @@ function submitGuardCode() {
                     </div>
 
                     <p class="text-sm text-slate-400 max-w-xs">
-                        Scan this QR Code with the Steam mobile app to login securely.
+                        Scan this QR Code with the Steam mobile app to login securely. (WIP - Not implemented yet)
                     </p>
 
                 </div>

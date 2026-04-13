@@ -76,21 +76,26 @@ class DownloadQueueManager {
 
         this.sendEvent("job-started", {
             jobId: this.currentJob.id,
-            name: this.currentJob.name
+            name: this.currentJob.name,
+            currentDepot: this.currentJob.currentDepot,
+            totalDepots: this.currentJob.totalDepots
         })
 
         this.downloadDepots(this.currentJob)
     }
 
     downloadDepots(job) {
-        let index = 0
+        let index = job.currentDepot || 0
         var fullGamePath = path.join(job.gamePath, job.SeasonCode)
 
+        this.sendEvent("queue-log", `Starting job ${job.id} for game ${job.name} at path ${fullGamePath}`)
 
         const nextDepot = () => {
             if (index >= job.depots.length) {
                 job.status = "completed"
                 job.progress = 100
+
+                this.sendEvent("queue-log", `Job completed: ${JSON.stringify(job)}`)
 
                 this.sendEvent("job-completed", {
                     seasonCode: this.currentJob.id,
@@ -106,6 +111,7 @@ class DownloadQueueManager {
             const depot = job.depots[index]
 
             console.log(`Starting download of depot ${depot.steamdepot_id} (manifest ${depot.steamdepot_manifest_id})`)
+            this.sendEvent("queue-log", `Starting download of depot ${depot.steamdepot_id} (manifest ${depot.steamdepot_manifest_id})`)
 
             const args = [
                 "-app", "359550",
@@ -114,6 +120,8 @@ class DownloadQueueManager {
                 "-dir", fullGamePath,
                 "-username", userData.getSetting('steam.lastUsername'), '-remember-password'
             ]
+
+            this.sendEvent("queue-log", `Running command: ${getDepotPath()} ${args.join(" ")}`)
 
             this.currentProcess = spawn(getDepotPath(), args)
 
@@ -127,9 +135,26 @@ class DownloadQueueManager {
             this.currentProcess.stdout.on("data", (data) => {
                 const output = data.toString()
                 // console.log(output)
+                this.sendEvent("queue-log", `Data in depot ${depot.steamdepot_id}: ${data.toString()}`)
 
                 // tentative parsing JSON (si modifié)
                 try {
+                    console.log("Output tells reconnection needed?", output.includes("Enter account password for"))
+                    if(output.includes("Enter account password for")){
+                        console.log("Reconnection required, stopping job and saving state.")
+                        // Sauvegarder l'index du dépôt actuel
+                        job.currentDepot = index
+                        // Remettre le job au début de la queue
+                        this.queue.unshift(job)
+                        this.sendEvent("queue-updated", this.queue)
+                        this.sendEvent("reconnection-required", {
+                            jobId: job.id,
+                            reason: "DEPOT_DOWNLOADER_SESSION_EXPIRED"
+                        })
+                        this.stopCurrent()
+                        this.currentJob = null
+                        return
+                    }
                     const parsed = JSON.parse(output)
 
                     job.progress =
@@ -137,13 +162,17 @@ class DownloadQueueManager {
 
                     this.sendEvent("job-progress", {
                         jobId: job.id,
-                        progress: job.progress
+                        progress: job.progress,
+                        depotProgress: parsed.percent,
+                        currentDepot: index + 1,
+                        totalDepots: job.depots.length
                     })
 
                 } catch { }
             })
 
             this.currentProcess.stderr.on("data", (data) => {
+                this.sendEvent("queue-log", `Data in depot ${depot.steamdepot_id}: ${data.toString()}`)
                 this.sendEvent("job-error", {
                     jobId: job.id,
                     error: data.toString()
@@ -151,6 +180,7 @@ class DownloadQueueManager {
             })
 
             this.currentProcess.on("close", (code) => {
+                this.sendEvent("queue-log", `Finished downloading depot ${depot.steamdepot_id} with code ${code}`)
 
                 if (code !== 0) {
                     job.status = "error"
@@ -158,6 +188,7 @@ class DownloadQueueManager {
                         jobId: job.id,
                         code
                     })
+                    this.sendEvent("queue-log", `Error downloading depot ${depot.steamdepot_id}, code: ${code}`)
 
                     this.currentJob = null
                     this.runNext()
@@ -186,6 +217,21 @@ class DownloadQueueManager {
         }
         this.queue = this.queue.filter(job => job.id !== seasonCode)
         this.sendEvent("queue-updated", this.queue)
+    }
+
+    cancelAllJobs() {
+        this.stopCurrent()
+        this.queue = []
+        this.currentJob = null
+        this.sendEvent("queue-updated", this.queue)
+        this.sendEvent("queue-empty")
+    }
+
+    resumeJobs() {
+        if (!this.currentJob && this.queue.length > 0) {
+            console.log("Resuming jobs...")
+            this.runNext()
+        }
     }
 }
 //
@@ -239,9 +285,14 @@ function loginWithPassword({ username, password }, callbacks = {}) {
 
     proc.stderr.on("data", (data) => {
         const output = data.toString()
-        // console.error("DepotDownloader error? :", output)
+        console.error("DepotDownloader error? :", output)
+        console.error("Includes :", output.includes("auth code you have provided is incorrect"))
 
         if (output.includes("STEAM GUARD! Please enter")) {
+            if (output.includes("auth code you have provided is incorrect")) {
+                console.error("Invalid guard code")
+                callbacks.onError?.("INVALID_GUARD_CODE")
+            }
             callbacks.onGuardRequired?.("STEAM_GUARD_REQUIRED")
         } else if (output.includes("Rate Limit Exceeded")) {
             callbacks.onError?.("RATE_LIMIT")

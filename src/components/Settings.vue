@@ -7,10 +7,16 @@ const homeDir = ref("")
 const gameDir = ref("")
 const steamUsername = ref("")
 const userInputUsername = ref("")
+const appVersion = ref("")
+const updateStatus = ref('Ready')
+const isCheckingUpdate = ref(false)
+const updateAvailable = ref(false)
+const availableVersion = ref("")
 
 const showSteamLoginModal = ref(false)
 const steamConnected = ref(false)
 const isUsernameValid = ref(false)
+const selectedSection = ref('account')
 
 const emit = defineEmits(['close'])
 
@@ -19,10 +25,44 @@ onMounted(async () => {
     homeDir.value = await window.settings.homeDir()
     gameDir.value = await window.settings.get("downloads.installPath")
     steamUsername.value = await window.settings.get("steam.lastUsername")
+    appVersion.value = await window.settings.appVersion()
 
     if (await window.settings.get("steam.havebeenConnected")) {
         steamConnected.value = true
     }
+
+    window.autoUpdate.onChecking(() => {
+        updateStatus.value = 'Vérification des mises à jour...'
+        isCheckingUpdate.value = true
+        updateAvailable.value = false
+    })
+
+    window.autoUpdate.onUpdateAvailable((info) => {
+        updateAvailable.value = true
+        availableVersion.value = info.version
+        updateStatus.value = `Mise à jour disponible : ${info.version}`
+        isCheckingUpdate.value = false
+    })
+
+    window.autoUpdate.onUpdateNotAvailable(() => {
+        updateAvailable.value = false
+        updateStatus.value = 'Aucune mise à jour disponible.'
+        isCheckingUpdate.value = false
+    })
+
+    window.autoUpdate.onDownloadProgress((progress) => {
+        updateStatus.value = `Téléchargement : ${Math.round(progress.percent)}%`
+    })
+
+    window.autoUpdate.onUpdateDownloaded(() => {
+        updateStatus.value = 'Mise à jour téléchargée. Redémarrez pour installer.'
+    })
+
+    window.autoUpdate.onUpdateError((err) => {
+        updateAvailable.value = false
+        updateStatus.value = `Erreur de mise à jour : ${err}`
+        isCheckingUpdate.value = false
+    })
 })
 
 function editUsername() {
@@ -49,6 +89,10 @@ function selectGameDir() {
 
 function closeSettings() {
     emit('close')
+}
+
+function selectSection(section) {
+    selectedSection.value = section
 }
 
 function SteamLoginModalClose() {
@@ -81,6 +125,16 @@ function checkUsername() {
     }
 }
 
+async function checkForUpdates() {
+    isCheckingUpdate.value = true
+    updateStatus.value = 'Vérification des mises à jour...'
+    const result = await window.autoUpdate.checkForUpdates()
+    if (result && result.error) {
+        updateStatus.value = `Erreur de vérification : ${result.error}`
+        isCheckingUpdate.value = false
+    }
+}
+
 </script>
 
 <template>
@@ -99,25 +153,40 @@ function checkUsername() {
                     </div>
                     <nav class="flex-1 px-2 space-y-1">
                         <button
-                            class="w-full flex items-center gap-3 px-4 py-3 bg-primary/10 border-l-4 border-primary text-white">
+                            @click="selectSection('account')"
+                            :class="selectedSection === 'account' ? 'w-full flex items-center gap-3 px-4 py-3 bg-primary/10 border-l-4 border-primary text-white' : 'w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all'">
                             <span class="material-symbols-outlined text-xl">person</span>
                             <span class="hidden md:block font-bold text-sm uppercase italic">Account</span>
                         </button>
                         <button
-                            class="w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                            @click="selectSection('storage')"
+                            :class="selectedSection === 'storage' ? 'w-full flex items-center gap-3 px-4 py-3 bg-primary/10 border-l-4 border-primary text-white' : 'w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all'">
                             <span class="material-symbols-outlined text-xl">database</span>
                             <span class="hidden md:block font-bold text-sm uppercase italic">Storage</span>
                         </button>
                         <button
-                            class="w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                            @click="selectSection('update')"
+                            :class="selectedSection === 'update' ? 'w-full flex items-center gap-3 px-4 py-3 bg-primary/10 border-l-4 border-primary text-white' : 'w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all'">
+                            <span class="material-symbols-outlined text-xl">system_update</span>
+                            <span class="hidden md:block font-bold text-sm uppercase italic">Update</span>
+                        </button>
+                        <button
+                            @click="selectSection('language')"
+                            :class="selectedSection === 'language' ? 'w-full flex items-center gap-3 px-4 py-3 bg-primary/10 border-l-4 border-primary text-white' : 'w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all'">
                             <span class="material-symbols-outlined text-xl">translate</span>
                             <span class="hidden md:block font-bold text-sm uppercase italic">Language</span>
+                        </button>
+                        <button
+                            @click="selectSection('about')"
+                            :class="selectedSection === 'about' ? 'w-full flex items-center gap-3 px-4 py-3 bg-primary/10 border-l-4 border-primary text-white' : 'w-full flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:text-white transition-all'">
+                            <span class="material-symbols-outlined text-xl">info</span>
+                            <span class="hidden md:block font-bold text-sm uppercase italic">About</span>
                         </button>
                     </nav>
                 </aside>
                 <main class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-10">
                     <div class="space-y-12">
-                        <section>
+                        <section v-show="selectedSection === 'account'">
                             <h3
                                 class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
                                 <span class="w-2 h-6 bg-primary"></span>
@@ -196,7 +265,7 @@ function checkUsername() {
                                 </div>
                             </div>
                         </section>
-                        <section>
+                        <section v-show="selectedSection === 'storage'">
                             <h3
                                 class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
                                 <span class="w-2 h-6 bg-primary"></span>
@@ -236,7 +305,31 @@ function checkUsername() {
                                 </div>
                             </div>
                         </section>
-                        <section>
+                        <section v-show="selectedSection === 'update'">
+                            <h3
+                                class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
+                                <span class="w-2 h-6 bg-primary"></span>
+                                Mise à jour de l’application
+                            </h3>
+                            <div class="space-y-6">
+                                <div class="p-4 bg-white/5 border border-white/10 rounded">
+                                    <label class="block text-[10px] font-black uppercase tracking-widest text-primary mb-2">
+                                        Version actuelle
+                                    </label>
+                                    <div class="flex flex-wrap gap-3 items-center">
+                                        <span class="bg-black/40 text-white px-3 py-2 rounded text-sm">{{ appVersion || 'Unknown' }}</span>
+                                        <button
+                                            class="px-5 py-2 bg-primary text-black font-bold uppercase text-xs tracking-widest rounded transition-colors hover:bg-primary/80 disabled:opacity-50"
+                                            :disabled="isCheckingUpdate"
+                                            @click="checkForUpdates">
+                                            {{ isCheckingUpdate ? 'Vérification...' : 'Vérifier les mises à jour' }}
+                                        </button>
+                                    </div>
+                                    <p class="text-sm text-slate-300 mt-3">{{ updateStatus }}</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section v-show="selectedSection === 'language'">
                             <h3
                                 class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
                                 <span class="w-2 h-6 bg-primary"></span>
@@ -268,6 +361,35 @@ function checkUsername() {
                                         <option>Russian</option>
                                         <option>Spanish</option>
                                     </select>
+                                </div>
+                            </div>
+                        </section>
+                        <section v-show="selectedSection === 'about'">
+                            <h3
+                                class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
+                                <span class="w-2 h-6 bg-primary"></span>
+                                About Siege Launcher
+                            </h3>
+
+                            <div class="space-y-6">
+                                <div class="p-4 bg-white/5 border border-white/10 rounded">
+                                    <h4 class="text-sm font-black uppercase tracking-[0.15em] text-primary mb-3">Packages utilisées</h4>
+                                    <ul class="list-disc list-inside space-y-2 text-sm text-slate-300">
+                                        <li><a href="https://github.com/vuejs/core" target="_blank" class="text-primary hover:underline">VueJS</a></li>
+                                        <li><a href="https://github.com/electron/electron" target="_blank" class="text-primary hover:underline">Electron</a></li>
+                                        <li><a href="https://github.com/tailwindlabs/tailwindcss" target="_blank" class="text-primary hover:underline">TailWindCSS</a></li>
+                                        <li><a href="https://github.com/SteamRE/DepotDownloader" target="_blank" class="text-primary hover:underline">Steam Depot Downloader</a></li>
+                                        <li><a href="https://github.com/marcopixel/r6operators" target="_blank" class="text-primary hover:underline">R6 Operators</a></li>
+                                        <li><a href="https://github.com/lungu19/ThrowbackLoader" target="_blank" class="text-primary hover:underline">ThrowbackLoader</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="p-4 bg-white/5 border border-white/10 rounded">
+                                    <h4 class="text-sm font-black uppercase tracking-[0.15em] text-primary mb-3">Contact</h4>
+                                    <div class="space-y-2 text-sm text-slate-300">
+                                        <p>Discord: <span class="text-white font-bold">@Artaic</span></p>
+                                        <p>Email: <a href="mailto:contact@artaic.fr" class="text-primary hover:underline">contact@artaic.fr</a></p>
+                                    </div>
                                 </div>
                             </div>
                         </section>

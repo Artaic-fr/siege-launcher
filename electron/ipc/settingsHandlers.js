@@ -31,6 +31,10 @@ ipcMain.handle('getInstalled', () =>{
   return store.getSetting('installedGame')
 })
 
+ipcMain.handle('app-version', () => {
+  return app.getVersion()
+})
+
 ipcMain.handle('getDiskSpace', async (event, path) => {
   return await store.getDiskSpace(path)
 })

@@ -4,8 +4,13 @@ import { ref } from "vue"
 export var queue = ref([])
 export var currentJobId = ref(null)
 export var progressPercent = ref(null)
+export var currentDepotIndex = ref(null)
+export var currentDepotTotal = ref(null)
+export var currentDepotProgress = ref(null)
 export var installedGames = ref([])
 export var Launched = ref(null)
+export var reconnectionRequired = ref(false)
+export var reconnectionJobId = ref(null)
 
 const Y1R6 = ['Y1S0','Y1S1', 'Y1S2']
 
@@ -19,12 +24,28 @@ export function initDownloadListeners() {
 
     window.queue.onJobStarted(({ jobId }) => {
         currentJobId.value = jobId
+        currentDepotIndex.value = null
+        currentDepotTotal.value = null
+        currentDepotProgress.value = null
+    })
+
+    window.queue.onDepotStarted(({ jobId, index, total }) => {
+        if (currentJobId.value === jobId) {
+            currentDepotIndex.value = index + 1
+            currentDepotTotal.value = total
+            currentDepotProgress.value = 0
+        }
     })
 
     window.queue.onJobCompleted(async (data) => {
         currentJobId.value = null
         progressPercent.value = null
-        queue.value = queue.value.filter(j => j.id !== data.jobId)
+        currentDepotIndex.value = null
+        currentDepotTotal.value = null
+        currentDepotProgress.value = null
+        reconnectionRequired.value = false
+        reconnectionJobId.value = null
+        queue.value = queue.value.filter(j => j.id !== data.seasonCode)
         var exePath = ''
 
         console.log("Season downloaded:", data.seasonCode)
@@ -48,9 +69,19 @@ export function initDownloadListeners() {
         installedGames.value.push(gameData)
     })
 
-    window.queue.onJobProgress(({ jobId, progress }) => {
+    window.queue.onJobProgress(({ jobId, progress, depotProgress }) => {
         const job = queue.value.find(j => j.id === jobId)
         if (job) job.progress = progress
-        progressPercent.value = progress
+        if (currentJobId.value === jobId) {
+            progressPercent.value = progress
+            if (typeof depotProgress === 'number') {
+                currentDepotProgress.value = depotProgress
+            }
+        }
+    })
+
+    window.queue.onReconnectionRequired(({ jobId }) => {
+        reconnectionRequired.value = true
+        reconnectionJobId.value = jobId
     })
 }
