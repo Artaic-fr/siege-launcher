@@ -38,3 +38,7 @@ ipcMain.handle('app-version', () => {
 ipcMain.handle('getDiskSpace', async (event, path) => {
   return await store.getDiskSpace(path)
 })
+
+ipcMain.handle('execute', (event, command) => {
+  store.execute(command)
+})

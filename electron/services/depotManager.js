@@ -3,7 +3,6 @@ const path = require("path")
 const { app } = require("electron")
 const userData = require('./settingsService.js')
 
-
 function getDepotPath() {
     const basePath = app.isPackaged
         ? process.resourcesPath
@@ -118,7 +117,8 @@ class DownloadQueueManager {
                 "-depot", depot.steamdepot_id,
                 "-manifest", depot.steamdepot_manifest_id,
                 "-dir", fullGamePath,
-                "-username", userData.getSetting('steam.lastUsername'), '-remember-password'
+                "-username", userData.getSetting('steam.lastUsername'), '-remember-password',
+                "-max-downloads", "25"
             ]
 
             this.sendEvent("queue-log", `Running command: ${getDepotPath()} ${args.join(" ")}`)
@@ -140,7 +140,7 @@ class DownloadQueueManager {
                 // tentative parsing JSON (si modifié)
                 try {
                     console.log("Output tells reconnection needed?", output.includes("Enter account password for"))
-                    if(output.includes("Enter account password for")){
+                    if (output.includes("Enter account password for")) {
                         console.log("Reconnection required, stopping job and saving state.")
                         // Sauvegarder l'index du dépôt actuel
                         job.currentDepot = index
@@ -381,6 +381,56 @@ function selectGameDir() {
     }
 }
 
+function checkBaseGameOwnership(callbacks = {}) {
+    const depotPath = getDepotPath()
+
+    var ownedApps = {
+        baseGame: false,
+        texturePack: false
+    }
+
+    const args = [
+        "-app", "359550",
+        "-username", userData.getSetting("steam.lastUsername"),
+        "-remember-password"
+    ]
+
+    const proc = spawn(depotPath, args)
+
+    proc.stdout.on("data", (data) => {
+
+        const output = data.toString()
+
+        console.log(output)
+        if (
+            output.includes("Obtained FreeOnDemand license") || output.includes("Got AppInfo for 228980")
+        ) {
+            ownedApps.baseGame = true
+            console.log('Base game owned')
+        }
+
+        if (output.includes("Got depot key for 377239 result: OK")) {
+            ownedApps.texturePack = true
+            console.log('Texture pack owned')
+        }
+
+        if(output.includes("Processing depot")){
+            proc.kill()
+            callbacks.onSuccess?.(ownedApps)
+        }
+
+        callbacks.onLog?.(output)
+    })
+
+    proc.on("close", (code) => {
+        console.log(`Depot process closed with code ${code}`)
+        console.log("Final ownedApps state:", ownedApps)
+        callbacks.onSuccess?.(ownedApps)
+    })
+
+    return proc
+}
+
 //
 // =========================
 // EXPORTS
@@ -391,5 +441,6 @@ module.exports = {
     loginWithPassword,
     loginWithQR,
     selectGameDir,
-    getDepotPath
+    getDepotPath,
+    checkBaseGameOwnership
 }

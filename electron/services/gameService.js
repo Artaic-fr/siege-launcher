@@ -5,7 +5,7 @@ const os = require("os")
 const userData = require('./settingsService.js')
 const { shell } = require("electron")
 const { https } = require("follow-redirects")
-const AdmZip = require("adm-zip") // npm install adm-zip
+const AdmZip = require("adm-zip")
 
 let currentGameProcess = null
 let startTime = null
@@ -45,7 +45,9 @@ function getPlaytime() {
 async function launchGame(gameData, callbacks = {}) {
 
     var args = [
-        "/belaunch -be",
+        // "/belaunch -be",
+        "/belaunch",
+        "/nologo",
         gameData.suppArgs
     ]
 

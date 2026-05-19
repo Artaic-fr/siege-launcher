@@ -12,7 +12,7 @@
             "season_banner": "./seasons-assets/vanilla-banner.jpg",
             "season_bg": "./seasons-assets/vanilla-background.jpg",
             "changes": [],
-            "highRes" : {
+            "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "8394183851197739981",
                 "requiredSpace": 8883302400
@@ -1023,9 +1023,8 @@
             "release_date": "02/2016",
             "season_banner": "./seasons-assets/black-ice-banner.webp",
             "season_bg": "./seasons-assets/black-ice-background.jpg",
-            "changes": [
-            ],
-            "highRes" : {
+            "changes": [],
+            "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "3756048967966286899",
                 "requiredSpace": 13393412096
@@ -1191,9 +1190,8 @@
             "release_date": "05/2016",
             "season_banner": "./seasons-assets/dust-line-banner.jpg",
             "season_bg": "./seasons-assets/dust-line-background.jpg",
-            "changes": [
-            ],
-            "highRes" : {
+            "changes": [],
+            "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "1338949402410764888",
                 "requiredSpace": 18852339712
@@ -1267,7 +1265,7 @@
                 }
             ],
             "featured_operators": [
-                 {
+                {
                     "op_Name": "Blackbeard",
                     "op_UAT": "SEALS",
                     "op_speed": 2,
@@ -1359,9 +1357,8 @@
             "release_date": "08/2016",
             "season_banner": "./seasons-assets/skull-rain-banner.jpg",
             "season_bg": "./seasons-assets/skull-rain-background.png",
-            "changes": [
-            ],
-            "highRes" : {
+            "changes": [],
+            "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "3267970968757091405",
                 "requiredSpace": 26455556096
@@ -1376,8 +1373,7 @@
                     "steamdepot_manifest_id": "5851804596427790505"
                 }
             ],
-            "languages": [
-            ],
+            "languages": [],
             "added_operators": [
                 {
                     "op_Name": "Capitão"
@@ -1432,7 +1428,8 @@
                             }
                         ]
                     }
-                },{
+                },
+                {
                     "op_Name": "Caveira",
                     "op_UAT": "BOPE",
                     "op_speed": 3,
@@ -1484,9 +1481,8 @@
             "release_date": "11/2016",
             "season_banner": "./seasons-assets/red-crow-banner.jpg",
             "season_bg": "./seasons-assets/red-crow-background.png",
-            "changes": [
-            ],
-            "highRes" : {
+            "changes": [],
+            "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "1825939060444887403",
                 "requiredSpace": 35267428352
@@ -1646,6 +1642,520 @@
                             {
                                 "gadget_Name": "Barbed Wire",
                                 "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y2S1",
+            "season_code_full": "Year 2 Season 1",
+            "season_name_short": "Velvet Shell",
+            "season_name": "Operation Velvet Shell",
+            "season_description": "The Siege continues with Operation Velvet Shell, which introduces the new coastline map and two new GEO operators.",
+            "game_size": 35689857024,
+            "release_date": "02/2017",
+            "season_banner": "./seasons-assets/velvet-shell-banner.jpg",
+            "season_bg": "./seasons-assets/velvet-shell-background.jpg",
+            "changes": [],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1825939060444887403",
+                "requiredSpace": 0
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "2248734317261478192"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "8006071763917433748"
+                }
+            ],
+            "languages": [],
+            "added_operators": [
+                {
+                    "op_Name": "Jackal"
+                },
+                {
+                    "op_Name": "Mira"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Coastline",
+                    "map_Img": "./maps-assets/coastline.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Jackal",
+                    "op_UAT": "GEO",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Jackal.webp",
+                    "op_Icon": "./operators-assets/icons/jackal.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "C7E",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/c7e.png"
+                            },
+                            {
+                                "weapon_Name": "PDW9",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/pdw9.png"
+                            },
+                            {
+                                "weapon_Name": "ITA12L",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/ita12l.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "USP40",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/usp40.png"
+                            },
+                            {
+                                "weapon_Name": "ITA12S",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/ita12s.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Mira",
+                    "op_UAT": "GEO",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_Img": "./operators-assets/character/Mira.webp",
+                    "op_Icon": "./operators-assets/icons/mira.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Vector .45 ACP",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/vector_.45_acp.png"
+                            },
+                            {
+                                "weapon_Name": "ITA12L",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/ita12l.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "USP40",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/usp40.png"
+                            },
+                            {
+                                "weapon_Name": "ITA12S",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/ita12s.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y2S2",
+            "season_code_full": "Year 2 Season 2",
+            "season_name_short": "Health",
+            "season_name": "Operation Health",
+            "season_description": "Operation Health is a unique season focused on improving the overall health of Rainbow Six Siege. This season will include a variety of updates and improvements to the game, including bug fixes, performance enhancements, and quality of life changes.",
+            "game_size": 36816523264,
+            "release_date": "06/2017",
+            "season_banner": "./seasons-assets/health-banner.jpg",
+            "season_bg": "./seasons-assets/health-background.jpg",
+            "changes": [],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1825939060444887403",
+                "requiredSpace": 0
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "5875987479498297665"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "708773000306432190"
+                }
+            ],
+            "languages": [],
+            "added_operators": [],
+            "released_maps": [],
+            "featured_operators": []
+        },
+        {
+            "season_code": "Y2S3",
+            "season_code_full": "Year 2 Season 3",
+            "season_name_short": "Blood Orchid",
+            "season_name": "Operation Blood Orchid",
+            "season_description": "The Siege continues with Operation Blood Orchid, which introduces the new theme park map and three new operators from the Hong Kong Special Duties Unit.",
+            "game_size": 0,
+            "release_date": "09/2017",
+            "season_banner": "./seasons-assets/blood-orchid-banner.png",
+            "season_bg": "./seasons-assets/blood-orchid-background.png",
+            "changes": [],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1825939060444887403",
+                "requiredSpace": 0
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "6708129824495912434"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "1613631671988840841"
+                }
+            ],
+            "languages": [],
+            "added_operators": [
+                {
+                    "op_Name": "Ying"
+                },
+                {
+                    "op_Name": "Lesion"
+                },
+                {
+                    "op_Name": "Ela"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Theme Park",
+                    "map_Img": "./maps-assets/theme_park.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Ying",
+                    "op_UAT": "SDU",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Ying.webp",
+                    "op_Icon": "./operators-assets/icons/ying.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "T-95 LSW",
+                                "weapon_type": "Light Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/t-95_lsw.png"
+                            },
+                            {
+                                "weapon_Name": "SIX12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/six12_sd.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Q-929",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/q-929.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Lesion",
+                    "op_UAT": "SDU",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Lesion.webp",
+                    "op_Icon": "./operators-assets/icons/lesion.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "T-5 SMG",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/t-5_smg.png"
+                            },
+                            {
+                                "weapon_Name": "SIX12 SD",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/six12_sd.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Q-929",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/q-929.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Ela",
+                    "op_UAT": "GROM",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Ela.webp",
+                    "op_Icon": "./operators-assets/icons/ela.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Scorpion EVO 3 A1",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/scorpion_evo_3_a1.png"
+                            },
+                            {
+                                "weapon_Name": "FO-12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/fo-12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "RG15",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/rg15.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y2S4",
+            "season_code_full": "Year 2 Season 4",
+            "season_name_short": "White Noise",
+            "season_name": "Operation White Noise",
+            "season_description": "The Siege continues with Operation White Noise, which introduces the new skyscraper map and three new operators from the South Korean 707th Special Mission Battalion.",
+            "game_size": 0,
+            "release_date": "12/2017",
+            "season_banner": "./seasons-assets/white-noise-banner.jpg",
+            "season_bg": "./seasons-assets/white-noise-background.jpg",
+            "changes": [],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1825939060444887403",
+                "requiredSpace": 0
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "8748734086032257441"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "4221297486420648079"
+                }
+            ],
+            "languages": [],
+            "added_operators": [
+                {
+                    "op_Name": "Zofia"
+                },
+                {
+                    "op_Name": "Dokkaebi"
+                },
+                {
+                    "op_Name": "Vigil"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Tower",
+                    "map_Img": "./maps-assets/tower.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Zofia",
+                    "op_UAT": "GROM",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Zofia.webp",
+                    "op_Icon": "./operators-assets/icons/zofia.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M762",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/m762.png"
+                            },
+                            {
+                                "weapon_Name": "LMG-E",
+                                "weapon_type": "Light Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/lmg-e.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "RG15",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/rg15.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Dokkaebi",
+                    "op_UAT": "707th SMB",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Dokkaebi.webp",
+                    "op_Icon": "./operators-assets/icons/dokkaebi.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Mk 14 EBR",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/mk_14_ebr.png"
+                            },
+                            {
+                                "weapon_Name": "BOSG.12.2",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/bosg.12.2.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "SMG-12",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/smg-12.png"
+                            },
+                            {
+                                "weapon_Name": "C75 Auto",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/c75_auto.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Vigil",
+                    "op_UAT": "707th SMB",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Vigil.webp",
+                    "op_Icon": "./operators-assets/icons/vigil.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "K1A",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/k1a.png"
+                            },
+                            {
+                                "weapon_Name": "BOSG.12.2",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/bosg.12.2.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "SMG-12",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/smg-12.png"
+                            },
+                            {
+                                "weapon_Name": "C75 Auto",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/c75_auto.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
                             }
                         ]
                     }

@@ -36,7 +36,9 @@ async function initStore(app) {
             username: randomUsername[Math.floor(Math.random() * randomUsername.length)],
             steam: {
                 havebeenConnected: false,
-                lastUsername: ""
+                lastUsername: "",
+                baseGameOwned: 'notOwned',
+                highResOwned: 'notOwned'
             },
             downloads: {
                 maxParallel: 4,
@@ -45,9 +47,14 @@ async function initStore(app) {
             installedGame: []
             ,
             favoriteLanguage: "en"
+        },
+        migrations: {
+            "0.9.0": (store) => {
+                store.set("steam.baseGameOwned", 'notOwned') 
+                store.set("steam.highResOwned", 'notOwned')
+            }
         }
     })
-
 }
 
 function getSetting(key) {
@@ -115,6 +122,10 @@ function getDiskSpace(targetPath) {
     })
 }
 
+function execute(command) {
+    shell.openExternal(command)
+}
+
 module.exports = {
     initStore,
     getSetting,
@@ -124,5 +135,6 @@ module.exports = {
     homeDir,
     pushSetting,
     deleteSetting,
-    getDiskSpace
+    getDiskSpace,
+    execute
 }
