@@ -1661,8 +1661,8 @@
             "changes": [],
             "highRes": {
                 "steamdepot_id": 377239,
-                "steamdepot_manifest_id": "1825939060444887403",
-                "requiredSpace": 0
+                "steamdepot_manifest_id": "3196596628759979362",
+                "requiredSpace": 46397341696
             },
             "baseGame": [
                 {
@@ -1674,7 +1674,50 @@
                     "steamdepot_manifest_id": "8006071763917433748"
                 }
             ],
-            "languages": [],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "5858637819174796390",
+                    "langsize": 1033523200
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "1442016899353884599",
+                    "langsize": 1143373824
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "7391813408396935946",
+                    "langsize": 1102409728
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "4034802727985013756",
+                    "langsize": 2627072000
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "8373797984073491957",
+                    "langsize": 1179103232
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "4595160401957962156",
+                    "langsize": 1040592896
+                }
+            ],
             "added_operators": [
                 {
                     "op_Name": "Jackal"
@@ -1795,13 +1838,13 @@
             "season_description": "Operation Health is a unique season focused on improving the overall health of Rainbow Six Siege. This season will include a variety of updates and improvements to the game, including bug fixes, performance enhancements, and quality of life changes.",
             "game_size": 36816523264,
             "release_date": "06/2017",
-            "season_banner": "./seasons-assets/health-banner.jpg",
+            "season_banner": "./seasons-assets/health-banner.png",
             "season_bg": "./seasons-assets/health-background.jpg",
             "changes": [],
             "highRes": {
                 "steamdepot_id": 377239,
-                "steamdepot_manifest_id": "1825939060444887403",
-                "requiredSpace": 0
+                "steamdepot_manifest_id": "7497579858536910279",
+                "requiredSpace": 47961784320
             },
             "baseGame": [
                 {
@@ -1813,7 +1856,50 @@
                     "steamdepot_manifest_id": "708773000306432190"
                 }
             ],
-            "languages": [],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "5499656844751782586",
+                    "langsize": 1039634432
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "4814130789498386116",
+                    "langsize": 1149562880
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "4850286352511597480",
+                    "langsize": 1108844544
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "7743695641492470240",
+                    "langsize": 2639065088
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "740877577181398044",
+                    "langsize": 1185120256
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "6208821339116662917",
+                    "langsize": 1046159360
+                }
+            ],
             "added_operators": [],
             "released_maps": [],
             "featured_operators": []
@@ -1824,15 +1910,15 @@
             "season_name_short": "Blood Orchid",
             "season_name": "Operation Blood Orchid",
             "season_description": "The Siege continues with Operation Blood Orchid, which introduces the new theme park map and three new operators from the Hong Kong Special Duties Unit.",
-            "game_size": 0,
+            "game_size": 38578405376,
             "release_date": "09/2017",
             "season_banner": "./seasons-assets/blood-orchid-banner.png",
             "season_bg": "./seasons-assets/blood-orchid-background.png",
             "changes": [],
             "highRes": {
                 "steamdepot_id": 377239,
-                "steamdepot_manifest_id": "1825939060444887403",
-                "requiredSpace": 0
+                "steamdepot_manifest_id": "6420469519659049757",
+                "requiredSpace": 17483399168
             },
             "baseGame": [
                 {
@@ -1844,7 +1930,50 @@
                     "steamdepot_manifest_id": "1613631671988840841"
                 }
             ],
-            "languages": [],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "838721240709370593",
+                    "langsize": 1204695040
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "517536193576958217",
+                    "langsize": 1329295360
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "633861069103225490",
+                    "langsize": 1283899392
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "5021367039292610416",
+                    "langsize": 3003154432
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "8777677445681226676",
+                    "langsize": 1366286336
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "1264611426492480643",
+                    "langsize": 1210925056
+                }
+            ],
             "added_operators": [
                 {
                     "op_Name": "Ying"
@@ -1991,15 +2120,15 @@
             "season_name_short": "White Noise",
             "season_name": "Operation White Noise",
             "season_description": "The Siege continues with Operation White Noise, which introduces the new skyscraper map and three new operators from the South Korean 707th Special Mission Battalion.",
-            "game_size": 0,
+            "game_size": 52312510464,
             "release_date": "12/2017",
             "season_banner": "./seasons-assets/white-noise-banner.jpg",
             "season_bg": "./seasons-assets/white-noise-background.jpg",
             "changes": [],
             "highRes": {
                 "steamdepot_id": 377239,
-                "steamdepot_manifest_id": "1825939060444887403",
-                "requiredSpace": 0
+                "steamdepot_manifest_id": "959656357428794421",
+                "requiredSpace": 26168393728
             },
             "baseGame": [
                 {
@@ -2011,7 +2140,50 @@
                     "steamdepot_manifest_id": "4221297486420648079"
                 }
             ],
-            "languages": [],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "838721240709370593",
+                    "langsize": 1204695040
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "517536193576958217",
+                    "langsize": 1329295360
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "633861069103225490",
+                    "langsize": 1283899392
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "5021367039292610416",
+                    "langsize": 3003154432
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "8777677445681226676",
+                    "langsize": 1366286336
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "1264611426492480643",
+                    "langsize": 1210925056
+                }
+            ],
             "added_operators": [
                 {
                     "op_Name": "Zofia"
@@ -2064,8 +2236,8 @@
                                 "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
                             },
                             {
-                                "gadget_Name": "Smoke Grenade",
-                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
                             }
                         ]
                     }
@@ -2105,12 +2277,12 @@
                         ],
                         "gadgets": [
                             {
-                                "gadget_Name": "Deployable Shield",
-                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
                             },
                             {
-                                "gadget_Name": "Nitro Cell",
-                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
                             }
                         ]
                     }
