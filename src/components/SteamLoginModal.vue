@@ -85,7 +85,6 @@ window.steam.onLoginError((err) => {
 window.steam.onLoginSuccess(async (data) => {
     await window.settings.set("steam.lastUsername", data.username)
     await window.settings.set("steam.havebeenConnected", true)
-    // Réinitialiser re connexion state
     reconnectionRequired.value = false
     emit("login-success")
     closeModal()

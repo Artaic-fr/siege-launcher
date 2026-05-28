@@ -12,7 +12,7 @@ export var Launched = ref(null)
 export var reconnectionRequired = ref(false)
 export var reconnectionJobId = ref(null)
 
-const Y1R6 = ['Y1S0','Y1S1', 'Y1S2']
+const RainbowSix = ['Y1S0','Y1S1', 'Y1S2', 'Y1S2', 'Y2S2', 'Y2S3', 'Y2S4']
 
 export function initDownloadListeners() {
 
@@ -50,7 +50,7 @@ export function initDownloadListeners() {
 
         console.log("Season downloaded:", data.seasonCode)
 
-        if(data.seasonCode && Y1R6.includes(data.seasonCode)) {
+        if(data.seasonCode && RainbowSix.includes(data.seasonCode)) {
             exePath = data.gamePath + "\\RainbowSix.exe"
         } else {
             exePath = data.gamePath + "\\RainbowSixGame.exe"

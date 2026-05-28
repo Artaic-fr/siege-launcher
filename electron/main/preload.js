@@ -24,7 +24,9 @@ contextBridge.exposeInMainWorld("settings", {
   getDiskSpace: (path) =>
     ipcRenderer.invoke('getDiskSpace', path),
   appVersion: () =>
-    ipcRenderer.invoke('app-version')
+    ipcRenderer.invoke('app-version'),
+  execute: (command) =>
+    ipcRenderer.invoke('execute', command)
 })
 
 //Depot Downloader
@@ -54,7 +56,31 @@ contextBridge.exposeInMainWorld("steam", {
   onQueueProgress: (callback) =>
     ipcRenderer.on("queue-progress", (_, data) => callback(data)),
   exePath: () =>
-    ipcRenderer.invoke("exePath")
+    ipcRenderer.invoke("exePath"),
+  checkOwnership: (callback) => {
+    // Envoyer la demande d'vérification
+    ipcRenderer.invoke("check-ownership", {})
+    
+    // Écouter la réponse
+    return new Promise((resolve) => {
+      const handleResult = (_, data) => {
+        ipcRenderer.removeListener("check-ownership-result", handleResult)
+        ipcRenderer.removeListener("check-ownership-error", handleError)
+        callback(null, data)
+        resolve(data)
+      }
+      
+      const handleError = (_, error) => {
+        ipcRenderer.removeListener("check-ownership-result", handleResult)
+        ipcRenderer.removeListener("check-ownership-error", handleError)
+        callback(error, null)
+        resolve(null)
+      }
+      
+      ipcRenderer.once("check-ownership-result", handleResult)
+      ipcRenderer.once("check-ownership-error", handleError)
+    })
+  }
 })
 
 contextBridge.exposeInMainWorld("queue", {

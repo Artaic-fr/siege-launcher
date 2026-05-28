@@ -15,17 +15,26 @@ const availableVersion = ref("")
 
 const showSteamLoginModal = ref(false)
 const steamConnected = ref(false)
-const isUsernameValid = ref(false)
+const isUsernameValid = ref(true)
 const selectedSection = ref('account')
+
+// Game states
+const baseGameState = ref('unknown') // 'owned', 'notOwned', 'checking'
+const texturePackState = ref('unknown') // 'owned', 'notOwned', 'checking'
+const isCheckingBaseGame = ref(false)
+const isCheckingTexturePack = ref(false)
 
 const emit = defineEmits(['close'])
 
 onMounted(async () => {
     username.value = await window.settings.get("username")
+    userInputUsername.value = username.value
     homeDir.value = await window.settings.homeDir()
     gameDir.value = await window.settings.get("downloads.installPath")
     steamUsername.value = await window.settings.get("steam.lastUsername")
     appVersion.value = await window.settings.appVersion()
+    baseGameState.value = await window.settings.get("steam.baseGameOwned")
+    texturePackState.value = await window.settings.get("steam.highResOwned")
 
     if (await window.settings.get("steam.havebeenConnected")) {
         steamConnected.value = true
@@ -111,17 +120,15 @@ function reloadSteamInfo() {
     window.settings.get("steam.havebeenConnected").then((data) => {
         steamConnected.value = data
     })
+    checkOwnership()
 }
 
 function checkUsername() {
-    const input = document.getElementById('UserInputusername')
-    const value = input.value
+    const value = userInputUsername.value
     if (!/^[A-Za-z][A-Za-z0-9._-]{2,14}$/.test(value)) {
-        input.classList.add('border-red-500')
-        input.classList.remove('border-white/10')
+        isUsernameValid.value = false
     } else {
-        input.classList.remove('border-red-500')
-        input.classList.add('border-white/10')
+        isUsernameValid.value = true
     }
 }
 
@@ -135,6 +142,31 @@ async function checkForUpdates() {
     }
 }
 
+function checkOwnership() {
+    isCheckingBaseGame.value = true
+    isCheckingTexturePack.value = true
+    baseGameState.value = 'checking'
+    texturePackState.value = 'checking'
+
+    window.steam.checkOwnership((err, ownership) => {
+        if (err) {
+            console.error("Error checking ownership:", err)
+            baseGameState.value = 'notOwned'
+            texturePackState.value = 'notOwned'
+        } else {
+            baseGameState.value = ownership.baseGame ? 'owned' : 'notOwned'
+            texturePackState.value = ownership.texturePack ? 'owned' : 'notOwned'
+            window.settings.set("steam.baseGameOwned", ownership.baseGame ? 'owned' : 'notOwned')
+            window.settings.set("steam.highResOwned", ownership.texturePack ? 'owned' : 'notOwned')
+        }
+        isCheckingBaseGame.value = false
+        isCheckingTexturePack.value = false
+    })
+}
+
+function acquireTexturePackSteam() {
+    window.settings.execute('https://store.steampowered.com/app/377560')
+}
 </script>
 
 <template>
@@ -198,9 +230,10 @@ async function checkForUpdates() {
                                         class="block text-[10px] font-black uppercase tracking-widest text-primary mb-2">Username</label>
                                     <div class="flex flex-col md:flex-row gap-4">
                                         <input
-                                            class="flex-1 bg-[#1a232e] border text-white p-3 rounded text-sm outline-none"
-                                            type="text" id="UserInputusername" :v-model="userInputUsername"
-                                            :value="username" v-on:input="checkUsername" />
+                                            :class="isUsernameValid ? 'border-white/10 focus:border-white/10' : 'border-red-500 focus:border-red-500'"
+                                            class="flex-1 bg-[#1a232e] border text-white p-3 rounded text-sm outline-none focus:outline-none focus:ring-0 transition-colors"
+                                            type="text" id="UserInputusername" v-model="userInputUsername"
+                                            @input="checkUsername" />
                                         <button
                                             class="px-6 py-2 bg-white/10 hover:bg-white/20 text-white font-bold uppercase text-xs tracking-widest transition-colors"
                                             @click="editUsername(userInputUsername)">Edit
@@ -262,6 +295,79 @@ async function checkForUpdates() {
 
                                         </div>
                                     </div>
+
+                                    <!-- Game Ownership Status -->
+                                    <div class="mt-6 space-y-4">
+                                        <!-- Base Game Status -->
+                                        <div class="p-4 bg-white/5 border border-white/10 rounded">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-sm font-bold uppercase tracking-wider">Base Game</span>
+                                                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full"
+                                                        :class="baseGameState === 'owned' ? 'bg-green-500/10 border border-green-500/20' : baseGameState === 'checking' ? 'bg-orange-500/10 border border-orange-500/20' : 'bg-red-500/10 border border-red-500/20'">
+                                                        <span class="relative flex h-2 w-2">
+                                                            <span v-if="baseGameState === 'checking'"
+                                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                                            <span v-else
+                                                                :class="baseGameState === 'owned' ? 'bg-green-500' : baseGameState === 'checking' ? 'bg-orange-500' : 'bg-red-500'"
+                                                                class="relative inline-flex rounded-full h-2 w-2"></span>
+                                                        </span>
+                                                        <span class="text-[10px] font-black uppercase tracking-tighter"
+                                                            :class="baseGameState === 'owned' ? 'text-green-500' : baseGameState === 'checking' ? 'text-orange-500' : 'text-red-500'">
+                                                            {{ baseGameState === 'owned' ? 'Owned' : baseGameState === 'checking' ? 'Checking...' : 'Not Owned' }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex gap-2">
+                                                    <button v-if="baseGameState !== 'checking' && baseGameState !== 'owned'"
+                                                        @click="checkOwnership" 
+                                                        :disabled="isCheckingBaseGame"
+                                                        class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-bold uppercase text-xs tracking-widest rounded transition-colors disabled:opacity-50">
+                                                        Check
+                                                    </button>
+                                                    <button v-if="baseGameState === 'notOwned'" @click="acquireBaseGameSteam"
+                                                        class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold uppercase text-xs tracking-widest rounded transition-colors">
+                                                        Get on Steam
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Texture Pack Status -->
+                                        <div class="p-4 bg-white/5 border border-white/10 rounded">
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-3">
+                                                    <span class="text-sm font-bold uppercase tracking-wider">4K Texture Pack</span>
+                                                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full"
+                                                        :class="texturePackState === 'owned' ? 'bg-green-500/10 border border-green-500/20' : texturePackState === 'checking' ? 'bg-orange-500/10 border border-orange-500/20' : 'bg-red-500/10 border border-red-500/20'">
+                                                        <span class="relative flex h-2 w-2">
+                                                            <span v-if="texturePackState === 'checking'"
+                                                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                                                            <span v-else
+                                                                :class="texturePackState === 'owned' ? 'bg-green-500' : texturePackState === 'checking' ? 'bg-orange-500' : 'bg-red-500'"
+                                                                class="relative inline-flex rounded-full h-2 w-2"></span>
+                                                        </span>
+                                                        <span class="text-[10px] font-black uppercase tracking-tighter"
+                                                            :class="texturePackState === 'owned' ? 'text-green-500' : texturePackState === 'checking' ? 'text-orange-500' : 'text-red-500'">
+                                                            {{ texturePackState === 'owned' ? 'Owned' : texturePackState === 'checking' ? 'Checking...' : 'Not Owned' }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="flex gap-2">
+                                                    <button v-if="texturePackState !== 'owned' && texturePackState !== 'checking'"
+                                                    @click="checkOwnership"
+                                                        :disabled="isCheckingTexturePack"
+                                                        class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-bold uppercase text-xs tracking-widest rounded transition-colors disabled:opacity-50">
+                                                        Check
+                                                    </button>
+                                                    <button v-if="texturePackState === 'notOwned'" @click="acquireTexturePackSteam"
+                                                        class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold uppercase text-xs tracking-widest rounded transition-colors">
+                                                        Get on Steam
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -309,12 +415,12 @@ async function checkForUpdates() {
                             <h3
                                 class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
                                 <span class="w-2 h-6 bg-primary"></span>
-                                Mise à jour de l’application
+                                Application Updates
                             </h3>
                             <div class="space-y-6">
                                 <div class="p-4 bg-white/5 border border-white/10 rounded">
                                     <label class="block text-[10px] font-black uppercase tracking-widest text-primary mb-2">
-                                        Version actuelle
+                                        Current Version
                                     </label>
                                     <div class="flex flex-wrap gap-3 items-center">
                                         <span class="bg-black/40 text-white px-3 py-2 rounded text-sm">{{ appVersion || 'Unknown' }}</span>
@@ -322,7 +428,7 @@ async function checkForUpdates() {
                                             class="px-5 py-2 bg-primary text-black font-bold uppercase text-xs tracking-widest rounded transition-colors hover:bg-primary/80 disabled:opacity-50"
                                             :disabled="isCheckingUpdate"
                                             @click="checkForUpdates">
-                                            {{ isCheckingUpdate ? 'Vérification...' : 'Vérifier les mises à jour' }}
+                                            {{ isCheckingUpdate ? 'Checking...' : 'Check for Updates' }}
                                         </button>
                                     </div>
                                     <p class="text-sm text-slate-300 mt-3">{{ updateStatus }}</p>
@@ -333,7 +439,7 @@ async function checkForUpdates() {
                             <h3
                                 class="text-xl font-black uppercase italic tracking-tighter mb-6 flex items-center gap-3">
                                 <span class="w-2 h-6 bg-primary"></span>
-                                Default Language
+                                Default Language (WIP)
                             </h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="p-4 bg-white/5 border border-white/10 rounded">

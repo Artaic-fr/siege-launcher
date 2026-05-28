@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron")
-const { DownloadQueueManager, loginWithPassword, selectGameDir, getDepotPath, cancelJob } = require("../services/depotManager.js")
+const { DownloadQueueManager, loginWithPassword, selectGameDir, getDepotPath, cancelJob, checkBaseGameOwnership } = require("../services/depotManager.js")
 
 //
 // =========================
@@ -103,6 +103,23 @@ ipcMain.handle("download-queue", async (event, payload) => {
 
 ipcMain.handle("exePath", (event) => {
   return getDepotPath()
+})
+
+ipcMain.handle("check-ownership", (event, callbacks) => {
+  const proc = checkBaseGameOwnership({
+    onSuccess: (ownership) => {
+      console.log("Ownership check completed:", ownership)
+      event.sender.send("check-ownership-result", ownership)
+    },
+    onError: (error) => {
+      console.error("Ownership check error:", error)
+      event.sender.send("check-ownership-error", error)
+    },
+    onLog: (log) => {
+      console.log("Ownership check log:", log)
+    }
+  })
+  return true
 })
 
 ipcMain.handle("queue-cancel-job", (event, seasonCode) => {

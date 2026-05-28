@@ -11,7 +11,7 @@ const isNextDisabled = computed(() => {
 })
 
 var enoughSpace = computed(() => {
-    return parseFloat(spaceAvailable.value) >= parseFloat(requiredSpace.value) + parseFloat(requiredSpaceLanguage.value) + parseFloat(ultraSize.value) 
+    return parseFloat(spaceAvailable.value) >= parseFloat(requiredSpace.value) + parseFloat(requiredSpaceLanguage.value) + parseFloat(ultraSize.value)
 })
 
 const gameDir = ref("")
@@ -31,6 +31,7 @@ var requiredSpaceUltra = ref(0)
 var disk = ref("")
 var ultraSize = ref(0)
 var ultraEnabled = ref(false)
+var highResOwned = ref(false)
 
 const props = defineProps({
     seasonCode: {
@@ -81,6 +82,9 @@ onMounted(async () => {
         spaceTotal.value = (space.total / 1024 / 1024 / 1024).toFixed(2)
         spaceUsedPercent.value = ((space.used / space.total) * 100).toFixed(1)
         disk.value = gameDir.value.slice(0, 2)
+    })
+    window.settings.get('steam.highResOwned').then((owned) => {
+        highResOwned.value = owned === 'owned' ? true : false
     })
 })
 
@@ -148,7 +152,6 @@ function updatedUltra() {
         }
     }
 }
-
 </script>
 
 <template>
@@ -256,14 +259,44 @@ function updatedUltra() {
                         You can select multiple languages. English is installed by default.
                     </p>
 
-                    <label @change="updatedUltra()"
-                            class="flex items-center gap-3 p-3 bg-white/5 border border-white/10 rounded cursor-pointer hover:border-primary transition">
-                            <input type="checkbox" v-model="ultraEnabled"
-                                class="accent-primary" /> Install 4K texture pack
-                                <span class="text-xs text-slate-400">
-                                    + {{ requiredSpaceUltra }} GB
-                                </span>
-                        </label>
+                    <label @change="updatedUltra()" class="
+        relative group flex items-center gap-3 p-3
+        bg-white/5 border border-white/10 rounded
+        transition
+    " :class="highResOwned
+        ? 'cursor-pointer hover:border-primary'
+        : 'opacity-60 cursor-not-allowed'">
+
+                        <input type="checkbox" v-model="ultraEnabled" :disabled="!highResOwned" class="
+            accent-primary
+            disabled:cursor-not-allowed
+            cursor-pointer
+        " />
+
+                        <span>Install 4K texture pack</span>
+
+                        <span class="text-xs text-slate-400">
+                            + {{ requiredSpaceUltra }} GB
+                        </span>
+
+                        <!-- Tooltip -->
+                        <div v-if="!highResOwned" class="
+            absolute left-1/2 top-full mt-2
+            -translate-x-1/2
+            opacity-0 group-hover:opacity-100
+            pointer-events-none
+            transition-opacity
+            bg-[#1a232e]
+            border border-white/10
+            text-white text-xs
+            px-3 py-2 rounded
+            whitespace-nowrap
+            z-50
+        ">
+                            ⚠️ Claim the Ultra HD Pack DLC on Steam first to enable this option. ⚠️
+                        </div>
+
+                    </label>
 
                 </div>
 
