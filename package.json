@@ -34,7 +34,7 @@
   },
   "build": {
     "appId": "com.siegelauncher.desktop",
-    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "artifactName": "Siege-Launcher-Setup-${version}.${ext}",
     "productName": "Siege Launcher",
     "directories": {
       "output": "release"
