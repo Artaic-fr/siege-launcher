@@ -326,7 +326,7 @@ function cancelQueue() {
                         </div>
                     </div>
                 </div>
-                <div class="space-y-4 pb-12">
+                <div class="space-y-4 pb-12" v-if="SeasonContent.featured_operators?.length > 0">
                     <h4 class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                         <span class="material-symbols-outlined text-sm">groups</span>
                         Featured Operators
