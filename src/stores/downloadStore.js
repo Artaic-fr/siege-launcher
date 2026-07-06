@@ -12,7 +12,7 @@ export var Launched = ref(null)
 export var reconnectionRequired = ref(false)
 export var reconnectionJobId = ref(null)
 
-const RainbowSix = ['Y1S0','Y1S1', 'Y1S2', 'Y1S2', 'Y2S2', 'Y2S3', 'Y2S4']
+const RainbowSix = ['Y1S0','Y1S1', 'Y1S2', 'Y1S2', 'Y2S2', 'Y2S3', 'Y2S4', 'Y3S1', 'Y3S2', 'Y3S3', 'Y3S4']
 
 export function initDownloadListeners() {
 
