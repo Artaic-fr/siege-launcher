@@ -1,7 +1,7 @@
 {
   "name": "siege-launcher",
   "private": true,
-  "version": "0.9.1",
+  "version": "0.10.0",
   "type": "commonjs",
   "main": "electron/main/main.js",
   "scripts": {
@@ -35,7 +35,7 @@
   "build": {
     "appId": "com.siegelauncher.desktop",
     "artifactName": "Siege-Launcher-Setup-${version}.${ext}",
-    "productName": "Siege Launcher",
+    "productName": "Siege-Launcher",
     "directories": {
       "output": "release"
     },
