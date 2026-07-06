@@ -125,3 +125,15 @@ contextBridge.exposeInMainWorld("game", {
   close: () => ipcRenderer.invoke('closeGame'),
   gameClosed: (callback) => ipcRenderer.on("game-closed", callback)
 })
+
+// NetCore
+contextBridge.exposeInMainWorld("netcore", {
+  check: () => ipcRenderer.invoke('check-netcore-90'),
+  install: () => ipcRenderer.invoke('install-netcore-90'),
+  onDownloadStart: (cb) => ipcRenderer.on('netcore-download-start', cb),
+  onDownloadComplete: (cb) => ipcRenderer.on('netcore-download-complete', cb),
+  onInstallStart: (cb) => ipcRenderer.on('netcore-install-start', cb),
+  onInstallComplete: (cb) => ipcRenderer.on('netcore-install-complete', (_, data) => cb(data)),
+  onInstallError: (cb) => ipcRenderer.on('netcore-install-error', (_, error) => cb(error)),
+  onCheckNetCore: (cb) => ipcRenderer.on('check-netcore', cb)
+})

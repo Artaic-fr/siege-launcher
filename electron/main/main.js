@@ -6,6 +6,7 @@ require('../ipc/ipcHandlers')
 require('../ipc/settingsHandlers')
 require('../ipc/depotHandler')
 require('../ipc/gameHandler')
+require('../ipc/netcoreHandler')
 
 const settings = require('../services/settingsService')
 
@@ -84,6 +85,11 @@ async function createWindow() {
   } else {
     win.loadFile(path.join(__dirname, '../..', 'dist', 'index.html'))
   }
+
+  // Vérifier NetCore 9.0 après le chargement de la page
+  win.webContents.on('did-finish-load', () => {
+    sendUpdateMessage('check-netcore')
+  })
 }
 
 app.whenReady().then(async () => {
