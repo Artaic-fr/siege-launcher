@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import Content from './components/Content.vue'
 import LeftSidebar from './components/LeftSidebar.vue';
 import SteamLoginModal from './components/SteamLoginModal.vue'
+import NetCoreModal from './components/NetCoreModal.vue'
 import { initDownloadListeners, installedGames, Launched, queue, reconnectionRequired } from "./stores/downloadStore.js"
 
 const selectedSeason = ref(null)
@@ -63,6 +64,7 @@ watch(reconnectionRequired, (newVal) => {
     <LeftSidebar @season-select="handleSeasonSelect" :selected-season-id="selectedSeasonId" />
     <Content v-if="selectedSeason" :season="selectedSeason" :key="selectedSeasonId" />
     <SteamLoginModal v-if="showSteamModal" @close="handleCloseSteamModal" @login-success="handleLoginSuccess" />
+    <NetCoreModal />
   </div>
 </template>
 
