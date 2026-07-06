@@ -8,6 +8,9 @@ import { initDownloadListeners, installedGames, Launched, queue, reconnectionReq
 
 const selectedSeason = ref(null)
 const selectedSeasonId = ref(null)
+const displayMode = ref('season')
+const eventFilter = ref('all')
+const showSeasonContent = ref(false)
 const showSteamModal = ref(false)
 
 const handleSeasonSelect = (seasonData) => {
@@ -15,8 +18,20 @@ const handleSeasonSelect = (seasonData) => {
   selectedSeasonId.value = seasonData.season_code
 }
 
+const handleUpdateDisplayMode = (value) => {
+  displayMode.value = value
+}
+
+const handleUpdateEventFilter = (value) => {
+  eventFilter.value = value
+}
+
 const handleCloseSteamModal = () => {
   showSteamModal.value = false
+}
+
+const handleUpdateShowSeasonContent = (value) => {
+  showSeasonContent.value = value
 }
 
 const handleLoginSuccess = async () => {
@@ -61,8 +76,16 @@ watch(reconnectionRequired, (newVal) => {
 <template>
   <div
     class="flex h-screen w-full overflow-hidden bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white">
-    <LeftSidebar @season-select="handleSeasonSelect" :selected-season-id="selectedSeasonId" />
-    <Content v-if="selectedSeason" :season="selectedSeason" :key="selectedSeasonId" />
+    <LeftSidebar
+      @season-select="handleSeasonSelect"
+      :selected-season-id="selectedSeasonId"
+      :display-mode="displayMode"
+      :event-filter="eventFilter"
+      @update:displayMode="handleUpdateDisplayMode"
+      @update:eventFilter="handleUpdateEventFilter"
+      @update:showSeasonContent="handleUpdateShowSeasonContent"
+    />
+    <Content v-if="selectedSeason" :season="selectedSeason" :display-mode="displayMode" :show-season-content="showSeasonContent" :key="selectedSeasonId" />
     <SteamLoginModal v-if="showSteamModal" @close="handleCloseSteamModal" @login-success="handleLoginSuccess" />
     <NetCoreModal />
   </div>

@@ -8,18 +8,46 @@ import DownloadModal from './DownloadModal.vue'
 import { queue, currentJobId, progressPercent, currentDepotIndex, currentDepotTotal, currentDepotProgress, installedGames, Launched } from "../stores/downloadStore.js"
 
 
-const SeasonContent = ref({})
-const Attackers = ref([])
-const Defenders = ref([])
-var jobs = ref([])
+const props = defineProps({
+    season: {
+        type: Object,
+        required: true
+    },
+    displayMode: {
+        type: String,
+        default: 'season'
+    },
+    // When true, prefer event assets (background/banner) from season.event[0]
+    showSeasonContent: {
+        type: Boolean,
+        default: false
+    }
+})
+
+const SeasonContent = computed(() => props.season)
+const Attackers = computed(() =>
+    Array.isArray(SeasonContent.value?.featured_operators)
+        ? SeasonContent.value.featured_operators.filter(op => op.side === 'Attacker')
+        : []
+)
+const Defenders = computed(() =>
+    Array.isArray(SeasonContent.value?.featured_operators)
+        ? SeasonContent.value.featured_operators.filter(op => op.side === 'Defender')
+        : []
+)
 
 const selectedOperator = ref(null)
+const GameInstalled = ref(false)
 
 const showSteamLoginModal = ref(false)
 const showDownloadModal = ref(false)
 const needSteamLogin = ref(false)
 const showGameSettings = ref(false)
-var GameSize = ref(0)
+const GameSize = computed(() =>
+    SeasonContent.value?.game_size
+        ? (SeasonContent.value.game_size / 1024 / 1024 / 1024).toFixed(2)
+        : '0.00'
+)
 
 const isInstalled = computed(() => {
     return installedGames.value.some(
@@ -45,11 +73,15 @@ var isQueued = computed(() =>
     queue.value.some(job => job.SeasonCode === props.season.season_code)
 )
 
-const props = defineProps({
-    season: {
-        type: Object,
-        required: true
+const heroBackground = computed(() => {
+    const season = SeasonContent.value
+    if (!season) {
+        return ''
     }
+    if ((props.displayMode === 'event' || props.showSeasonContent) && Array.isArray(season.event) && season.event.length > 0) {
+        return season.event[0].event_bg || season.season_bg || ''
+    }
+    return season.season_bg || ''
 })
 
 const handleOperatorSelect = (operatorData) => {
@@ -61,21 +93,10 @@ const closeOperatorCard = () => {
 }
 
 onMounted(() => {
-    window.api.getSeasons().then((data) => {
-        SeasonContent.value = data.find(s => s.season_code === props.season.season_code)
-        if (SeasonContent.value.featured_operators.length > 3) {
-            Attackers.value = SeasonContent.value.featured_operators.filter(op => op.side === 'Attacker')
-            Defenders.value = SeasonContent.value.featured_operators.filter(op => op.side === 'Defender')
-        }
-        GameSize.value = (SeasonContent.value.game_size / 1024 / 1024 / 1024).toFixed(2)
-    })
-
     window.settings.get('installedGame').then((games) => {
-        games.find(game => {
-            if (game.code === props.season.season_code) {
-                GameInstalled.value = true
-            }
-        })
+        if (Array.isArray(games)) {
+            GameInstalled.value = games.some(game => game.code === props.season.season_code)
+        }
     })
 })
 
@@ -140,9 +161,9 @@ function cancelQueue() {
     <div class="flex-1 flex flex-col dark:bg-background-dark overflow-hidden h-screen">
         <main v-if="!selectedOperator"
             class="flex-1 flex flex-col dark:bg-background-dark overflow-y-auto overflow-hidden h-screen custom-scrollbar">
-            <section class="relative h-[40vh] md:h-[50vh] min-h-[300px] w-full shrink-0">
+            <section v-if="SeasonContent" class="relative h-[40vh] md:h-[50vh] min-h-[300px] w-full shrink-0">
                 <div class="absolute inset-0 bg-cover bg-center"
-                    :style="{ backgroundImage: `url('${SeasonContent.season_bg}')` }">
+                    :style="{ backgroundImage: `url('${heroBackground}')` }">
                 </div>
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent">
@@ -152,9 +173,9 @@ function cancelQueue() {
                 <div class="absolute bottom-0 left-0 p-6 md:p-12 max-w-2xl">
 
                     <h2 class="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase mb-2">
-                        {{ SeasonContent.season_name }}</h2>
+                        {{ SeasonContent?.season_name || 'Loading...' }}</h2>
                     <p class="text-slate-300 text-sm md:text-lg max-w-md line-clamp-3">
-                        {{ SeasonContent.season_description }}
+                        {{ SeasonContent?.season_description || 'Please wait while the season data loads.' }}
                     </p>
                     <div class="mt-8 flex flex-wrap gap-4">
 
@@ -263,7 +284,7 @@ function cancelQueue() {
                     </div>
                 </div>
             </section>
-            <section class="p-6 md:p-12 space-y-12 bg-background-dark">
+            <section v-if="SeasonContent" class="p-6 md:p-12 space-y-12 bg-background-dark">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="space-y-4">
                         <h4 class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
@@ -326,7 +347,7 @@ function cancelQueue() {
                         </div>
                     </div>
                 </div>
-                <div class="space-y-4 pb-12" v-if="SeasonContent.featured_operators?.length > 0">
+                <div class="space-y-4 pb-12" v-if="SeasonContent?.featured_operators?.length > 0">
                     <h4 class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                         <span class="material-symbols-outlined text-sm">groups</span>
                         Featured Operators
