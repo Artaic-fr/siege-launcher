@@ -81,7 +81,21 @@ const filteredSeasons = computed(() => {
             season.season_code?.toLowerCase().replace(/\s+/g, '').includes(query) ||
             season.season_code_full?.toLowerCase().replace(/\s+/g, '').includes(query) ||
             season.season_name_short?.toLowerCase().replace(/\s+/g, '').includes(query) ||
-            season.season_name?.toString().replace(/\s+/g, '').includes(query)
+            season.season_name?.toString().replace(/\s+/g, '').includes(query) ||
+            season.event?.some(event =>
+                event.event_name
+                    .toString()
+                    .replace(/\s+/g, '')
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
+            ) ||
+            season.featured_operators?.some(event =>
+                event.op_Name
+                    .toString()
+                    .replace(/\s+/g, '')
+                    .toLowerCase()
+                    .includes(query.toLowerCase())
+            )
         )
     }
 
@@ -116,36 +130,22 @@ const filteredSeasons = computed(() => {
                     </div>
                     <input v-model="search"
                         class="w-full bg-[#1a232e] border border-white/10 text-white text-xs md:text-sm rounded-lg pl-10 pr-3 py-2.5 focus:ring-1 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-slate-500 placeholder:uppercase placeholder:font-bold placeholder:tracking-wider outline-none"
-                        placeholder="Search versions" type="text" />
+                        placeholder="Search..." type="text" />
                 </div>
                 <button
                     class="h-11 w-11 flex items-center justify-center rounded-lg bg-[#1a232e] border border-white/10 text-slate-300 hover:bg-white/10 transition"
-                    @click="openFilterOptions"
-                    type="button"
-                    aria-label="Options d'affichage"
-                >
+                    @click="openFilterOptions" type="button" aria-label="Options d'affichage">
                     <span class="material-symbols-outlined text-xl">filter_list</span>
                 </button>
-                <FilterOptionsModal
-                    :show="showFilterOptions"
-                    :displayMode="props.displayMode"
-                    :eventFilter="props.eventFilter"
-                    @close="closeFilterOptions"
-                    @update:displayMode="setDisplayMode"
-                    @update:eventFilter="setEventFilter"
-                    @showSeasonContent="setShowSeasonContent"
-                />
+                <FilterOptionsModal :show="showFilterOptions" :displayMode="props.displayMode"
+                    :eventFilter="props.eventFilter" @close="closeFilterOptions" @update:displayMode="setDisplayMode"
+                    @update:eventFilter="setEventFilter" @showSeasonContent="setShowSeasonContent" />
             </div>
         </div>
         <div class="flex-1 overflow-y-auto custom-scrollbar p-2 md:p-4 space-y-3">
-            <Seasons
-                v-for="season in filteredSeasons"
-                :key="season.season_code"
-                :season="season"
-                :display-mode="props.displayMode"
-                :is-selected="selectedSeasonId === season.season_code"
-                @select="handleSeasonSelect"
-            />
+            <Seasons v-for="season in filteredSeasons" :key="season.season_code" :season="season"
+                :display-mode="props.displayMode" :is-selected="selectedSeasonId === season.season_code"
+                @select="handleSeasonSelect" />
         </div>
         <div class="p-4 border-t border-white/10 group cursor-pointer group-hover:bg-[#1a232e] transition-colors"
             @click="openSettings">
