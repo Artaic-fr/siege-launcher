@@ -2350,7 +2350,20 @@
                     "event_name": "Outbreak",
                     "event_description": "The Outbreak Event took place in Truth or Consequences, New Mexico, with Rainbow tackling the epidemic that is ravaging the town. Teams of three are sent to combat the threat.",
                     "event_banner": "./events-assets/outbreak-banner.jpg",
-                    "event_bg": "./events-assets/outbreak-background.jpg"
+                    "event_bg": "./events-assets/outbreak-background.jpg",
+                    "event_type" : "PvE",
+                    "event_format" : "3vAI",
+                    "event_opPlayable": 12,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/LAGk9wEvf9c?si=VCAXM7qmORfGWWrC"
+                        },
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/d78X4eBgL6Q?si=NZgXEKEGJZdvjnK_"
+                        }
+                    ]
                 }
             ],
             "highRes": {
@@ -2717,7 +2730,16 @@
                     "event_name": "Mad House",
                     "event_description": "Mad House is a unique Halloween-themed gamemode and map that was available for a limited time in Tom Clancy's Rainbow Six Siege during the Operation Grim Sky expansion. For the Mad House Event, the House map had been revamped to feature Halloween decorations, such as Jack-o-lanterns, gargoyles, and cobwebs. A fog covers most of the map and eerie sounds can be heard. The mode follows the standard Bomb mode.",
                     "event_banner": "./events-assets/mad-house-banner.jpg",
-                    "event_bg": "./events-assets/mad-house-background.jpg"
+                    "event_bg": "./events-assets/mad-house-background.jpg",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 11,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/gmDSPaz3Soo?si=bUZrZY0INQWh0Gnd"
+                        }
+                    ]
                 }
             ],
             "highRes": {

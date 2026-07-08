@@ -5,6 +5,7 @@ import OperatorCard from './OperatorCard.vue'
 import SteamLoginModal from './SteamLoginModal.vue'
 import GameSettings from './GameSettings.vue';
 import DownloadModal from './DownloadModal.vue'
+import Event from './Event.vue'
 import { queue, currentJobId, progressPercent, currentDepotIndex, currentDepotTotal, currentDepotProgress, installedGames, Launched } from "../stores/downloadStore.js"
 
 
@@ -43,6 +44,7 @@ const showSteamLoginModal = ref(false)
 const showDownloadModal = ref(false)
 const needSteamLogin = ref(false)
 const showGameSettings = ref(false)
+const showEvent = ref(false)
 const GameSize = computed(() =>
     SeasonContent.value?.game_size
         ? (SeasonContent.value.game_size / 1024 / 1024 / 1024).toFixed(2)
@@ -136,6 +138,14 @@ function openGameModal() {
 
 function closeGameModal() {
     showGameSettings.value = false
+}
+
+function closeEventModal() {
+    showEvent.value = false
+}
+
+function openEvent() {
+    showEvent.value = true
 }
 
 function launch() {
@@ -308,6 +318,12 @@ function cancelQueue() {
                                 <span class="text-white text-sm font-medium block text-right">{{
                                     SeasonContent.released_maps.map(map => map.map_Name).join(', ')}}</span>
                             </div>
+                            <div v-if="SeasonContent.event?.length > 0" @click="openEvent()"
+                                class="flex justify-between items-center py-2 border-b border-white/5 gap-5 cursor-pointer hover:bg-white/5 transition-colors">
+                                <span class="text-slate-400 text-sm">Event</span>
+                                <span class="text-white text-sm font-medium block text-right inline-flex items-center gap-1">{{
+                                    SeasonContent.event.map(event => event.event_name).join(', ')}} <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                            </div>
                             <div class="flex justify-between items-center py-2 border-b border-white/5">
                                 <span class="text-slate-400 text-sm">Install Size</span>
                                 <span class="text-white text-sm font-medium">{{ GameSize }} GB</span>
@@ -426,6 +442,7 @@ function cancelQueue() {
         <SteamLoginModal v-if="showSteamLoginModal" @close="SteamLoginModalClose" />
         <DownloadModal v-if="showDownloadModal" @close="closeDownloadModal" :seasonCode="props.season.season_code" />
         <GameSettings v-if="showGameSettings" @close="closeGameModal" :settings="installedGame" />
+        <Event v-if="showEvent" @close="closeEventModal" :eventData="SeasonContent.event" />
 
     </div>
 </template>
