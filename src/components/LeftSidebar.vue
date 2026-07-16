@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import Seasons from './Seasons.vue'
 import Settings from './Settings.vue'
 import FilterOptionsModal from './FilterOptionsModal.vue'
+import { installedGames } from '../stores/downloadStore.js'
 
 const seasons = ref([])
 const props = defineProps({
@@ -14,6 +15,10 @@ const props = defineProps({
     eventFilter: {
         type: String,
         default: 'all'
+    },
+    installedFilter: {
+        type: String,
+        default: 'all'
     }
 })
 const username = ref('')
@@ -21,7 +26,7 @@ const search = ref('')
 const showSettings = ref(false)
 const showFilterOptions = ref(false)
 
-const emit = defineEmits(['season-select', 'update:displayMode', 'update:eventFilter', 'update:showSeasonContent'])
+const emit = defineEmits(['season-select', 'update:displayMode', 'update:eventFilter', 'update:installedFilter', 'update:showSeasonContent'])
 
 onMounted(() => {
     window.api.getSeasons().then((data) => {
@@ -43,6 +48,10 @@ const setDisplayMode = (value) => {
 
 const setEventFilter = (value) => {
     emit('update:eventFilter', value)
+}
+
+const setInstalledFilter = (value) => {
+    emit('update:installedFilter', value)
 }
 
 const setShowSeasonContent = (value) => {
@@ -106,7 +115,15 @@ const filteredSeasons = computed(() => {
         return true
     }
 
-    return seasons.value.filter((season) => matchesSearch(season) && matchesEventFilter(season))
+    const matchesInstalledFilter = (season) => {
+        if (props.installedFilter !== 'installed') return true
+
+        return installedGames.value.some((game) => {
+            return game.seasonCode?.toLowerCase() === season.season_code?.toLowerCase()
+        })
+    }
+
+    return seasons.value.filter((season) => matchesSearch(season) && matchesEventFilter(season) && matchesInstalledFilter(season))
 })
 
 </script>
@@ -138,8 +155,10 @@ const filteredSeasons = computed(() => {
                     <span class="material-symbols-outlined text-xl">filter_list</span>
                 </button>
                 <FilterOptionsModal :show="showFilterOptions" :displayMode="props.displayMode"
-                    :eventFilter="props.eventFilter" @close="closeFilterOptions" @update:displayMode="setDisplayMode"
-                    @update:eventFilter="setEventFilter" @showSeasonContent="setShowSeasonContent" />
+                    :eventFilter="props.eventFilter" :installedFilter="props.installedFilter"
+                    @close="closeFilterOptions" @update:displayMode="setDisplayMode"
+                    @update:eventFilter="setEventFilter" @update:installedFilter="setInstalledFilter"
+                    @showSeasonContent="setShowSeasonContent" />
             </div>
         </div>
         <div class="flex-1 overflow-y-auto custom-scrollbar p-2 md:p-4 space-y-3">

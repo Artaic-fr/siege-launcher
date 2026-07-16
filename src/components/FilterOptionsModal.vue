@@ -10,10 +10,14 @@ const props = defineProps({
     eventFilter: {
         type: String,
         default: 'all'
+    },
+    installedFilter: {
+        type: String,
+        default: 'all'
     }
 })
 
-const emit = defineEmits(['close', 'update:displayMode', 'update:eventFilter', 'showSeasonContent'])
+const emit = defineEmits(['close', 'update:displayMode', 'update:eventFilter', 'update:installedFilter', 'showSeasonContent'])
 
 const handleClose = () => emit('close')
 const setDisplayMode = (mode) => {
@@ -26,6 +30,7 @@ const setDisplayMode = (mode) => {
 }
 
 const selectedEventFilter = ref(props.eventFilter)
+const selectedInstalledFilter = ref(props.installedFilter)
 
 watch(
     () => props.eventFilter,
@@ -44,6 +49,28 @@ watch(
         }
     }
 )
+
+watch(
+    () => props.installedFilter,
+    (value) => {
+        if (value !== selectedInstalledFilter.value) {
+            selectedInstalledFilter.value = value
+        }
+    }
+)
+
+watch(
+    selectedInstalledFilter,
+    (value) => {
+        if (value !== props.installedFilter) {
+            emit('update:installedFilter', value)
+        }
+    }
+)
+
+const toggleInstalledFilter = (event) => {
+    selectedInstalledFilter.value = event.target.checked ? 'installed' : 'all'
+}
 </script>
 
 <template>
@@ -59,6 +86,17 @@ watch(
             </div>
 
             <div class="space-y-6">
+                <div class="p-4 bg-white/5 border border-white/10 rounded-lg">
+                    <h3 class="text-sm font-bold uppercase tracking-[0.2em] mb-3 text-slate-200">Installation status
+                    </h3>
+                    <label
+                        class="flex items-center gap-3 p-3 rounded-lg border border-white/10 bg-slate-950/20 cursor-pointer hover:bg-white/5 transition">
+                        <input type="checkbox" class="accent-primary rounded"
+                            :checked="selectedInstalledFilter === 'installed'" @change="toggleInstalledFilter" />
+                        <span class="text-sm text-slate-200">Show installed seasons only</span>
+                    </label>
+                </div>
+
                 <div class="p-4 bg-white/5 border border-white/10 rounded-lg">
                     <h3 class="text-sm font-bold uppercase tracking-[0.2em] mb-3 text-slate-200">Displayed assets</h3>
                     <div class="grid grid-cols-2 gap-3">
