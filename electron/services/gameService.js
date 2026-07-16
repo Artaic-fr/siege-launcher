@@ -8,15 +8,104 @@ const { https } = require("follow-redirects")
 const AdmZip = require("adm-zip")
 
 let currentGameProcess = null
+let currentGameData = null
 let startTime = null
 let logStream = null
 let proc = null
+let saveOnCloseDone = false
 
 //
 // =========================
 // INTERNAL HELPERS
 // =========================
 //
+function getThrowbackSaveDir(gameData) {
+    return path.join(gameData.gameFolderPath, "ThrowbackLoaderSaves")
+}
+
+function getSharedSaveDir() {
+    return path.resolve(__dirname, "..", "..", "shared", "saves")
+}
+
+function ensureDirectory(dir) {
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true })
+    }
+}
+
+function clearDirectory(dir) {
+    if (!fs.existsSync(dir)) return
+
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const entryPath = path.join(dir, entry.name)
+
+        if (entry.isDirectory()) {
+            fs.rmSync(entryPath, { recursive: true, force: true })
+        } else {
+            fs.unlinkSync(entryPath)
+        }
+    }
+}
+
+function copyDirectoryContents(srcDir, destDir) {
+    if (!fs.existsSync(srcDir)) return
+
+    ensureDirectory(destDir)
+
+    for (const entry of fs.readdirSync(srcDir, { withFileTypes: true })) {
+        const srcPath = path.join(srcDir, entry.name)
+        const destPath = path.join(destDir, entry.name)
+
+        if (entry.isDirectory()) {
+            copyDirectoryContents(srcPath, destPath)
+        } else if (entry.isFile() || entry.isSymbolicLink()) {
+            fs.copyFileSync(srcPath, destPath)
+        }
+    }
+}
+
+function backupThrowbackSaves(gameData) {
+    const saveDir = getThrowbackSaveDir(gameData)
+    const sharedDir = getSharedSaveDir()
+
+    ensureDirectory(sharedDir)
+    clearDirectory(sharedDir)
+
+    if (!fs.existsSync(saveDir)) return
+
+    copyDirectoryContents(saveDir, sharedDir)
+}
+
+function restoreThrowbackSaves(gameData) {
+    const saveDir = getThrowbackSaveDir(gameData)
+    const sharedDir = getSharedSaveDir()
+
+    ensureDirectory(saveDir)
+
+    if (!fs.existsSync(sharedDir)) return
+
+    clearDirectory(saveDir)
+    copyDirectoryContents(sharedDir, saveDir)
+}
+
+function saveCurrentGameSaves() {
+    if (!currentGameData || saveOnCloseDone) return
+
+    saveOnCloseDone = true
+    try {
+        backupThrowbackSaves(currentGameData)
+    } catch (e) {
+        console.error("Failed to backup ThrowbackLoader saves:", e)
+    }
+}
+
+function clearCurrentGameState() {
+    currentGameProcess = null
+    currentGameData = null
+    startTime = null
+    saveOnCloseDone = false
+}
+
 function createLogFile(gamePath) {
     const logsDir = path.join(gamePath, "logs")
 
@@ -51,28 +140,25 @@ async function launchGame(gameData, callbacks = {}) {
         gameData.suppArgs
     ]
 
-    if (gameData.patched) {
-        //Update du pseudo dans le fichier de config
-        username = await userData.getSetting("username")
-        await updateUsername(gameData.gameFolderPath, username)
-
-        proc = spawn(gameData.exePath, args)
-        currentGameProcess = proc
-        startTime = Date.now()
-        callbacks.onSuccess?.(gameData.seasonCode)
-    } else {
+    if (!gameData.patched) {
         await patchGame(gameData)
-        username = await userData.getSetting("username")
-        await updateUsername(gameData.gameFolderPath, username)
-
-        proc = spawn(gameData.exePath, args)
-        currentGameProcess = proc
-        startTime = Date.now()
-        callbacks.onSuccess?.(gameData.seasonCode)
     }
 
+    restoreThrowbackSaves(gameData)
+
+    // Update du pseudo dans le fichier de config
+    const username = await userData.getSetting("username")
+    await updateUsername(gameData.gameFolderPath, username)
+
+    proc = spawn(gameData.exePath, args)
+    currentGameProcess = proc
+    currentGameData = gameData
+    startTime = Date.now()
+    callbacks.onSuccess?.(gameData.seasonCode)
+
     proc.on('close', (code) => {
-        killGame()
+        saveCurrentGameSaves()
+        clearCurrentGameState()
         callbacks.onGameClosed?.()
     })
 }
@@ -89,6 +175,7 @@ function killGame(callbacks = {}) {
     }
 
     try {
+        saveCurrentGameSaves()
         currentGameProcess.kill("SIGTERM")
 
         callbacks.onSuccess?.()

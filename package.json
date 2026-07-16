@@ -60,6 +60,10 @@
       {
         "from": "steam/depotdownloader",
         "to": "steam/depotdownloader"
+      },
+      {
+        "from": "saves",
+        "to": "saves"
       }
     ]
   }
