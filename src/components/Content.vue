@@ -6,6 +6,8 @@ import SteamLoginModal from './SteamLoginModal.vue'
 import GameSettings from './GameSettings.vue';
 import DownloadModal from './DownloadModal.vue'
 import Event from './Event.vue'
+import ModsModal from './ModsModal.vue'
+
 import { queue, currentJobId, progressPercent, currentDepotIndex, currentDepotTotal, currentDepotProgress, installedGames, Launched } from "../stores/downloadStore.js"
 
 
@@ -23,6 +25,14 @@ const props = defineProps({
         type: Boolean,
         default: false
     }
+})
+
+const mods = ref([])
+const availableMod = computed(() => {
+    return mods.value.some(mod =>
+        Array.isArray(mod.season) &&
+        mod.season.includes(props.season.season_code)
+    )
 })
 
 const SeasonContent = computed(() => props.season)
@@ -45,6 +55,7 @@ const showDownloadModal = ref(false)
 const needSteamLogin = ref(false)
 const showGameSettings = ref(false)
 const showEvent = ref(false)
+const showModsModal = ref(false)
 const GameSize = computed(() =>
     SeasonContent.value?.game_size
         ? (SeasonContent.value.game_size / 1024 / 1024 / 1024).toFixed(2)
@@ -94,12 +105,20 @@ const closeOperatorCard = () => {
     selectedOperator.value = null
 }
 
-onMounted(() => {
+onMounted(async () => {
     window.settings.get('installedGame').then((games) => {
         if (Array.isArray(games)) {
             GameInstalled.value = games.some(game => game.code === props.season.season_code)
         }
     })
+
+    try {
+        const loadedMods = await window.api.getMods()
+        mods.value = Array.isArray(loadedMods) ? loadedMods : []
+    } catch (error) {
+        console.error('Failed to load mods:', error)
+        mods.value = []
+    }
 })
 
 function clean(data) {
@@ -146,6 +165,14 @@ function closeEventModal() {
 
 function openEvent() {
     showEvent.value = true
+}
+
+function openModsModal() {
+    showModsModal.value = true
+}
+
+function closeModsModal() {
+    showModsModal.value = false
 }
 
 function launch() {
@@ -290,6 +317,11 @@ function cancelQueue() {
                             <span class="material-symbols-outlined text-xl">settings</span>
                             <span>Settings</span>
                         </button>
+                        <button v-if="availableMod && isInstalled" @click="openModsModal"
+                            class="px-6 py-4 bg-white/5 hover:bg-white/10 text-white font-bold uppercase tracking-tighter rounded border border-white/10 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-xl">bolt</span>
+                            <span>Mods</span>
+                        </button>
 
                     </div>
                 </div>
@@ -321,8 +353,10 @@ function cancelQueue() {
                             <div v-if="SeasonContent.event?.length > 0" @click="openEvent()"
                                 class="flex justify-between items-center py-2 border-b border-white/5 gap-5 cursor-pointer hover:bg-white/5 transition-colors">
                                 <span class="text-slate-400 text-sm">Event</span>
-                                <span class="text-white text-sm font-medium block text-right inline-flex items-center gap-1">{{
-                                    SeasonContent.event.map(event => event.event_name).join(', ')}} <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                                <span
+                                    class="text-white text-sm font-medium block text-right inline-flex items-center gap-1">{{
+                                        SeasonContent.event.map(event => event.event_name).join(', ')}} <span
+                                        class="material-symbols-outlined text-sm">arrow_forward</span></span>
                             </div>
                             <div class="flex justify-between items-center py-2 border-b border-white/5">
                                 <span class="text-slate-400 text-sm">Install Size</span>
@@ -330,6 +364,9 @@ function cancelQueue() {
                             </div>
                         </div>
                     </div>
+
+
+
                     <div v-if="SeasonContent.changes?.length > 0" class="md:col-span-2 space-y-4">
                         <h4 class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                             <span class="material-symbols-outlined text-sm">history_edu</span>
@@ -443,6 +480,7 @@ function cancelQueue() {
         <DownloadModal v-if="showDownloadModal" @close="closeDownloadModal" :seasonCode="props.season.season_code" />
         <GameSettings v-if="showGameSettings" @close="closeGameModal" :settings="installedGame" />
         <Event v-if="showEvent" @close="closeEventModal" :eventData="SeasonContent.event" />
+        <ModsModal v-if="showModsModal" @close="closeModsModal" :mods="mods" />
 
     </div>
 </template>

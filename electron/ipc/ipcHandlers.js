@@ -22,5 +22,11 @@ ipcMain.handle('get-operators', (event, opName) => {
       }
     }
   }
-}
-)
+})
+
+ipcMain.handle('get-mods', () => {
+  const filePath = path.join(app.getAppPath(), 'shared', 'mods.json')
+  const raw = fs.readFileSync(filePath)
+  var mods = JSON.parse(raw)
+  return mods
+})

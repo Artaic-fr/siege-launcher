@@ -2,7 +2,8 @@ const { contextBridge, ipcRenderer, app } = require('electron')
 
 contextBridge.exposeInMainWorld('api', {
   getSeasons: () => ipcRenderer.invoke('get-seasons'),
-  getOperators: (opName) => ipcRenderer.invoke('get-operators', opName)
+  getOperators: (opName) => ipcRenderer.invoke('get-operators', opName),
+  getMods: () => ipcRenderer.invoke('get-mods')
 })
 
 //Settings
@@ -120,6 +121,22 @@ contextBridge.exposeInMainWorld("game", {
   openGameDir: (path) => ipcRenderer.invoke("openGameDir", path),
   updateArgs: (seasonCode, args) => ipcRenderer.invoke('updateArgs', seasonCode, args),
   uninstall: (path) => ipcRenderer.invoke('uninstall', path),
+  downloadMod: async (apiUrl, modName) => {
+    try {
+      return await ipcRenderer.invoke('downloadMod', apiUrl, modName)
+    } catch (error) {
+      console.error('downloadMod IPC failed:', error)
+      throw error
+    }
+  },
+  deleteMod: async (mod) => {
+    try {
+      return await ipcRenderer.invoke('deleteMod', mod)
+    } catch (error) {
+      console.error('deleteMod IPC failed:', error)
+      throw error
+    }
+  },
   launch: (gameData) => ipcRenderer.invoke('launchGame', gameData),
   gameLaunched: (callback) => ipcRenderer.on("game-launched", (_, data) => callback(data)),
   close: () => ipcRenderer.invoke('closeGame'),

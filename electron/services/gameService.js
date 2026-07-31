@@ -3,7 +3,7 @@ const fs = require("fs")
 const path = require("path")
 const os = require("os")
 const userData = require('./settingsService.js')
-const { shell } = require("electron")
+const { shell, app } = require("electron")
 const { https } = require("follow-redirects")
 const AdmZip = require("adm-zip")
 
@@ -13,6 +13,8 @@ let startTime = null
 let logStream = null
 let proc = null
 let saveOnCloseDone = false
+let currentModProcesses = []
+let gameCloseMonitor = null
 
 //
 // =========================
@@ -104,6 +106,59 @@ function clearCurrentGameState() {
     currentGameData = null
     startTime = null
     saveOnCloseDone = false
+    currentModProcesses = []
+    if (gameCloseMonitor) {
+        clearInterval(gameCloseMonitor)
+        gameCloseMonitor = null
+    }
+}
+
+function closeModProcesses() {
+    for (const modProcess of currentModProcesses) {
+        try {
+            if (modProcess && !modProcess.killed) {
+                modProcess.kill('SIGTERM')
+            }
+        } catch (error) {
+            console.error('Failed to kill mod process:', error)
+        }
+    }
+    currentModProcesses = []
+}
+
+async function launchEnabledMods() {
+    const savedMods = userData.getSetting('mods') || []
+    const enabledMods = savedMods.filter((mod) => mod.filePath && mod.disabled !== true)
+
+    if (enabledMods.length === 0) {
+        console.log('No enabled mods to launch.')
+        return
+    }
+
+    for (const mod of enabledMods) {
+        try {
+            if (!fs.existsSync(mod.filePath)) {
+                console.warn(`Enabled mod file not found: ${mod.filePath}`)
+                continue
+            }
+
+            const modProc = spawn(mod.filePath, [], {
+                shell: true,
+                detached: true,
+                windowsHide: true,
+                cwd: path.dirname(mod.filePath),
+                stdio: 'ignore'
+            })
+
+            if (modProc) {
+                currentModProcesses.push(modProc)
+                modProc.unref?.()
+                console.log(`Launched mod process: ${mod.mod_name || mod.github_api} (${mod.filePath})`)
+            }
+        } catch (error) {
+            console.error(`Failed to launch enabled mod ${mod.mod_name || mod.github_api}:`, error)
+        }
+    }
 }
 
 function createLogFile(gamePath) {
@@ -146,6 +201,8 @@ async function launchGame(gameData, callbacks = {}) {
 
     restoreThrowbackSaves(gameData)
 
+    await launchEnabledMods()
+
     // Update du pseudo dans le fichier de config
     const username = await userData.getSetting("username")
     await updateUsername(gameData.gameFolderPath, username)
@@ -156,11 +213,46 @@ async function launchGame(gameData, callbacks = {}) {
     startTime = Date.now()
     callbacks.onSuccess?.(gameData.seasonCode)
 
-    proc.on('close', (code) => {
+    let gameCloseHandled = false
+    const handleGameClose = (code, signal) => {
+        console.log('Game Closed')
+        if (gameCloseHandled) return
+        gameCloseHandled = true
+        console.log(`Game process terminated (code=${code}, signal=${signal})`)
         saveCurrentGameSaves()
+        closeModProcesses()
         clearCurrentGameState()
         callbacks.onGameClosed?.()
+    }
+
+    proc.on('close', handleGameClose)
+    proc.on('exit', handleGameClose)
+    proc.on('error', (error) => {
+        console.error('Game process error:', error)
     })
+
+    if (!gameCloseMonitor) {
+        gameCloseMonitor = setInterval(() => {
+            if (!proc) {
+                handleGameClose(null, 'monitor')
+                return
+            }
+
+            if (proc.killed) {
+                handleGameClose(null, 'monitor')
+                return
+            }
+
+            try {
+                process.kill(proc.pid, 0)
+            } catch (err) {
+                if (err.code === 'ESRCH') {
+                    console.log('Monitor detected game process has exited')
+                    handleGameClose(null, 'monitor')
+                }
+            }
+        }, 1000)
+    }
 }
 
 //
@@ -176,6 +268,7 @@ function killGame(callbacks = {}) {
 
     try {
         saveCurrentGameSaves()
+        closeModProcesses()
         currentGameProcess.kill("SIGTERM")
 
         callbacks.onSuccess?.()
@@ -255,8 +348,14 @@ function downloadFile(url, dest) {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(dest)
 
-        https.get(url, (response) => {
+        https.get(url, {
+            headers: {
+                'User-Agent': 'Siege-Launcher'
+            }
+        }, (response) => {
             if (response.statusCode !== 200) {
+                file.close()
+                fs.unlink(dest, () => { })
                 return reject("DOWNLOAD_FAILED")
             }
 
@@ -269,6 +368,30 @@ function downloadFile(url, dest) {
             fs.unlink(dest, () => { })
             reject(err)
         })
+    })
+}
+
+function getJson(url) {
+    return new Promise((resolve, reject) => {
+        https.get(url, {
+            headers: {
+                'User-Agent': 'Siege-Launcher'
+            }
+        }, (response) => {
+            if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+                return resolve(getJson(response.headers.location))
+            }
+
+            let data = ''
+            response.on('data', (chunk) => data += chunk)
+            response.on('end', () => {
+                try {
+                    resolve(JSON.parse(data))
+                } catch (error) {
+                    reject(error)
+                }
+            })
+        }).on('error', reject)
     })
 }
 
@@ -294,6 +417,84 @@ async function updateUsername(gamePath, username) {
     }
 }
 
+// DOWNLOAD MOD
+async function downloadMod(apiUrl, modName) {
+    if (!apiUrl) {
+        throw new Error('No API URL provided for mod download')
+    }
+
+    const releaseData = await getJson(apiUrl)
+    const asset = releaseData?.assets?.[0]
+
+    if (!asset?.browser_download_url) {
+        throw new Error('No downloadable asset found in the GitHub release')
+    }
+
+    const modsDir = path.join(app.getAppPath(), 'shared', 'mods')
+    ensureDirectory(modsDir)
+
+    const fileName = path.basename(asset.browser_download_url.split('?')[0])
+    const destPath = path.join(modsDir, fileName)
+
+    await downloadFile(asset.browser_download_url, destPath)
+
+    const savedMods = userData.getSetting('mods') || []
+    const existingIndex = savedMods.findIndex((mod) =>
+        mod.github_api === apiUrl || mod.mod_name === modName
+    )
+
+    const updatedMod = {
+        ...(existingIndex >= 0 ? savedMods[existingIndex] : {}),
+        mod_name: modName || savedMods[existingIndex]?.mod_name || fileName,
+        github_api: apiUrl,
+        disabled: false,
+        filePath: destPath,
+        version: releaseData.tag_name || 'Downloaded'
+    }
+
+    const nextMods = [...savedMods]
+    if (existingIndex >= 0) {
+        nextMods[existingIndex] = updatedMod
+    } else {
+        nextMods.push(updatedMod)
+    }
+
+    userData.setSetting('mods', nextMods)
+
+    return updatedMod
+}
+
+async function deleteMod(mod) {
+    if (!mod) {
+        throw new Error('No mod provided for deletion')
+    }
+
+    const savedMods = userData.getSetting('mods') || []
+    const index = savedMods.findIndex((stored) =>
+        stored.mod_name === mod.mod_name ||
+        stored.github_api === mod.github_api ||
+        (stored.filePath && mod.filePath && stored.filePath === mod.filePath)
+    )
+
+    if (index === -1) {
+        return false
+    }
+
+    const [deletedMod] = savedMods.splice(index, 1)
+    const filePath = deletedMod.filePath
+
+    if (filePath && fs.existsSync(filePath)) {
+        try {
+            fs.unlinkSync(filePath)
+        } catch (error) {
+            console.error('Failed to remove mod file:', error)
+        }
+    }
+
+    userData.setSetting('mods', savedMods)
+    return true
+}
+
 //
 // =========================
 // EXPORTS
@@ -306,5 +507,7 @@ module.exports = {
     patchGame,
     isGameRunning,
     openGameDir,
-    updateGameArgs
+    updateGameArgs,
+    downloadMod,
+    deleteMod
 }
