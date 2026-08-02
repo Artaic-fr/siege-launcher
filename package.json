@@ -45,6 +45,10 @@
       "shared/**/*",
       "package.json"
     ],
+    "asarUnpack": [
+      "shared/mods/**",
+      "shared/saves/**"
+    ],
     "win": {
       "target": "nsis",
       "icon": "shared/icon.png"

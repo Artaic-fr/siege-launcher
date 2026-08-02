@@ -52,6 +52,10 @@ ipcMain.handle("closeGame", (event) => {
     onSuccess: () => {
       console.log("Game closed successfully")
       event.sender.send("game-closed")
+    },
+    onError: (errorMessage) => {
+      console.error("Error closing game:", errorMessage)
+      event.sender.send("game-closed")
     }
   }
   gameService.killGame(callbacks)

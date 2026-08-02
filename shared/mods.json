@@ -6,7 +6,19 @@
     "github_url": "https://github.com/xeralin2/Liberator",
     "github_api": "https://api.github.com/repos/xeralin2/Liberator/releases/latest",
     "season": [
-      "Y1S1"
+      "Y1S0",
+      "Y1S1",
+      "Y1S2",
+      "Y1S3",
+      "Y1S4",
+      "Y2S1",
+      "Y2S2",
+      "Y2S3",
+      "Y2S4",
+      "Y3S1",
+      "Y3S2",
+      "Y3S3",
+      "Y3S4"
     ]
   }
 ]

@@ -101,6 +101,12 @@ function saveCurrentGameSaves() {
     }
 }
 
+function getModsDir() {
+    const modsDir = path.join(app.getPath('userData'), 'mods')
+    ensureDirectory(modsDir)
+    return modsDir
+}
+
 function clearCurrentGameState() {
     currentGameProcess = null
     currentGameData = null
@@ -114,9 +120,35 @@ function clearCurrentGameState() {
 }
 
 function closeModProcesses() {
-    for (const modProcess of currentModProcesses) {
+    for (const modEntry of currentModProcesses) {
+        const modProcess = modEntry?.proc
+        const modPath = modEntry?.modPath
+        if (!modProcess || !modProcess.pid) continue
+
+        const fileName = modPath ? path.basename(modPath) : null
+        console.log(`Closing mod process PID=${modProcess.pid}${fileName ? ` (${fileName})` : ''}`)
+
         try {
-            if (modProcess && !modProcess.killed) {
+            if (process.platform === 'win32') {
+                const killByPid = spawn('taskkill', ['/PID', modProcess.pid.toString(), '/T', '/F'], {
+                    windowsHide: true,
+                    stdio: 'ignore'
+                })
+                killByPid.on('error', (error) => {
+                    console.error('Failed to taskkill mod process by PID:', error)
+                })
+                if (fileName) {
+                    const killByName = spawn('taskkill', ['/IM', fileName, '/F'], {
+                        windowsHide: true,
+                        stdio: 'ignore'
+                    })
+                    killByName.on('error', (error) => {
+                        console.error('Failed to taskkill mod process by name:', error)
+                    })
+                }
+            }
+
+            if (!modProcess.killed) {
                 modProcess.kill('SIGTERM')
             }
         } catch (error) {
@@ -126,34 +158,116 @@ function closeModProcesses() {
     currentModProcesses = []
 }
 
-async function launchEnabledMods() {
-    const savedMods = userData.getSetting('mods') || []
-    const enabledMods = savedMods.filter((mod) => mod.filePath && mod.disabled !== true)
+function loadAvailableMods() {
+    const filePath = path.join(app.getAppPath(), 'shared', 'mods.json')
+    if (!fs.existsSync(filePath)) {
+        return []
+    }
 
-    if (enabledMods.length === 0) {
-        console.log('No enabled mods to launch.')
+    try {
+        return JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+    } catch (error) {
+        console.error('Failed to parse shared mods.json:', error)
+        return []
+    }
+}
+
+function findModDefinition(mod) {
+    const availableMods = loadAvailableMods()
+    if (!mod) return null
+
+    return availableMods.find((definition) => {
+        return (
+            (definition.github_api && mod.github_api && definition.github_api === mod.github_api) ||
+            (definition.mod_name && mod.mod_name && definition.mod_name === mod.mod_name) ||
+            (definition.github_url && mod.github_api && definition.github_url === mod.github_api)
+        )
+    })
+}
+
+async function launchEnabledMods(gameData) {
+    if (!gameData || typeof gameData !== 'object') {
+        console.warn('launchEnabledMods called without valid gameData, skipping mod launch')
         return
     }
 
-    for (const mod of enabledMods) {
+    const seasonCode = typeof gameData.seasonCode === 'string' ? gameData.seasonCode : ''
+    const savedMods = userData.getSetting('mods') || []
+    const enabledMods = savedMods.filter((mod) => mod.filePath && mod.disabled !== true)
+
+    const applicableMods = enabledMods.filter((mod) => {
+        const definition = findModDefinition(mod)
+        if (!definition || !Array.isArray(definition.season) || definition.season.length === 0) {
+            return true
+        }
+
+        return definition.season.includes(seasonCode)
+    })
+
+    if (applicableMods.length === 0) {
+        console.log('No enabled mods to launch for season', gameData.seasonCode)
+        return
+    }
+
+    for (const mod of applicableMods) {
         try {
-            if (!fs.existsSync(mod.filePath)) {
-                console.warn(`Enabled mod file not found: ${mod.filePath}`)
+            const modPath = path.resolve(mod.filePath)
+            if (!fs.existsSync(modPath)) {
+                console.warn(`Enabled mod file not found: ${modPath}`)
                 continue
             }
 
-            const modProc = spawn(mod.filePath, [], {
-                shell: true,
-                detached: true,
+            const modExt = path.extname(modPath).toLowerCase()
+            const isCommandScript = process.platform === 'win32' && (modExt === '.bat' || modExt === '.cmd')
+
+            let spawnCommand = modPath
+            let spawnArgs = []
+            const spawnOptions = {
                 windowsHide: true,
-                cwd: path.dirname(mod.filePath),
+                cwd: path.dirname(modPath),
                 stdio: 'ignore'
+            }
+
+            if (isCommandScript) {
+                const defaultCmd = process.env.ComSpec || path.join(process.env.SystemRoot || 'C:\Windows', 'System32', 'cmd.exe')
+                const cmdPath = fs.existsSync(defaultCmd) ? defaultCmd : 'cmd.exe'
+                spawnCommand = cmdPath
+                spawnArgs = ['/d', '/s', '/c', `"${modPath}"`]
+            } else if (process.platform === 'win32') {
+                spawnOptions.windowsVerbatimArguments = true
+            }
+
+            const modProc = spawn(spawnCommand, spawnArgs, spawnOptions)
+
+            modProc.on('error', (error) => {
+                if (error.code === 'EACCES' && process.platform === 'win32' && !isCommandScript) {
+                    console.warn(`Permission denied launching mod directly, retrying with cmd.exe: ${modPath}`)
+                    const defaultCmd = process.env.ComSpec || path.join(process.env.SystemRoot || 'C:\Windows', 'System32', 'cmd.exe')
+                    const cmdPath = fs.existsSync(defaultCmd) ? defaultCmd : 'cmd.exe'
+                    const retryArgs = ['/d', '/s', '/c', `"${modPath}"`]
+                    try {
+                        const retryProc = spawn(cmdPath, retryArgs, spawnOptions)
+                        if (retryProc) {
+                            currentModProcesses.push({ proc: retryProc, modPath })
+                            retryProc.on('exit', () => {
+                                currentModProcesses = currentModProcesses.filter((entry) => entry.proc.pid !== retryProc.pid)
+                            })
+                            console.log(`Launched mod process with fallback: ${mod.mod_name || mod.github_api} (${modPath})`)
+                        }
+                    } catch (retryError) {
+                        console.error(`Fallback launch failed for mod ${mod.mod_name || mod.github_api}:`, retryError)
+                    }
+                } else {
+                    console.error(`Failed to launch enabled mod ${mod.mod_name || mod.github_api}:`, error)
+                }
             })
 
             if (modProc) {
-                currentModProcesses.push(modProc)
-                modProc.unref?.()
-                console.log(`Launched mod process: ${mod.mod_name || mod.github_api} (${mod.filePath})`)
+                currentModProcesses.push({ proc: modProc, modPath })
+                modProc.on('exit', () => {
+                    currentModProcesses = currentModProcesses.filter((entry) => entry.proc.pid !== modProc.pid)
+                })
+                console.log(`Launched mod process: ${mod.mod_name || mod.github_api} (${modPath}) PID=${modProc.pid}`)
             }
         } catch (error) {
             console.error(`Failed to launch enabled mod ${mod.mod_name || mod.github_api}:`, error)
@@ -187,6 +301,9 @@ function getPlaytime() {
 // =========================
 //
 async function launchGame(gameData, callbacks = {}) {
+    if (!gameData || typeof gameData !== 'object') {
+        throw new Error('launchGame requires valid gameData')
+    }
 
     var args = [
         // "/belaunch -be",
@@ -195,13 +312,17 @@ async function launchGame(gameData, callbacks = {}) {
         gameData.suppArgs
     ]
 
+    if (!gameData) {
+        throw new Error('Missing gameData in launchGame')
+    }
+
     if (!gameData.patched) {
         await patchGame(gameData)
     }
 
     restoreThrowbackSaves(gameData)
 
-    await launchEnabledMods()
+    await launchEnabledMods(gameData)
 
     // Update du pseudo dans le fichier de config
     const username = await userData.getSetting("username")
@@ -262,14 +383,17 @@ async function launchGame(gameData, callbacks = {}) {
 //
 function killGame(callbacks = {}) {
     if (!currentGameProcess) {
-        callbacks.onError?.("NO_PROCESS")
-        return false
+        closeModProcesses()
+        clearCurrentGameState()
+        callbacks.onSuccess?.()
+        return true
     }
 
     try {
         saveCurrentGameSaves()
         closeModProcesses()
         currentGameProcess.kill("SIGTERM")
+        clearCurrentGameState()
 
         callbacks.onSuccess?.()
         return true
@@ -430,8 +554,7 @@ async function downloadMod(apiUrl, modName) {
         throw new Error('No downloadable asset found in the GitHub release')
     }
 
-    const modsDir = path.join(app.getAppPath(), 'shared', 'mods')
-    ensureDirectory(modsDir)
+    const modsDir = getModsDir()
 
     const fileName = path.basename(asset.browser_download_url.split('?')[0])
     const destPath = path.join(modsDir, fileName)
