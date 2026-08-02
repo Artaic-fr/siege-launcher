@@ -1,12 +1,17 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import Content from './components/Content.vue'
 import LeftSidebar from './components/LeftSidebar.vue';
 import SteamLoginModal from './components/SteamLoginModal.vue'
+import NetCoreModal from './components/NetCoreModal.vue'
 import { initDownloadListeners, installedGames, Launched, queue, reconnectionRequired } from "./stores/downloadStore.js"
 
 const selectedSeason = ref(null)
 const selectedSeasonId = ref(null)
+const displayMode = ref('season')
+const eventFilter = ref('all')
+const installedFilter = ref('all')
+const showSeasonContent = ref(false)
 const showSteamModal = ref(false)
 
 const handleSeasonSelect = (seasonData) => {
@@ -14,8 +19,24 @@ const handleSeasonSelect = (seasonData) => {
   selectedSeasonId.value = seasonData.season_code
 }
 
+const handleUpdateDisplayMode = (value) => {
+  displayMode.value = value
+}
+
+const handleUpdateEventFilter = (value) => {
+  eventFilter.value = value
+}
+
+const handleUpdateInstalledFilter = (value) => {
+  installedFilter.value = value
+}
+
 const handleCloseSteamModal = () => {
   showSteamModal.value = false
+}
+
+const handleUpdateShowSeasonContent = (value) => {
+  showSeasonContent.value = value
 }
 
 const handleLoginSuccess = async () => {
@@ -23,9 +44,51 @@ const handleLoginSuccess = async () => {
   // qui est appelée côté Electron après une connexion réussie
 }
 
+const persistDisplayPreferences = async (updates = {}) => {
+  const currentPreferences = await window.settings.get('preferences') || {}
+
+  await window.settings.set('preferences', {
+    ...currentPreferences,
+    ...updates
+  })
+}
+
+const loadDisplayPreferences = async () => {
+  const savedPreferences = await window.settings.get('preferences') || {}
+
+  const savedDisplayMode = savedPreferences.showEventAssets ? 'event' : 'season'
+  const savedEventFilter = savedPreferences.filterSeasons || 'all'
+  const savedInstalledFilter = savedPreferences.showGameInstalled ? 'installed' : 'all'
+
+  displayMode.value = savedDisplayMode
+  eventFilter.value = savedEventFilter
+  installedFilter.value = savedInstalledFilter
+  showSeasonContent.value = savedDisplayMode === 'event'
+}
+
+watch(displayMode, async (value) => {
+  showSeasonContent.value = value === 'event'
+  await persistDisplayPreferences({
+    showEventAssets: value === 'event'
+  })
+})
+
+watch(eventFilter, async (value) => {
+  await persistDisplayPreferences({
+    filterSeasons: value
+  })
+})
+
+watch(installedFilter, async (value) => {
+  await persistDisplayPreferences({
+    showGameInstalled: value === 'installed'
+  })
+})
+
 onMounted(async () => {
   initDownloadListeners()
   installedGames.value = await window.settings.getInstalled()
+  await loadDisplayPreferences()
 })
 
 window.game.gameLaunched((data) => {
@@ -46,7 +109,6 @@ window.steam.onLoginError((err) => {
 })
 
 // Écouter les changements dans reconnectionRequired
-import { watch } from 'vue'
 watch(reconnectionRequired, (newVal) => {
   if (newVal) {
     console.log("Reconnection required, showing modal")
@@ -60,9 +122,20 @@ watch(reconnectionRequired, (newVal) => {
 <template>
   <div
     class="flex h-screen w-full overflow-hidden bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white">
-    <LeftSidebar @season-select="handleSeasonSelect" :selected-season-id="selectedSeasonId" />
-    <Content v-if="selectedSeason" :season="selectedSeason" :key="selectedSeasonId" />
+    <LeftSidebar
+      @season-select="handleSeasonSelect"
+      :selected-season-id="selectedSeasonId"
+      :display-mode="displayMode"
+      :event-filter="eventFilter"
+      :installed-filter="installedFilter"
+      @update:displayMode="handleUpdateDisplayMode"
+      @update:eventFilter="handleUpdateEventFilter"
+      @update:installedFilter="handleUpdateInstalledFilter"
+      @update:showSeasonContent="handleUpdateShowSeasonContent"
+    />
+    <Content v-if="selectedSeason" :season="selectedSeason" :display-mode="displayMode" :show-season-content="showSeasonContent" :key="selectedSeasonId" />
     <SteamLoginModal v-if="showSteamModal" @close="handleCloseSteamModal" @login-success="handleLoginSuccess" />
+    <NetCoreModal />
   </div>
 </template>
 

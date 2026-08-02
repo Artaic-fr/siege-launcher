@@ -2333,6 +2333,732 @@
                     }
                 }
             ]
+        },
+        {
+            "season_code": "Y3S1",
+            "season_code_full": "Year 3 Season 1",
+            "season_name_short": "Chimera",
+            "season_name": "Operation Chimera",
+            "season_description": "The Siege continues with Operation Chimera, which introduces the new Outbreak event and two new operators from NRBC",
+            "game_size": 63205060608,
+            "release_date": "03/2018",
+            "season_banner": "./seasons-assets/chimera-banner.jpg",
+            "season_bg": "./seasons-assets/chimera-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Outbreak",
+                    "event_description": "The Outbreak Event took place in Truth or Consequences, New Mexico, with Rainbow tackling the epidemic that is ravaging the town. Teams of three are sent to combat the threat.",
+                    "event_banner": "./events-assets/outbreak-banner.jpg",
+                    "event_bg": "./events-assets/outbreak-background.jpg",
+                    "event_type" : "PvE",
+                    "event_format" : "3vAI",
+                    "event_opPlayable": 12,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/LAGk9wEvf9c?si=VCAXM7qmORfGWWrC"
+                        },
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/d78X4eBgL6Q?si=NZgXEKEGJZdvjnK_"
+                        }
+                    ]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "1668513364192382097",
+                "requiredSpace": 30045306880
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "5071357104726974256"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "4701787239566783972"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "6830763708591031513",
+                    "langsize": 1527463936
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "8951270584274959688",
+                    "langsize": 1677266944
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "365667853833643908",
+                    "langsize": 1622765568
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "723936785330189072",
+                    "langsize": 3702120448
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "4967060442376701942",
+                    "langsize": 1711534080
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "8184994692095456862",
+                    "langsize": 1529638912
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Lion"
+                },
+                {
+                    "op_Name": "Finka"
+                }
+            ],
+            "released_maps": [],
+            "featured_operators": [
+                {
+                    "op_Name": "Lion",
+                    "op_UAT": "NRBC",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Lion.webp",
+                    "op_Icon": "./operators-assets/icons/lion.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "V308",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/v308.png"
+                            },
+                            {
+                                "weapon_Name": "417",
+                                "weapon_type": "Marksman Rifle",
+                                "weapon_Img": "./operators-assets/weapons/417.png"
+                            },
+                            {
+                                "weapon_Name": "SG-CQB",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sg-cqb.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P9",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p9.png"
+                            },
+                            {
+                                "weapon_Name": "LFP586",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/lfp586.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Finka",
+                    "op_UAT": "NRBC",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Finka.webp",
+                    "op_Icon": "./operators-assets/icons/finka.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Spear .308",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/spear_.308.png"
+                            },
+                            {
+                                "weapon_Name": "6P41",
+                                "weapon_type": "Light Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/6p41.png"
+                            },
+                            {
+                                "weapon_Name": "SASG-12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/sasg-12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "PMM",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/pmm.png"
+                            },
+                            {
+                                "weapon_Name": "GSH-18",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/gsh-18.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y3S2",
+            "season_code_full": "Year 3 Season 2",
+            "season_name_short": "Para Bellum",
+            "season_name": "Operation Para Bellum",
+            "season_description": "The Siege continues with Operation Para Bellum, which introduces the new Villa map and two new operators from the Italian GIS.",
+            "game_size": 65136525312,
+            "release_date": "06/2018",
+            "season_banner": "./seasons-assets/para-bellum-banner.jpg",
+            "season_bg": "./seasons-assets/para-bellum-background.jpg",
+            "changes": [],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "204186978012641075",
+                "requiredSpace": 31306317824
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "6507886921175556869"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "8765715607275074515"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "2228609364372112585",
+                    "langsize": 1559052288
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "3765579578277178198",
+                    "langsize": 1709043712
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "436165049364805671",
+                    "langsize": 1658048512
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3396331896624899011",
+                    "langsize": 3767226368
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "7222426493426609376",
+                    "langsize": 1745911808
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "5702757960843346114",
+                    "langsize": 1558945792
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Maestro"
+                },
+                {
+                    "op_Name": "Alibi"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Villa",
+                    "map_Img": "./maps-assets/villa.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Maestro",
+                    "op_UAT": "GIS",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_Img": "./operators-assets/character/Maestro.webp",
+                    "op_Icon": "./operators-assets/icons/maestro.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "ALDA 5.56",
+                                "weapon_type": "Light Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/alda_5.56.png"
+                            },
+                            {
+                                "weapon_Name": "ACS12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/acs12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Bailiff 410",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/bailiff_410.png"
+                            },
+                            {
+                                "weapon_Name": "Keratos .357",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/keratos_.357.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Alibi",
+                    "op_UAT": "GIS",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Alibi.webp",
+                    "op_Icon": "./operators-assets/icons/alibi.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Mx4 Storm",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mx4_storm.png"
+                            },
+                            {
+                                "weapon_Name": "ACS12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/acs12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Keratos .357",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/keratos_.357.png"
+                            },
+                            {
+                                "weapon_Name": "Keratos .357",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/keratos_.357.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y3S3",
+            "season_code_full": "Year 3 Season 3",
+            "season_name_short": "Grim Sky",
+            "season_name": "Operation Grim Sky",
+            "season_description": "The Siege continues with Operation Grim Sky, which introduces two new operators from the ITUGS.",
+            "game_size": 78003339264,
+            "release_date": "10/2018",
+            "season_banner": "./seasons-assets/grim-sky-banner.jpg",
+            "season_bg": "./seasons-assets/grim-sky-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Mad House",
+                    "event_description": "Mad House is a unique Halloween-themed gamemode and map that was available for a limited time in Tom Clancy's Rainbow Six Siege during the Operation Grim Sky expansion. For the Mad House Event, the House map had been revamped to feature Halloween decorations, such as Jack-o-lanterns, gargoyles, and cobwebs. A fog covers most of the map and eerie sounds can be heard. The mode follows the standard Bomb mode.",
+                    "event_banner": "./events-assets/mad-house-banner.jpg",
+                    "event_bg": "./events-assets/mad-house-background.jpg",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 11,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/gmDSPaz3Soo?si=bUZrZY0INQWh0Gnd"
+                        }
+                    ]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "6431001239225997495",
+                "requiredSpace": 36028383232
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "5562094852451837435"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "7781202564071310413"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "2691692271374235298",
+                    "langsize": 1628065792
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "8974449918057622636",
+                    "langsize": 1782693888
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "1633663749570094592",
+                    "langsize": 1730891776
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3038736562055087492",
+                    "langsize": 3917033472
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "5405729512726659651",
+                    "langsize": 1821474816
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "7218304239314966517",
+                    "langsize": 1627967488
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Maverick"
+                },
+                {
+                    "op_Name": "Clash"
+                }
+            ],
+            "released_maps": [],
+            "featured_operators": [
+                {
+                    "op_Name": "Maverick",
+                    "op_UAT": "ITUGS",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_Img": "./operators-assets/character/Maverick.webp",
+                    "op_Icon": "./operators-assets/icons/maverick.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "AR-15.50",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/ar-15.50.png"
+                            },
+                            {
+                                "weapon_Name": "M4",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/m4.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "1911 TACOPS",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/1911_tacops.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Clash",
+                    "op_UAT": "ITUGS",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Clash.webp",
+                    "op_Icon": "./operators-assets/icons/clash.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "CCE Shield",
+                                "weapon_type": "Shield",
+                                "weapon_Img": "./operators-assets/weapons/cce_shield.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P-10C",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p-10c.png"
+                            },
+                            {
+                                "weapon_Name": "SPSMG9",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/spsmg9.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y3S4",
+            "season_code_full": "Year 3 Season 4",
+            "season_name_short": "Wind Bastion",
+            "season_name": "Operation Wind Bastion",
+            "season_description": "The Siege continues with Operation Wind Bastion, which introduces two new operators from the Moroccan GIGR and the new Fortress map.",
+            "game_size": 82605363200,
+            "release_date": "12/2018",
+            "season_banner": "./seasons-assets/wind-bastion-banner.jpg",
+            "season_bg": "./seasons-assets/wind-bastion-background.jpg",
+            "changes": [],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "2243348760021617592",
+                "requiredSpace": 37974671360
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "6502258854032233436"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "7659555540733025386"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "700171152841929114",
+                    "langsize": 1681547264
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "6317337128494587862",
+                    "langsize": 1842868224
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "6357970357791494519",
+                    "langsize": 1789657088
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "1310832078295252288",
+                    "langsize": 4039688192
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "6212948834557799675",
+                    "langsize": 1880383488
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "8026527283762710847",
+                    "langsize": 1680486400
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Nomad"
+                },
+                {
+                    "op_Name": "Kaid"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Fortress",
+                    "map_Img": "./maps-assets/fortress.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Nomad",
+                    "op_UAT": "GIGR",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Nomad.webp",
+                    "op_Icon": "./operators-assets/icons/nomad.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "AK-74M",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/ak-74m.png"
+                            },
+                            {
+                                "weapon_Name": "ARX200",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/arx200.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": ".44 Mag Semi-Auto",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/.44_mag_semi-auto.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Kaid",
+                    "op_UAT": "GIGR",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Kaid.webp",
+                    "op_Icon": "./operators-assets/icons/kaid.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Aug A3",
+                                "weapon_type": "Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/aug_a3.png"
+                            },
+                            {
+                                "weapon_Name": "TCSG12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/tcsg12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": ".44 Mag Semi-Auto",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/.44_mag_semi-auto.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     ]
 }

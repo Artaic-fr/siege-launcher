@@ -1,0 +1,12 @@
+[
+  {
+    "mod_name": "Liberator",
+    "mod_thumbnail": "https://raw.githubusercontent.com/xeralin2/Liberator/refs/heads/main/Liberator/Liberator.ico",
+    "description": "Liberator unlocks extra possibilities in Rainbow Six Siege local custom games ",
+    "github_url": "https://github.com/xeralin2/Liberator",
+    "github_api": "https://api.github.com/repos/xeralin2/Liberator/releases/latest",
+    "season": [
+      "Y1S1"
+    ]
+  }
+]

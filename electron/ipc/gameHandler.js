@@ -26,6 +26,14 @@ ipcMain.handle("updateArgs", (event, seasonCode, args) => {
   gameService.updateGameArgs(seasonCode, args)
 })
 
+ipcMain.handle("downloadMod", async (event, apiUrl, modName) => {
+  return gameService.downloadMod(apiUrl, modName)
+})
+
+ipcMain.handle('deleteMod', async (event, mod) => {
+  return gameService.deleteMod(mod)
+})
+
 ipcMain.handle("launchGame", async (event, gameData) => {
   const callbacks = {
     onSuccess: (seasonCode) => {

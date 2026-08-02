@@ -34,6 +34,11 @@ async function initStore(app) {
     store = new Store({
         defaults: {
             username: randomUsername[Math.floor(Math.random() * randomUsername.length)],
+            preferences : {
+                showGameInstalled: false,
+                showEventAssets: true,
+                filterSeasons: "all"
+            },
             steam: {
                 havebeenConnected: false,
                 lastUsername: "",
@@ -52,6 +57,13 @@ async function initStore(app) {
             "0.9.0": (store) => {
                 store.set("steam.baseGameOwned", 'notOwned') 
                 store.set("steam.highResOwned", 'notOwned')
+            },
+            "0.10.0": (store) => {
+                store.set("preferences", {
+                    showGameInstalled: false,
+                    showEventAssets: true,
+                    filterSeasons: "all"
+                })
             }
         }
     })
