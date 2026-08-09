@@ -9,10 +9,11 @@
       <!-- Message -->
       <div class="mb-6 text-gray-300 space-y-3">
         <p>
-          Rainbow Six Siege Launcher nécessite <span class="font-semibold text-white">NetCore 9.0</span> pour fonctionner correctement.
+          Siege Launcher requires <span class="font-semibold text-white">NetCore 9.0</span> to
+          function correctly.
         </p>
         <p>
-          Ce composant sera téléchargé et installé automatiquement sur votre ordinateur.
+          This component will be downloaded and installed automatically on your computer.
         </p>
       </div>
 
@@ -23,10 +24,8 @@
           <span v-if="downloadProgress">{{ downloadProgress }}%</span>
         </div>
         <div class="w-full bg-slate-700 rounded-full h-2 overflow-hidden">
-          <div
-            class="bg-blue-500 h-full rounded-full transition-all duration-300"
-            :style="{ width: (downloadProgress || 0) + '%' }"
-          ></div>
+          <div class="bg-blue-500 h-full rounded-full transition-all duration-300"
+            :style="{ width: (downloadProgress || 0) + '%' }"></div>
         </div>
       </div>
 
@@ -37,25 +36,19 @@
 
       <!-- Boutons -->
       <div class="flex gap-3">
-        <button
-          @click="handleCancel"
-          :disabled="isInstallingOrDownloading"
-          class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:cursor-not-allowed text-white rounded font-medium transition"
-        >
+        <button @click="handleCancel" :disabled="isInstallingOrDownloading"
+          class="flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 disabled:bg-slate-800 disabled:cursor-not-allowed text-white rounded font-medium transition">
           {{ isInstallingOrDownloading ? 'Installation en cours...' : 'Annuler' }}
         </button>
-        <button
-          @click="handleInstall"
-          :disabled="isInstallingOrDownloading"
-          class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white rounded font-medium transition"
-        >
+        <button @click="handleInstall" :disabled="isInstallingOrDownloading"
+          class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white rounded font-medium transition">
           {{ isInstallingOrDownloading ? 'En cours...' : 'Installer' }}
         </button>
       </div>
 
       <!-- Note -->
       <div class="mt-4 text-xs text-gray-500">
-        <p>Note: L'ordinateur peut être redémarré après l'installation.</p>
+        <p>The computer may be restarted after installation.</p>
       </div>
     </div>
   </div>
@@ -89,35 +82,35 @@ const checkNetCore = async () => {
       showModal.value = true
     }
   } catch (error) {
-    console.error('Erreur lors de la vérification de NetCore:', error)
+    console.error('Error checking NetCore:', error)
   }
 }
 
 const handleInstall = async () => {
   errorMessage.value = ''
   isDownloading.value = true
-  statusMessage.value = 'Téléchargement de NetCore 9.0...'
+  statusMessage.value = 'Downloading NetCore 9.0...'
 
   try {
     // Écouter les événements de progression
     window.netcore.onDownloadStart(() => {
-      statusMessage.value = 'Téléchargement de NetCore 9.0...'
+      statusMessage.value = 'Downloading NetCore 9.0...'
     })
 
     window.netcore.onDownloadComplete(() => {
-      statusMessage.value = 'Installation de NetCore 9.0...'
+      statusMessage.value = 'Installing NetCore 9.0...'
       isDownloading.value = false
       isInstalling.value = true
     })
 
     window.netcore.onInstallStart(() => {
-      statusMessage.value = 'Installation en cours...'
+      statusMessage.value = 'Installation in progress...'
       downloadProgress.value = 50
     })
 
     window.netcore.onInstallComplete((data) => {
       if (data.success) {
-        statusMessage.value = 'Installation réussie!'
+        statusMessage.value = 'Installation successful!'
         downloadProgress.value = 100
         setTimeout(() => {
           showModal.value = false
@@ -126,7 +119,7 @@ const handleInstall = async () => {
           downloadProgress.value = 0
         }, 1500)
       } else {
-        errorMessage.value = data.error || 'L\'installation a échoué'
+        errorMessage.value = data.error || 'The installation failed'
         isDownloading.value = false
         isInstalling.value = false
         downloadProgress.value = 0
@@ -134,7 +127,7 @@ const handleInstall = async () => {
     })
 
     window.netcore.onInstallError((error) => {
-      errorMessage.value = error || 'Une erreur est survenue lors de l\'installation'
+      errorMessage.value = error || 'An error occurred during installation'
       isDownloading.value = false
       isInstalling.value = false
       downloadProgress.value = 0
@@ -143,13 +136,13 @@ const handleInstall = async () => {
     // Lancer l'installation
     const result = await window.netcore.install()
     if (!result.success) {
-      errorMessage.value = result.error || 'L\'installation a échoué'
+      errorMessage.value = result.error || 'The installation failed'
       isDownloading.value = false
       isInstalling.value = false
       downloadProgress.value = 0
     }
   } catch (error) {
-    errorMessage.value = error.message || 'Une erreur est survenue'
+    errorMessage.value = error.message || 'An error occurred'
     isDownloading.value = false
     isInstalling.value = false
     downloadProgress.value = 0

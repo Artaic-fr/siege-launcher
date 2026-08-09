@@ -47,8 +47,8 @@ function initializeAutoUpdater() {
       buttons: ['Restart now', 'Later'],
       defaultId: 0,
       cancelId: 1,
-      title: 'Mise à jour prête',
-      message: 'Une nouvelle version a été téléchargée. Voulez-vous redémarrer l’application maintenant pour installer la mise à jour ?'
+      title: 'Update Ready',
+      message: 'A new version has been downloaded. Do you want to restart the application now to install the update?'
     })
     if (buttonIndex === 0) {
       autoUpdater.quitAndInstall()
