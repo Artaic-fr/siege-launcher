@@ -14,6 +14,14 @@ export var reconnectionJobId = ref(null)
 
 const RainbowSix = ['Y1S0','Y1S1', 'Y1S2', 'Y2S2', 'Y2S3', 'Y2S4', 'Y3S1', 'Y3S2', 'Y3S3', 'Y3S4', 'Y4S1', 'Y4S2', 'Y4S3', 'Y4S4', 'Y5S1']
 
+function resetCurrentJobState() {
+    currentJobId.value = null
+    progressPercent.value = null
+    currentDepotIndex.value = null
+    currentDepotTotal.value = null
+    currentDepotProgress.value = null
+}
+
 export function initDownloadListeners() {
 
     window.queue.init()
@@ -27,6 +35,12 @@ export function initDownloadListeners() {
         currentDepotIndex.value = null
         currentDepotTotal.value = null
         currentDepotProgress.value = null
+    })
+
+    window.queue.onJobCancelled(({ jobId }) => {
+        if (currentJobId.value === jobId || !queue.value.some(job => job.id === jobId)) {
+            resetCurrentJobState()
+        }
     })
 
     window.queue.onDepotStarted(({ jobId, index, total }) => {

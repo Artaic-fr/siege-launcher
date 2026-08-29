@@ -92,6 +92,8 @@ contextBridge.exposeInMainWorld("queue", {
     ipcRenderer.on("job-progress", (_, d) => cb(d)),
   onJobStarted: (cb) =>
     ipcRenderer.on("job-started", (_, d) => cb(d)),
+  onJobCancelled: (cb) =>
+    ipcRenderer.on("job-cancelled", (_, d) => cb(d)),
   onDepotStarted: (cb) =>
     ipcRenderer.on("depot-started", (_, d) => cb(d)),
   onJobCompleted: (cb) =>

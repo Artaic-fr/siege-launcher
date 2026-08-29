@@ -46,6 +46,10 @@ const Defenders = computed(() =>
         ? SeasonContent.value.featured_operators.filter(op => op.side === 'Defender')
         : []
 )
+const operatorMaps = computed(() => [
+    ...(Array.isArray(SeasonContent.value?.released_maps) ? SeasonContent.value.released_maps : []),
+    ...(Array.isArray(SeasonContent.value?.updated_maps) ? SeasonContent.value.updated_maps : [])
+])
 
 const selectedOperator = ref(null)
 const GameInstalled = ref(false)
@@ -56,6 +60,7 @@ const needSteamLogin = ref(false)
 const showGameSettings = ref(false)
 const showEvent = ref(false)
 const showModsModal = ref(false)
+const showCancelConfirm = ref(false)
 const GameSize = computed(() =>
     SeasonContent.value?.game_size
         ? (SeasonContent.value.game_size / 1024 / 1024 / 1024).toFixed(2)
@@ -188,8 +193,16 @@ function closeGame() {
 }
 
 function cancelQueue() {
-    if (!confirm("Are you sure you want to cancel the download?")) return
+    showCancelConfirm.value = true
+}
+
+function confirmCancelQueue() {
+    showCancelConfirm.value = false
     window.queue.cancelJob(props.season.season_code)
+}
+
+function closeCancelConfirm() {
+    showCancelConfirm.value = false
 }
 
 </script>
@@ -216,64 +229,58 @@ function cancelQueue() {
                     </p>
                     <div class="mt-8 flex flex-wrap gap-4">
 
-                        <button v-if="isDownloading"
-                            class="group relative w-[300px] px-10 py-4 bg-[#1a232e] text-white font-black uppercase tracking-tighter rounded overflow-hidden cursor-default">
+                        <div v-if="isDownloading"
+                            class="group relative flex items-center gap-3 w-[320px] px-4 py-4 bg-[#1a232e] text-white font-black uppercase tracking-tighter rounded overflow-hidden transition-colors duration-200 hover:bg-[#243241]">
+                            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                            <!-- Hover effect désactivé visuellement -->
-                            <div class="absolute inset-0 bg-white/5 opacity-0"></div>
-
-                            <!-- Content -->
-                            <div class="relative z-10 flex flex-col gap-2">
-
-                                <!-- Ligne principale -->
-                                <div class="flex items-center justify-between gap-2">
-
-                                    <div class="flex flex-col gap-1">
+                            <div class="relative z-10 flex flex-col gap-2 flex-1 min-w-0">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div class="flex flex-col gap-1 min-w-0">
                                         <div class="flex items-center gap-2">
                                             <div
                                                 class="w-4 h-4 border-2 border-white/30 border-t-primary rounded-full animate-spin">
                                             </div>
                                             <span>Downloading</span>
                                         </div>
-                                        <div class="text-xs text-slate-200">
+                                        <div class="text-xs text-slate-200 truncate">
                                             Depot {{ currentDepotIndex || 1 }}/{{ currentDepotTotal || '...' }} ·
                                             {{ currentDepotProgress !== null ? Math.floor(currentDepotProgress) : 0 }}%
                                         </div>
                                     </div>
 
-                                    <!-- % -->
-                                    <span class="text-xs text-primary font-bold">
+                                    <span class="text-xs text-primary font-bold shrink-0">
                                         {{ Math.floor(progressPercent) }}%
                                     </span>
-
                                 </div>
 
-                                <!-- Barre -->
                                 <div class="w-full h-1 bg-white/10 rounded overflow-hidden">
                                     <div class="h-full bg-primary transition-all duration-300"
                                         :style="{ width: (progressPercent || 0) + '%' }">
                                     </div>
                                 </div>
                             </div>
-                        </button>
 
-                        <button v-if="isQueued && !isDownloading" @click="cancelQueue"
-                            class="group relative px-10 py-4 bg-[#1a232e] text-white font-black uppercase tracking-tighter rounded overflow-hidden cursor-default">
-                            <!-- Hover effect désactivé visuellement -->
-                            <div class="absolute inset-0 bg-white/5 opacity-0"></div>
-                            <!-- Content -->
-                            <div class="relative z-10 flex flex-col gap-2">
-                                <!-- Ligne principale -->
-                                <div class="flex items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        <div
-                                            class="w-4 h-4 border-2 border-white/30 border-t-primary rounded-full animate-spin">
-                                        </div>
-                                        <span>Waiting</span>
-                                    </div>
+                            <button type="button" @click.stop.prevent="cancelQueue"
+                                class="relative z-10 inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-white/10 text-[10px] text-white border border-white/20 shadow-sm opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-[90px] transition-all duration-200 ease-out hover:bg-red-500/80 hover:border-red-400">
+                                Cancel
+                            </button>
+                        </div>
+
+                        <div v-if="isQueued && !isDownloading"
+                            class="group relative flex items-center justify-between gap-3 px-5 py-4 bg-[#1a232e] text-white font-black uppercase tracking-tighter rounded overflow-hidden transition-colors duration-200 hover:bg-[#243241]">
+                            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <div class="relative z-10 flex items-center gap-2">
+                                <div
+                                    class="w-4 h-4 border-2 border-white/30 border-t-primary rounded-full animate-spin">
                                 </div>
+                                <span>Waiting</span>
                             </div>
-                        </button>
+
+                            <button type="button" @click.stop.prevent="cancelQueue"
+                                class="relative z-10 inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-white/10 text-[10px] text-white border border-white/20 shadow-sm opacity-0 max-w-0 overflow-hidden group-hover:opacity-100 group-hover:max-w-[90px] transition-all duration-200 ease-out hover:bg-red-500/80 hover:border-red-400">
+                                Cancel
+                            </button>
+                        </div>
 
                         <button v-if="!isInstalled && !isDownloading && !isQueued" @click="downloadGame"
                             class="group relative px-10 py-4 bg-primary text-white font-black uppercase tracking-tighter rounded overflow-hidden">
@@ -341,8 +348,14 @@ function cancelQueue() {
                             <div v-if="SeasonContent.added_operators?.length > 0"
                                 class="flex justify-between items-center py-2 border-b border-white/5">
                                 <span class="text-slate-400 text-sm">Operators Added</span>
-                                <span class="text-white text-sm font-medium">{{SeasonContent.added_operators.map(op =>
+                                <span class="text-white text-sm font-medium text-right">{{SeasonContent.added_operators.map(op =>
                                     op.op_Name).join(', ')}}</span>
+                            </div>
+                            <div v-if="SeasonContent.updated_maps?.length > 0"
+                                class="flex justify-between items-center py-2 border-b border-white/5 gap-5">
+                                <span class="text-slate-400 text-sm">Maps Updated</span>
+                                <span class="text-white text-sm font-medium block text-right">{{
+                                    SeasonContent.updated_maps.map(map => map.map_Name).join(', ')}}</span>
                             </div>
                             <div v-if="SeasonContent.released_maps?.length > 0"
                                 class="flex justify-between items-center py-2 border-b border-white/5 gap-5">
@@ -413,7 +426,7 @@ function cancelQueue() {
                             @operator-select="handleOperatorSelect" :operatorName="op.op_Name" :operatorSide="op.side"
                             :operatorImage="op.op_Img" :opIcon="op.op_Icon"
                             :enoughOP="SeasonContent?.featured_operators?.length <= 3"
-                            :maps="SeasonContent.released_maps" />
+                            :maps="operatorMaps" />
                     </div>
                     <div v-if="SeasonContent?.featured_operators?.length > 3"
                         class="text-xl font-black italic uppercase text-white">Defenders</div>
@@ -423,7 +436,7 @@ function cancelQueue() {
                             @operator-select="handleOperatorSelect" :operatorName="op.op_Name" :operatorSide="op.side"
                             :operatorImage="op.op_Img" :opIcon="op.op_Icon"
                             :enoughOP="SeasonContent?.featured_operators?.length <= 3"
-                            :maps="SeasonContent.released_maps" />
+                            :maps="operatorMaps" />
                     </div>
                     <div v-if="SeasonContent?.featured_operators?.length <= 3"
                         class="flex gap-4 overflow-x-auto pb-8 custom-scrollbar">
@@ -431,7 +444,7 @@ function cancelQueue() {
                             @operator-select="handleOperatorSelect" :operatorName="op.op_Name" :operatorSide="op.side"
                             :operatorImage="op.op_Img" :opIcon="op.op_Icon"
                             :enoughOP="SeasonContent?.featured_operators?.length <= 3"
-                            :maps="SeasonContent.released_maps" />
+                            :maps="operatorMaps" />
                     </div>
                 </div>
 
@@ -473,6 +486,35 @@ function cancelQueue() {
 
             </div>
 
+        </div>
+
+        <div v-if="showCancelConfirm" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            @click.self="closeCancelConfirm">
+            <div class="w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-background-dark shadow-2xl">
+                <div class="border-b border-white/10 p-6">
+                    <h2 class="flex items-center gap-3 text-xl font-black uppercase italic tracking-tighter text-white">
+                        <span class="h-6 w-2 bg-primary"></span>
+                        Cancel download
+                    </h2>
+                </div>
+
+                <div class="space-y-6 p-6">
+                    <p class="text-sm leading-relaxed text-slate-300">
+                        Are you sure you want to cancel the download for <span class="font-bold text-white">{{ SeasonContent?.season_name || 'this season' }}</span>?
+                    </p>
+
+                    <div class="flex justify-end gap-3">
+                        <button @click="closeCancelConfirm"
+                            class="px-5 py-3 text-xs font-black uppercase tracking-widest text-slate-300 transition hover:text-white">
+                            Keep downloading
+                        </button>
+                        <button @click="confirmCancelQueue"
+                            class="bg-red-600 px-5 py-3 text-xs font-black uppercase tracking-widest text-white transition hover:bg-red-500">
+                            Cancel download
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <OperatorCard v-if="selectedOperator" @close="closeOperatorCard" :operatorData="selectedOperator" />
