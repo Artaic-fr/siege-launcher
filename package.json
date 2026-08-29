@@ -1,7 +1,7 @@
 {
   "name": "siege-launcher",
   "private": true,
-  "version": "0.10.2",
+  "version": "0.11.0",
   "type": "commonjs",
   "main": "electron/main/main.js",
   "scripts": {
