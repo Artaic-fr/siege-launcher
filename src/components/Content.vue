@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import FeaturedOperators from './FeaturedOperators.vue'
 import OperatorCard from './OperatorCard.vue'
 import SteamLoginModal from './SteamLoginModal.vue'
@@ -19,6 +19,10 @@ const props = defineProps({
     displayMode: {
         type: String,
         default: 'season'
+    },
+    selectedEventIndex: {
+        type: Number,
+        default: 0
     },
     // When true, prefer event assets (background/banner) from season.event[0]
     showSeasonContent: {
@@ -97,7 +101,8 @@ const heroBackground = computed(() => {
         return ''
     }
     if ((props.displayMode === 'event' || props.showSeasonContent) && Array.isArray(season.event) && season.event.length > 0) {
-        return season.event[0].event_bg || season.season_bg || ''
+        const chosenEvent = season.event[props.selectedEventIndex] || season.event[0]
+        return chosenEvent?.event_bg || season.season_bg || ''
     }
     return season.season_bg || ''
 })
@@ -521,7 +526,7 @@ function closeCancelConfirm() {
         <SteamLoginModal v-if="showSteamLoginModal" @close="SteamLoginModalClose" />
         <DownloadModal v-if="showDownloadModal" @close="closeDownloadModal" :seasonCode="props.season.season_code" />
         <GameSettings v-if="showGameSettings" @close="closeGameModal" :settings="installedGame" />
-        <Event v-if="showEvent" @close="closeEventModal" :eventData="SeasonContent.event" />
+        <Event v-if="showEvent" @close="closeEventModal" :eventData="SeasonContent.event" :initial-event-index="props.selectedEventIndex" />
         <ModsModal v-if="showModsModal" @close="closeModsModal" :mods="mods" />
 
     </div>

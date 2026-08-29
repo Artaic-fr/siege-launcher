@@ -1,4 +1,6 @@
 <script setup>
+import { computed, ref, watch } from 'vue'
+
 const props = defineProps({
     season: {
         type: Object,
@@ -9,9 +11,33 @@ const props = defineProps({
         default: 'season'
     },
     isSelected: Boolean,
+    eventIndex: {
+        type: Number,
+        default: undefined
+    }
 })
 
 const emit = defineEmits(['select'])
+
+const resolvedEventIndex = computed(() => {
+    if (props.displayMode !== 'event') return 0
+    if (Number.isInteger(props.eventIndex)) return props.eventIndex
+    return 0
+})
+
+const randomEventBanner = computed(() => {
+    if (props.displayMode !== 'event') {
+        return props.season.season_banner
+    }
+
+    const events = Array.isArray(props.season.event) ? props.season.event : []
+    if (events.length === 0) {
+        return props.season.season_banner
+    }
+
+    const event = events[resolvedEventIndex.value] || events[0]
+    return event?.event_banner || props.season.season_banner
+})
 
 const handleClick = () => {
     emit('select', props.season)
@@ -23,7 +49,7 @@ const handleClick = () => {
         <div v-if="props.isSelected" class="absolute -left-1 top-0 bottom-0 w-1 bg-primary rounded-full"></div>
         <div :class="['tactical-border bg-cover bg-center h-20 md:h-24 rounded-lg overflow-hidden border', props.isSelected ? 'border-primary/50' : 'border-white/5']"
             :style="{
-                backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url(${props.displayMode === 'event' && Array.isArray(props.season.event) && props.season.event.length > 0 ? props.season.event[0].event_banner : props.season.season_banner})`
+                backgroundImage: `linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.2)), url(${randomEventBanner})`
             }">
             <div class="p-3 flex flex-col h-full justify-center">
                 <span v-if="props.isSelected" class="text-[10px] text-primary font-bold uppercase tracking-widest">Selected</span>

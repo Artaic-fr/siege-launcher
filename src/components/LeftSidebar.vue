@@ -8,6 +8,10 @@ import { installedGames } from '../stores/downloadStore.js'
 const seasons = ref([])
 const props = defineProps({
     selectedSeasonId: String,
+    selectedEventIndex: {
+        type: Number,
+        default: 0
+    },
     displayMode: {
         type: String,
         default: 'season'
@@ -163,7 +167,9 @@ const filteredSeasons = computed(() => {
         </div>
         <div class="flex-1 overflow-y-auto custom-scrollbar p-2 md:p-4 space-y-3">
             <Seasons v-for="season in filteredSeasons" :key="season.season_code" :season="season"
-                :display-mode="props.displayMode" :is-selected="selectedSeasonId === season.season_code"
+                :display-mode="props.displayMode"
+                :is-selected="selectedSeasonId === season.season_code"
+                :event-index="selectedSeasonId === season.season_code ? props.selectedEventIndex : undefined"
                 @select="handleSeasonSelect" />
         </div>
         <div class="p-4 border-t border-white/10 group cursor-pointer group-hover:bg-[#1a232e] transition-colors"
