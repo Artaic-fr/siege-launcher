@@ -1373,7 +1373,50 @@
                     "steamdepot_manifest_id": "5851804596427790505"
                 }
             ],
-            "languages": [],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "5132022816747475711",
+                    "langsize": 830939136
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "1819965373025810009",
+                    "langsize": 930152448
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "1926652807113950777",
+                    "langsize": 897482752
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3102063947541599011",
+                    "langsize": 2205290496
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "1002387473375422601",
+                    "langsize": 965033984
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "4940468394032132183",
+                    "langsize": 843362304
+                }
+            ],
             "added_operators": [
                 {
                     "op_Name": "Capitão"
@@ -2357,7 +2400,7 @@
                     "media":[
                         {
                             "type": "video",
-                            "url": "https://www.youtube.com/embed/LAGk9wEvf9c?si=VCAXM7qmORfGWWrC"
+                            "url": "https://www.youtube.com/embed/LAGk9wEvf9c?si=Bj1I7Ioae2G-Pj6Q"
                         },
                         {
                             "type": "video",
@@ -2721,7 +2764,7 @@
             "season_name": "Operation Grim Sky",
             "season_description": "The Siege continues with Operation Grim Sky, which introduces two new operators from the ITUGS.",
             "game_size": 78003339264,
-            "release_date": "10/2018",
+            "release_date": "09/2018",
             "season_banner": "./seasons-assets/grim-sky-banner.jpg",
             "season_bg": "./seasons-assets/grim-sky-background.jpg",
             "changes": [],
@@ -3054,6 +3097,1008 @@
                             {
                                 "gadget_Name": "Impact Grenade",
                                 "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y4S1",
+            "season_code_full": "Year 4 Season 1",
+            "season_name_short": "Burnt Horizon",
+            "season_name": "Operation Burnt Horizon",
+            "season_description": "The Siege continues with Operation Burnt Horizon, which introduces two new operators from the Australian SASR and the new Outback map.",
+            "game_size": 64159162368,
+            "release_date": "03/2019",
+            "season_banner": "./seasons-assets/burnt_horizon-banner.jpg",
+            "season_bg": "./seasons-assets/burnt_horizon-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Rainbow Is Magic",
+                    "event_description": "Join the rainbow adventure in this special event!",
+                    "event_banner": "./events-assets/rainbow-is-magic-banner.jpg",
+                    "event_bg": "./events-assets/rainbow-is-magic-background.png",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 14,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/cyzqxRHLPpk?si=lf3vYyyhv7YDTume"
+                        }
+                    ]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "3462709886432904855",
+                "requiredSpace": 31057969152
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "8356277316976403078"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "5935578581006804383"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "2489165098014835664",
+                    "langsize": 994521088
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "5912470135426316642",
+                    "langsize": 1128652800
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "6166102473910342218",
+                    "langsize": 1082400768
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "8980928302668128431",
+                    "langsize": 2304389120
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "5742909617569886590",
+                    "langsize": 1158426624
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "6205462284383635854",
+                    "langsize": 1005912064
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Gridlock"
+                },
+                {
+                    "op_Name": "Mozzie"
+                }
+            ],
+            "released_maps": [
+                {
+                    "map_Name": "Outback",
+                    "map_Img": "./maps-assets/outback.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Gridlock",
+                    "op_UAT": "SASR",
+                    "op_speed": 1,
+                    "op_armor": 3,
+                    "op_Img": "./operators-assets/character/Gridlock.webp",
+                    "op_Icon": "./operators-assets/icons/gridlock.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "F90",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/f90.png"
+                            },
+                            {
+                                "weapon_Name": "M249 SAW",
+                                "weapon_type": "Light Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/m249_saw.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Super Shorty",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/super_shorty.png"
+                            },
+                            {
+                                "weapon_Name": "SDP 9mm",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/sdp_9mm.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Mozzie",
+                    "op_UAT": "SASR",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Mozzie.webp",
+                    "op_Icon": "./operators-assets/icons/mozzie.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "P10 Roni",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/p10_roni.png"
+                            },
+                            {
+                                "weapon_Name": "Commando 9",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/commando_9.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "SDP 9mm",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/sdp_9mm.png"
+                            },
+                            {
+                                "weapon_Name": "Super Shorty",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/super_shorty.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y4S2",
+            "season_code_full": "Year 4 Season 2",
+            "season_name_short": "Phantom Sight",
+            "season_name": "Operation Phantom Sight",
+            "season_description": "The Siege continues with Operation Phantom Sight, which introduces two new operators from the Swedish SAP and American forces and the new Kafe Dostoyevsky map.",
+            "game_size": 69716885504,
+            "release_date": "06/2019",
+            "season_banner": "./seasons-assets/phantom_sight-banner.jpg",
+            "season_bg": "./seasons-assets/phantom_sight-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Showdown",
+                    "event_description": "Sherrif and Outlaws is a limited-time event in Tom Clancy's Rainbow Six Siege. The event features a unique Wild West-themed game mode where players can choose to play as either the Sheriff or the Outlaws. The objective of the event is to eliminate the opposing team while utilizing special abilities and weapons that fit the Wild West theme.",
+                    "event_banner": "./events-assets/showdown-banner.png",
+                    "event_bg": "./events-assets/showdown-background.jpg",
+                    "event_type" : "PvP",
+                    "event_format" : "3v3",
+                    "event_opPlayable": 12,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/JuvhoniB8l4?si=RreYTWTFr71TD9Sq"
+                        }
+                    ]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "4107080515154236795",
+                "requiredSpace": 33309687808
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "693082837425613508"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "5408324128694463720"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "8209966773310799535",
+                    "langsize": 1152659456
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "5551310338808720316",
+                    "langsize": 1294123008
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "2945239480726569964",
+                    "langsize": 1244950528
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3119251800260595817",
+                    "langsize": 2634899456
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "2060894578496472402",
+                    "langsize": 1319309312
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "735237222551525964",
+                    "langsize": 1159299072
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Nokk"
+                },
+                {
+                    "op_Name": "Warden"
+                }
+            ],
+            "released_maps": [
+                
+            ],
+            "updated_maps": [
+                {
+                    "map_Name": "Kafe Dostoyevsky",
+                    "map_Img": "./maps-assets/kafe_dostoyevsky_reworked.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Nokk",
+                    "op_UAT": "JAEGER CORPS",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Nokk.webp",
+                    "op_Icon": "./operators-assets/icons/nokk.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "FMG-9",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/fmg-9.png"
+                            },
+                            {
+                                "weapon_Name": "SIX12 SD",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/six12_sd.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "5.7 USG",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/5.7_usg.png"
+                            },
+                            {
+                                "weapon_Name": "D-50",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/d-50.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Warden",
+                    "op_UAT": "SECRETS SERVICES",
+                    "op_speed": 3,
+                    "op_armor": 1,
+                    "op_Img": "./operators-assets/character/Warden.webp",
+                    "op_Icon": "./operators-assets/icons/warden.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "M590A1",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/m590a1.png"
+                            },
+                            {
+                                "weapon_Name": "MPX",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mpx.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P-10C",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p-10c.png"
+                            },
+                            {
+                                "weapon_Name": "SMG-12",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/smg-12.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y4S3",
+            "season_code_full": "Year 4 Season 3",
+            "season_name_short": "Ember Rise",
+            "season_name": "Operation Ember Rise",
+            "season_description": "The Siege continues with Operation Ember Rise, which introduces two new operators from the Peruvian GEO and Mexican GAFE.",
+            "game_size": 74738130944,
+            "release_date": "09/2019",
+            "season_banner": "./seasons-assets/ember_rise-banner.jpg",
+            "season_bg": "./seasons-assets/ember_rise-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Money Heist",
+                    "event_description": "Join the heist in this special event based on the popular TV series 'Money Heist'. Players can experience a unique game mode where they can play as either the robbers or the police, with objectives and gameplay mechanics inspired by the show.",
+                    "event_banner": "./events-assets/money-heist-banner.png",
+                    "event_bg": "./events-assets/money-heist-background.png",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 52,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/bTM5ezRXflk?si=3W_eCaqVf0o_TjYG"
+                        },
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/J0X-t_Hbm9Q?si=_BYa1kFK81FLbGeX"
+                        }
+                    ]
+                },
+                {
+                    "event_name": "Doktor's Curse",
+                    "event_description": "Experience the chilling tale of Doktor's Curse in this special event. Players will face off against the sinister Doktor and his minions in a unique game mode that combines elements of PvP and PvE, with eerie atmospheres and challenging objectives.",
+                    "event_banner": "./events-assets/doktor-curse-banner.png",
+                    "event_bg": "./events-assets/doktor-curse-background.png",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 8,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/KMeMNJjmFgo?si=hRlZTNczqqTv7tJH"
+                        }
+                    ]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "4319184561394137009",
+                "requiredSpace": 35405070336
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "3546781236735558235"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "7869081741739849703"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "8352418575559931299",
+                    "langsize": 1173843968
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "6615943819135060319",
+                    "langsize": 1315164160
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "5288337421082678679",
+                    "langsize": 1267703808
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3590697971305723786",
+                    "langsize": 2683482112
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "5938321475182834954",
+                    "langsize": 1341083648
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "8342587578938977727",
+                    "langsize": 1183125504
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Amaru"
+                },
+                {
+                    "op_Name": "Goyo"
+                }
+            ],
+            "released_maps": [
+                
+            ],
+            "updated_maps": [
+                {
+                    "map_Name": "Kanal",
+                    "map_Img": "./maps-assets/kanal_reworked.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Amaru",
+                    "op_UAT": "APCA",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Amaru.webp",
+                    "op_Icon": "./operators-assets/icons/amaru.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "G8A1",
+                                "weapon_type": "Light Machine Gun",
+                                "weapon_Img": "./operators-assets/weapons/g8a1.png"
+                            },
+                            {
+                                "weapon_Name": "Supernova",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/supernova.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "ITA12S",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/ita12s.png"
+                            },
+                            {
+                                "weapon_Name": "SMG-11",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/smg-11.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
+                            },
+                            {
+                                "gadget_Name": "Stun Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/stun_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Goyo",
+                    "op_UAT": "Special Forces",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Goyo.webp",
+                    "op_Icon": "./operators-assets/icons/goyo.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Vector .45 ACP",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/vector_.45_acp.png"
+                            },
+                            {
+                                "weapon_Name": "TCSG12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/tcsg12.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P229",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p229.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Impact Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/impact_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Nitro Cell",
+                                "gadget_Img": "./operators-assets/gadgets/nitro_cell.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y4S4",
+            "season_code_full": "Year 4 Season 4",
+            "season_name_short": "Shifting Tides",
+            "season_name": "Operation Shifting Tides",
+            "season_description": "The Siege continues with Operation Shifting Tides, which introduces two new operators from the Indian NSG and the new Outback map.",
+            "game_size": 80846991360,
+            "release_date": "12/2019",
+            "season_banner": "./seasons-assets/shifting_tides-banner.jpg",
+            "season_bg": "./seasons-assets/shifting_tides-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Road to S.I. 2020",
+                    "event_description": "Celebrate the Road to Six Invitational 2020 with this special event! Players can participate in unique challenges and earn exclusive rewards as they journey towards the grand tournament.",
+                    "event_banner": "./events-assets/road-to-si-banner.jpg",
+                    "event_bg": "./events-assets/road-to-si-background.jpg",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 54,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/2jPop_0hZCs?si=ggVgvXzIsFpoKG61"
+                        },
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/lNWxV2nGAyQ?si=9V91QrJxVfu7_Ax7"
+                        },
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/5aUG2Pn-WDs?si=TYZ0if8a2JMuuIQk"
+                        }
+                    ]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "6048763664997452513",
+                "requiredSpace": 38545649664
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "299124516841461614"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "1842268638395240106"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "982226827055842157",
+                    "langsize": 1208508416
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "7669952636769439421",
+                    "langsize": 1356296192
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "1771833119782386213",
+                    "langsize": 1309741056
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "5607986007728468442",
+                    "langsize": 2793779200
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "3980031497374187833",
+                    "langsize": 1382068224
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "4121849146546499241",
+                    "langsize": 1216659456
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Kali"
+                },
+                {
+                    "op_Name": "Wamai"
+                }
+            ],
+            "released_maps": [
+            ],
+            "updated_maps": [
+                {
+                    "map_Name": "Theme Park",
+                    "map_Img": "./maps-assets/theme_park_reworked.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Kali",
+                    "op_UAT": "NIGHTHAVEN",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Kali.webp",
+                    "op_Icon": "./operators-assets/icons/kali.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "CSRX 300",
+                                "weapon_type": "Sniper Rifle",
+                                "weapon_Img": "./operators-assets/weapons/csrx_300.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P226 MK 25",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p226_mk_25.png"
+                            },
+                            {
+                                "weapon_Name": "C75 Auto",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/c75_auto.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Claymore",
+                                "gadget_Img": "./operators-assets/gadgets/claymore.png"
+                            },
+                            {
+                                "gadget_Name": "Breach Charge",
+                                "gadget_Img": "./operators-assets/gadgets/breach_charge.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Wamai",
+                    "op_UAT": "NIGHTHAVEN",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Wamai.webp",
+                    "op_Icon": "./operators-assets/icons/wamai.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "Aug A2",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/aug_a2.png"
+                            },
+                            {
+                                "weapon_Name": "MP5K",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mp5k.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "P12",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/p12.png"
+                            },
+                            {
+                                "weapon_Name": "Keratos .357",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/keratos_.357.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Deployable Shield",
+                                "gadget_Img": "./operators-assets/gadgets/deployable_shield_reworked.png"
+                            },
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "season_code": "Y5S1",
+            "season_code_full": "Year 5 Season 1",
+            "season_name_short": "Void Edge",
+            "season_name": "Operation Void Edge",
+            "season_description": "The Siege continues with Operation Void Edge, which introduces two new operators.",
+            "game_size": 79878733824,
+            "release_date": "03/2020",
+            "season_banner": "./seasons-assets/void_edge-banner.jpg",
+            "season_bg": "./seasons-assets/void_edge-background.jpg",
+            "changes": [],
+            "event": [
+                {
+                    "event_name": "Grand Larceny",
+                    "event_description": "Grand Larceny is a limited-time event in Tom Clancy's Rainbow Six Siege. The event features a unique game mode where players can choose to play as either the thieves or the law enforcement. The objective of the event is to complete heists and escape with the loot while avoiding capture by the opposing team.",
+                    "event_banner": "./events-assets/grand-larceny-banner.png",
+                    "event_bg": "./events-assets/grand-larceny-background.png",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 40,
+                    "media":[
+                        {
+                            "type": "video",
+                            "url": "https://www.youtube.com/embed/Ml7vmKtcx2I?si=VXgY3r13WmOO_y_T"
+                        }
+                    ]
+                },
+                {
+                    "event_name": "Golden Gun",
+                    "event_description": "Golden Gun is a limited-time event in Tom Clancy's Rainbow Six Siege. The event features a unique game mode where players can wield powerful golden weapons and engage in intense firefights. The objective of the event is to eliminate the opposing team while utilizing the special golden weapons, which offer enhanced firepower and unique abilities.",
+                    "event_banner": "./events-assets/golden-gun-banner.jpeg",
+                    "event_bg": "./events-assets/golden-gun-banner.jpeg",
+                    "event_type" : "PvP",
+                    "event_format" : "5v5",
+                    "event_opPlayable": 40,
+                    "media":[]
+                }
+            ],
+            "highRes": {
+                "steamdepot_id": 377239,
+                "steamdepot_manifest_id": "5178634099570922382",
+                "requiredSpace": 38478807040
+            },
+            "baseGame": [
+                {
+                    "steamdepot_id": 377237,
+                    "steamdepot_manifest_id": "4736360397583523381"
+                },
+                {
+                    "steamdepot_id": 359551,
+                    "steamdepot_manifest_id": "6296533808765702678"
+                }
+            ],
+            "languages": [
+                {
+                    "lang": "Français",
+                    "code": "fr",
+                    "steamdepot_id": 359553,
+                    "steamdepot_manifest_id": "2586871135875613874",
+                    "langsize": 1129476096
+                },
+                {
+                    "lang": "Italiano",
+                    "code": "it",
+                    "steamdepot_id": 359554,
+                    "steamdepot_manifest_id": "4821278372945482253",
+                    "langsize": 1278730240
+                },
+                {
+                    "lang": "Deutsch",
+                    "code": "de",
+                    "steamdepot_id": 359555,
+                    "steamdepot_manifest_id": "43986716339952760",
+                    "langsize": 1232498688
+                },
+                {
+                    "lang": "Español",
+                    "code": "es",
+                    "steamdepot_id": 359556,
+                    "steamdepot_manifest_id": "3869934327915714941",
+                    "langsize": 2601205760
+                },
+                {
+                    "lang": "Português",
+                    "code": "pt",
+                    "steamdepot_id": 359557,
+                    "steamdepot_manifest_id": "7874024457262249460",
+                    "langsize": 1307639808
+                },
+                {
+                    "lang": "日本語",
+                    "code": "ja",
+                    "steamdepot_id": 377235,
+                    "steamdepot_manifest_id": "2473914429189892210",
+                    "langsize": 1138544640
+                }
+            ],
+            "added_operators": [
+                {
+                    "op_Name": "Iana"
+                },
+                {
+                    "op_Name": "Oryx"
+                }
+            ],
+            "released_maps": [
+            ],
+            "updated_maps": [
+                {
+                    "map_Name": "Oregon",
+                    "map_Img": "./maps-assets/oregon_reworked.webp"
+                }
+            ],
+            "featured_operators": [
+                {
+                    "op_Name": "Iana",
+                    "op_UAT": "ASE",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Iana.webp",
+                    "op_Icon": "./operators-assets/icons/iana.svg",
+                    "side": "Attacker",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "ARX200",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/arx200.png"
+                            },
+                            {
+                                "weapon_Name": "G36C",
+                                "weapon_type": "Assault Rifle",
+                                "weapon_Img": "./operators-assets/weapons/g36c.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "MK1 9mm",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/mk1_9mm.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Frag Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/frag_grenade.png"
+                            },
+                            {
+                                "gadget_Name": "Smoke Grenade",
+                                "gadget_Img": "./operators-assets/gadgets/smoke_grenade.png"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "op_Name": "Oryx",
+                    "op_UAT": "UNAFFILIATED",
+                    "op_speed": 2,
+                    "op_armor": 2,
+                    "op_Img": "./operators-assets/character/Oryx.webp",
+                    "op_Icon": "./operators-assets/icons/oryx.svg",
+                    "side": "Defender",
+                    "loadout": {
+                        "primary_weapons": [
+                            {
+                                "weapon_Name": "SPAS-12",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/spas-12.png"
+                            },
+                            {
+                                "weapon_Name": "MP5",
+                                "weapon_type": "Submachine Gun",
+                                "weapon_Img": "./operators-assets/weapons/mp5.png"
+                            }
+                        ],
+                        "secondary_weapons": [
+                            {
+                                "weapon_Name": "Bailiff 410",
+                                "weapon_type": "Shotgun",
+                                "weapon_Img": "./operators-assets/weapons/bailiff_410.png"
+                            },
+                            {
+                                "weapon_Name": "USP40",
+                                "weapon_type": "Handgun",
+                                "weapon_Img": "./operators-assets/weapons/usp40.png"
+                            }
+                        ],
+                        "gadgets": [
+                            {
+                                "gadget_Name": "Barbed Wire",
+                                "gadget_Img": "./operators-assets/gadgets/barbed_wire.png"
+                            },
+                            {
+                                "gadget_Name": "Bulletproof Camera",
+                                "gadget_Img": "./operators-assets/gadgets/bulletproof_camera.png"
                             }
                         ]
                     }
