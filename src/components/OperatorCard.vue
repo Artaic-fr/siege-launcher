@@ -16,12 +16,14 @@ const handleClose = () => {
 }
 
 // Recupere une map aléatoire dans props.operatorData.maps pour l'afficher dans la page de détails de l'opérateur
+const defaultBackground = './operators-assets/default.png'
+
 const randomMap = () => {
     if (props.operatorData.maps && props.operatorData.maps.length > 0) {
         const randomIndex = Math.floor(Math.random() * props.operatorData.maps.length)
-        return props.operatorData.maps[randomIndex].map_Img
+        return props.operatorData.maps[randomIndex].map_Img || defaultBackground
     }
-    return null
+    return defaultBackground
 }
 
 const backgroundMap = ref(randomMap())
