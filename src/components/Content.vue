@@ -7,6 +7,7 @@ import GameSettings from './GameSettings.vue';
 import DownloadModal from './DownloadModal.vue'
 import Event from './Event.vue'
 import ModsModal from './ModsModal.vue'
+import PatchNotes from './PatchNotes.vue'
 
 import { queue, currentJobId, progressPercent, currentDepotIndex, currentDepotTotal, currentDepotProgress, installedGames, Launched } from "../stores/downloadStore.js"
 
@@ -57,6 +58,10 @@ const operatorMaps = computed(() => [
 
 const selectedOperator = ref(null)
 const GameInstalled = ref(false)
+
+const PatchNotesData = computed(() => {
+    return Array.isArray(SeasonContent.value?.changes) ? SeasonContent.value.changes : []
+})
 
 const showSteamLoginModal = ref(false)
 const showDownloadModal = ref(false)
@@ -386,36 +391,7 @@ function closeCancelConfirm() {
 
 
                     <div v-if="SeasonContent.changes?.length > 0" class="md:col-span-2 space-y-4">
-                        <h4 class="text-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2">
-                            <span class="material-symbols-outlined text-sm">history_edu</span>
-                            Patch Notes Highlights
-                        </h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div
-                                class="p-4 bg-white/5 rounded-lg border border-white/10 hover:border-primary/50 transition-colors">
-                                <h5 class="text-white font-bold text-sm mb-1 uppercase italic">V3.1 Balancing</h5>
-                                <p class="text-slate-400 text-xs leading-relaxed">Ela's Scorpion EVO 3 A1 magazine size
-                                    reduced. Deployable shield placement improvements.</p>
-                            </div>
-                            <div
-                                class="p-4 bg-white/5 rounded-lg border border-white/10 hover:border-primary/50 transition-colors">
-                                <h5 class="text-white font-bold text-sm mb-1 uppercase italic">New Feature</h5>
-                                <p class="text-slate-400 text-xs leading-relaxed">Introduction of the Advanced
-                                    Deployment setting for gadgets and barricades.</p>
-                            </div>
-                            <div
-                                class="p-4 bg-white/5 rounded-lg border border-white/10 hover:border-primary/50 transition-colors">
-                                <h5 class="text-white font-bold text-sm mb-1 uppercase italic">Outbreak Event</h5>
-                                <p class="text-slate-400 text-xs leading-relaxed">Limited time 3-player co-op mission
-                                    mode against mutated hostiles in New Mexico.</p>
-                            </div>
-                            <div
-                                class="p-4 bg-white/5 rounded-lg border border-white/10 hover:border-primary/50 transition-colors">
-                                <h5 class="text-white font-bold text-sm mb-1 uppercase italic">Map Rework</h5>
-                                <p class="text-slate-400 text-xs leading-relaxed">Y3S1 focuses on operator mechanics;
-                                    Clubhouse rework scheduled for Mid-Season Reinforcements.</p>
-                            </div>
-                        </div>
+                        <PatchNotes :patchNotes="PatchNotesData" />
                     </div>
                 </div>
                 <div class="space-y-4 pb-12" v-if="SeasonContent?.featured_operators?.length > 0">

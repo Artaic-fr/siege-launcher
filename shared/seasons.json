@@ -1023,7 +1023,28 @@
             "release_date": "02/2016",
             "season_banner": "./seasons-assets/black-ice-banner.webp",
             "season_bg": "./seasons-assets/black-ice-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Individual Spawn Point Selection",
+                    "description": "Attackers can now individually choose their spawn point instead of using a single spawn point selected for the entire team.",
+                    "type": "update"
+                },
+                {
+                    "title": "Enemy Voice Announcements Removed",
+                    "description": "Automatic operator voice announcements are no longer audible to the opposing team, preventing them from unintentionally revealing information.",
+                    "type": "deletion"
+                },
+                {
+                    "title": "Sledge: Faster Sledgehammer Usage",
+                    "description": "Sledge's sledgehammer can be used faster, allowing him to destroy destructible surfaces more quickly.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Glaz: Barricade Destruction",
+                    "description": "Glaz's OTs-03 can now destroy wooden barricades.",
+                    "type": "buff"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "3756048967966286899",
@@ -1190,7 +1211,33 @@
             "release_date": "05/2016",
             "season_banner": "./seasons-assets/dust-line-banner.jpg",
             "season_bg": "./seasons-assets/dust-line-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Gadget Placement Cancellation",
+                    "description": "Gadget deployment can now be cancelled before the gadget is placed, allowing the operator to reposition without consuming the gadget.",
+                    "type": "update"
+                },
+                {
+                    "title": "Reduced Explosive Damage Against Shields",
+                    "description": "Explosive damage dealt to operators equipped with a shield is reduced.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Mounted LMG Improvements",
+                    "description": "Tachanka's Mounted LMG deployment and handling are improved to make it easier to use.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Montagne: Improved Side Protection",
+                    "description": "Montagne's extended shield provides improved protection from the sides while deployed.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Shotgun Improvements",
+                    "description": "The range at which shotguns deal their maximum damage is increased.",
+                    "type": "buff"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "1338949402410764888",
@@ -1357,7 +1404,28 @@
             "release_date": "08/2016",
             "season_banner": "./seasons-assets/skull-rain-banner.jpg",
             "season_bg": "./seasons-assets/skull-rain-background.png",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Reduced Blackbeard Shield Durability",
+                    "description": "Blackbeard's rifle shield durability is reduced to limit his advantage during frontal engagements.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Armor System Rebalancing",
+                    "description": "The armor system is adjusted to provide clearer differences between operator protection levels.",
+                    "type": "update"
+                },
+                {
+                    "title": "Angled Grip Introduced",
+                    "description": "The Angled Grip reduces the time required to aim down sights at the cost of reduced recoil stability.",
+                    "type": "new"
+                },
+                {
+                    "title": "Barrel Attachment Rebalancing",
+                    "description": "The roles of the Flash Hider, Compensator and other barrel attachments are rebalanced to give them more distinct use cases.",
+                    "type": "update"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "3267970968757091405",
@@ -1524,7 +1592,43 @@
             "release_date": "11/2016",
             "season_banner": "./seasons-assets/red-crow-banner.jpg",
             "season_bg": "./seasons-assets/red-crow-background.png",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Caliber-Based Destruction",
+                    "description": "The size and shape of impacts on destructible surfaces are now more dependent on the caliber of the weapon being used.",
+                    "type": "update"
+                },
+                {
+                    "title": "Increased Arm Damage",
+                    "description": "The damage multiplier applied to shots hitting the arms is increased to bring arm damage closer to damage dealt to other body parts.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Neck Shots Count as Headshots",
+                    "description": "Shots hitting the neck are now treated as headshots.",
+                    "type": "update"
+                },
+                {
+                    "title": "Reduced Shotgun Headshot Multiplier",
+                    "description": "The headshot multiplier applied to shotgun pellets is reduced.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "SMG-11 ACOG Removed",
+                    "description": "The ACOG sight is removed from the SMG-11.",
+                    "type": "deleted"
+                },
+                {
+                    "title": "Reduced MK17 CQB Damage",
+                    "description": "Blackbeard's MK17 CQB damage is reduced.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Reduced PARA-308 Damage",
+                    "description": "Capitão's PARA-308 damage is reduced.",
+                    "type": "nerf"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "1825939060444887403",
@@ -1701,7 +1805,23 @@
             "release_date": "02/2017",
             "season_banner": "./seasons-assets/velvet-shell-banner.jpg",
             "season_bg": "./seasons-assets/velvet-shell-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Sight Attachment Rebalancing",
+                    "description": "The positioning of the different sights is standardized to provide a more consistent experience across weapons.",
+                    "type": "update"
+                },
+                {
+                    "title": "Capitão Secondary Gadget Changes",
+                    "description": "Capitão's secondary gadget options are changed to rebalance his loadout.",
+                    "type": "update"
+                },
+                {
+                    "title": "IQ Secondary Gadget Changes",
+                    "description": "IQ's secondary gadget options are changed to rebalance her loadout.",
+                    "type": "update"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "3196596628759979362",
@@ -1883,7 +2003,28 @@
             "release_date": "06/2017",
             "season_banner": "./seasons-assets/health-banner.png",
             "season_bg": "./seasons-assets/health-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Lot of bug fixes and performance improvements",
+                    "description": "More than 1000 bugs have been fixed and performance has been improved across the game.",
+                    "type": "update"
+                },
+                {
+                    "title": "Hitbox Rework",
+                    "description": "Operator hitboxes are reworked to more accurately match character models and no longer include certain visual elements such as equipment and clothing.",
+                    "type": "update"
+                },
+                {
+                    "title": "Shield Melee Damage Changes",
+                    "description": "The damage and behavior of melee attacks against shields are rebalanced.",
+                    "type": "update"
+                },
+                {
+                    "title": "Damage System Revisions",
+                    "description": "The damage calculation system is adjusted to better account for the body part hit and the target's protection.",
+                    "type": "update"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "7497579858536910279",
@@ -1957,7 +2098,32 @@
             "release_date": "09/2017",
             "season_banner": "./seasons-assets/blood-orchid-banner.png",
             "season_bg": "./seasons-assets/blood-orchid-background.png",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Barbed Wire: Reduced Slow Effect",
+                    "description": "The movement slow caused by Barbed Wire is reduced from 50% to 45%.",
+                    "type": "nerf",
+                    "category": "gadget"
+                },
+                {
+                    "title": "Barbed Wire: Easier Destruction",
+                    "description": "The number of melee hits required to destroy Barbed Wire is reduced from three to two.",
+                    "type": "nerf",
+                    "category": "gadget"
+                },
+                {
+                    "title": "Jackal: Scan Mechanics Changed",
+                    "description": "Jackal's Hunter's Mark now reveals the target's position at regular intervals during the scan.",
+                    "type": "update",
+                    "category": "gadget"
+                },
+                {
+                    "title": "Bandit Can Destroy X-KAIROS Pellets",
+                    "description": "Bandit's batteries can now destroy Hibana's X-KAIROS pellets while they are in their arming phase.",
+                    "type": "buff",
+                    "category": "gadget"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "6420469519659049757",
@@ -2167,7 +2333,23 @@
             "release_date": "12/2017",
             "season_banner": "./seasons-assets/white-noise-banner.jpg",
             "season_bg": "./seasons-assets/white-noise-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Reduced Scorpion EVO 3 Magazine Capacity",
+                    "description": "Ela's Scorpion EVO 3 magazine capacity is reduced from 50 to 40 rounds.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Reduced Concussion Effects",
+                    "description": "Concussion effects are reduced to decrease the duration and impact of the resulting disorientation.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Effect Indicators Updated",
+                    "description": "Effects applied to operators now have visual indicators that make it easier to identify positive and negative effects.",
+                    "type": "update"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "959656357428794421",
@@ -2387,17 +2569,43 @@
             "release_date": "03/2018",
             "season_banner": "./seasons-assets/chimera-banner.jpg",
             "season_bg": "./seasons-assets/chimera-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Lion: Scan Effectiveness Reduced",
+                    "description": "Lion's scan is rebalanced to reduce the pressure it places on defenders during activation.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Finka: Adrenal Surge Changes",
+                    "description": "The effects of Finka's Adrenal Surge are adjusted, including its interaction with recoil and operator performance.",
+                    "type": "update"
+                },
+                {
+                    "title": "Ela: Scorpion EVO 3 Nerf",
+                    "description": "The Scorpion EVO 3's damage is reduced and its recoil is increased.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Blitz: New Speed Rating",
+                    "description": "Blitz's speed and armor profile changes from 1-speed / 3-armor to 2-speed / 2-armor.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Shield Walking Removed",
+                    "description": "Operators can no longer walk on deployable shields without causing them to fall over.",
+                    "type": "deleted"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Outbreak",
                     "event_description": "The Outbreak Event took place in Truth or Consequences, New Mexico, with Rainbow tackling the epidemic that is ravaging the town. Teams of three are sent to combat the threat.",
                     "event_banner": "./events-assets/outbreak-banner.jpg",
                     "event_bg": "./events-assets/outbreak-background.jpg",
-                    "event_type" : "PvE",
-                    "event_format" : "3vAI",
+                    "event_type": "PvE",
+                    "event_format": "3vAI",
                     "event_opPlayable": 12,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/LAGk9wEvf9c?si=Bj1I7Ioae2G-Pj6Q"
@@ -2590,7 +2798,33 @@
             "release_date": "06/2018",
             "season_banner": "./seasons-assets/para-bellum-banner.jpg",
             "season_bg": "./seasons-assets/para-bellum-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Clubhouse Rework",
+                    "description": "Clubhouse receives a major rework of its layout, access routes, rotations and objective sites.",
+                    "type": "update"
+                },
+                {
+                    "title": "Echo Receives a Second Yokai",
+                    "description": "Echo now has two Yokai drones.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Yokai Sonic Burst Rebalancing",
+                    "description": "Each Yokai can fire two Sonic Bursts before entering a recharge cycle, with the recharge time between shots also increased.",
+                    "type": "update"
+                },
+                {
+                    "title": "Speed and Armor Profile Rebalancing",
+                    "description": "Operator speed and armor values are adjusted to reduce the gap in mobility between different operator categories.",
+                    "type": "update"
+                },
+                {
+                    "title": "Leaning Mechanics Changed",
+                    "description": "Side switching while leaning is improved and techniques enabling certain quick-lean combinations are removed.",
+                    "type": "update"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "204186978012641075",
@@ -2662,6 +2896,12 @@
                 {
                     "map_Name": "Villa",
                     "map_Img": "./maps-assets/villa.webp"
+                }
+            ],
+            "updated_maps": [
+                {
+                    "map_Name": "Clubhouse",
+                    "map_Img": "./maps-assets/clubhouse.webp"
                 }
             ],
             "featured_operators": [
@@ -2767,17 +3007,38 @@
             "release_date": "09/2018",
             "season_banner": "./seasons-assets/grim-sky-banner.jpg",
             "season_bg": "./seasons-assets/grim-sky-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Hereford Base Complete Rework",
+                    "description": "Hereford Base is completely rebuilt with a new architecture, access routes, rotations and significantly redesigned objective sites.",
+                    "type": "update"
+                },
+                {
+                    "title": "Reinforced Hatch Destruction Rework",
+                    "description": "Reinforced hatches receive a new destruction behavior, allowing partial destruction before being completely destroyed.",
+                    "type": "update"
+                },
+                {
+                    "title": "Thatcher: EMP Grenade Changes",
+                    "description": "Thatcher's EMP grenades temporarily disable certain electronic devices instead of consistently destroying them.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Twitch: Louder Shock Drones",
+                    "description": "The sound emitted by Twitch's Shock Drones is increased, making them easier for defenders to detect.",
+                    "type": "nerf"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Mad House",
                     "event_description": "Mad House is a unique Halloween-themed gamemode and map that was available for a limited time in Tom Clancy's Rainbow Six Siege during the Operation Grim Sky expansion. For the Mad House Event, the House map had been revamped to feature Halloween decorations, such as Jack-o-lanterns, gargoyles, and cobwebs. A fog covers most of the map and eerie sounds can be heard. The mode follows the standard Bomb mode.",
                     "event_banner": "./events-assets/mad-house-banner.jpg",
                     "event_bg": "./events-assets/mad-house-background.jpg",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 11,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/gmDSPaz3Soo?si=bUZrZY0INQWh0Gnd"
@@ -2853,6 +3114,12 @@
                 }
             ],
             "released_maps": [],
+            "updated_maps": [
+                {
+                    "map_Name": "Hereford Base",
+                    "map_Img": "./maps-assets/hereford_base_reworked.webp"
+                }
+            ],
             "featured_operators": [
                 {
                     "op_Name": "Maverick",
@@ -2946,7 +3213,43 @@
             "release_date": "12/2018",
             "season_banner": "./seasons-assets/wind-bastion-banner.jpg",
             "season_bg": "./seasons-assets/wind-bastion-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Clash: Increased CCE Shield Damage",
+                    "description": "Damage dealt by Clash's CCE Shield increases from 3 to 5 damage per tick.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Reduced T-5 SMG Damage",
+                    "description": "Lesion's T-5 SMG damage is reduced.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Reduced Zofia Concussion Grenades",
+                    "description": "The number of concussion grenades available to Zofia is reduced.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Reduced Barbed Wire Electrical Damage",
+                    "description": "Damage dealt to operators by electrified Barbed Wire is significantly reduced.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Kaid: Reduced Electroclaws",
+                    "description": "Kaid now has two Electroclaws instead of three.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Nomad: Airjab Activation Delay",
+                    "description": "Airjabs now have a delay between attaching to a surface and activating, limiting their ability to trigger immediately.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "IQ: Increased Detector Range",
+                    "description": "IQ's Electronics Detector range is increased from 15 to 20 meters.",
+                    "type": "buff"
+                }
+            ],
             "highRes": {
                 "steamdepot_id": 377239,
                 "steamdepot_manifest_id": "2243348760021617592",
@@ -3113,17 +3416,48 @@
             "release_date": "03/2019",
             "season_banner": "./seasons-assets/burnt_horizon-banner.jpg",
             "season_bg": "./seasons-assets/burnt_horizon-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "R4-C ACOG Removed",
+                    "description": "The ACOG sight is removed from Ash's R4-C.",
+                    "type": "deleted"
+                },
+                {
+                    "title": "Reduced GU Mine Damage",
+                    "description": "Damage dealt per tick by Lesion's GU Mines is reduced from 8 to 4.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Maverick: Slower SURI Torch Switching",
+                    "description": "The time required to switch from Maverick's SURI Torch back to his weapons is increased.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Dokkaebi: Logic Bomb Changes",
+                    "description": "Logic Bomb phone calls can be interrupted more easily and their interaction with Mute's signal jammers is changed.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Capitão: Asphyxiating Bolt Changes",
+                    "description": "The area of effect of Capitão's Asphyxiating Bolts is increased while their damage per tick is reduced.",
+                    "type": "update"
+                },
+                {
+                    "title": "Explosion Damage System Changes",
+                    "description": "The explosion damage calculation system is adjusted to better account for distance and obstacles between the explosion and the target.",
+                    "type": "update"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Rainbow Is Magic",
                     "event_description": "Join the rainbow adventure in this special event!",
                     "event_banner": "./events-assets/rainbow-is-magic-banner.jpg",
                     "event_bg": "./events-assets/rainbow-is-magic-background.png",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 14,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/cyzqxRHLPpk?si=lf3vYyyhv7YDTume"
@@ -3307,17 +3641,43 @@
             "release_date": "06/2019",
             "season_banner": "./seasons-assets/phantom_sight-banner.jpg",
             "season_bg": "./seasons-assets/phantom_sight-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Kafe Dostoyevsky Rework",
+                    "description": "Kafe receives a major rework of its architecture, access routes, rotations and objective sites.",
+                    "type": "update"
+                },
+                {
+                    "title": "Glaz: Movement-Based Thermal Vision",
+                    "description": "Glaz's thermal vision progressively loses effectiveness while moving and reaches maximum effectiveness when standing still.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Finka: Tinnitus Removal",
+                    "description": "Finka's Adrenal Surge now removes the tinnitus effect caused by explosions.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Nøkk: HEL Presence Reduction Changes",
+                    "description": "Nøkk's HEL Presence Reduction is adjusted, changing how she interacts with electronic detection systems.",
+                    "type": "update"
+                },
+                {
+                    "title": "Frost: Weaker Welcome Mats",
+                    "description": "Frost's Welcome Mats are reduced from 100 to 66 health.",
+                    "type": "nerf"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Showdown",
                     "event_description": "Sherrif and Outlaws is a limited-time event in Tom Clancy's Rainbow Six Siege. The event features a unique Wild West-themed game mode where players can choose to play as either the Sheriff or the Outlaws. The objective of the event is to eliminate the opposing team while utilizing special abilities and weapons that fit the Wild West theme.",
                     "event_banner": "./events-assets/showdown-banner.png",
                     "event_bg": "./events-assets/showdown-background.jpg",
-                    "event_type" : "PvP",
-                    "event_format" : "3v3",
+                    "event_type": "PvP",
+                    "event_format": "3v3",
                     "event_opPlayable": 12,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/JuvhoniB8l4?si=RreYTWTFr71TD9Sq"
@@ -3392,9 +3752,7 @@
                     "op_Name": "Warden"
                 }
             ],
-            "released_maps": [
-                
-            ],
+            "released_maps": [],
             "updated_maps": [
                 {
                     "map_Name": "Kafe Dostoyevsky",
@@ -3504,17 +3862,53 @@
             "release_date": "09/2019",
             "season_banner": "./seasons-assets/ember_rise-banner.jpg",
             "season_bg": "./seasons-assets/ember_rise-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Kanal Rework",
+                    "description": "Kanal receives a major rework of its architecture, connections and rotation opportunities.",
+                    "type": "update"
+                },
+                {
+                    "title": "Increased Shield ADS Time",
+                    "description": "The time required to aim down sights while using a shield increases from 0.4 to 0.6 seconds.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Fuze: Faster Cluster Charge Deployment",
+                    "description": "The deployment time of Fuze's Cluster Charge is reduced.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Kaid: AUG A3 Damage Increase",
+                    "description": "The damage of Kaid's AUG A3 is increased.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Warden: Smart Glasses Improvements",
+                    "description": "The duration of Warden's Smart Glasses is increased and their functionality while moving is improved.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Goyo: Reduced Volcán Fire Duration",
+                    "description": "The duration of the fire zone created by Volcán shields is reduced.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Revolver Destruction Improvements",
+                    "description": "Revolvers receive increased environmental destruction power.",
+                    "type": "buff"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Money Heist",
                     "event_description": "Join the heist in this special event based on the popular TV series 'Money Heist'. Players can experience a unique game mode where they can play as either the robbers or the police, with objectives and gameplay mechanics inspired by the show.",
                     "event_banner": "./events-assets/money-heist-banner.png",
                     "event_bg": "./events-assets/money-heist-background.png",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 52,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/bTM5ezRXflk?si=3W_eCaqVf0o_TjYG"
@@ -3530,10 +3924,10 @@
                     "event_description": "Experience the chilling tale of Doktor's Curse in this special event. Players will face off against the sinister Doktor and his minions in a unique game mode that combines elements of PvP and PvE, with eerie atmospheres and challenging objectives.",
                     "event_banner": "./events-assets/doktor-curse-banner.png",
                     "event_bg": "./events-assets/doktor-curse-background.png",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 8,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/KMeMNJjmFgo?si=hRlZTNczqqTv7tJH"
@@ -3608,9 +4002,7 @@
                     "op_Name": "Goyo"
                 }
             ],
-            "released_maps": [
-                
-            ],
+            "released_maps": [],
             "updated_maps": [
                 {
                     "map_Name": "Kanal",
@@ -3715,17 +4107,43 @@
             "release_date": "12/2019",
             "season_banner": "./seasons-assets/shifting_tides-banner.jpg",
             "season_bg": "./seasons-assets/shifting_tides-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Theme Park Rework",
+                    "description": "Theme Park receives a major rework of its layout, access routes and objective sites.",
+                    "type": "update"
+                },
+                {
+                    "title": "Jackal: Scan System Rework",
+                    "description": "Jackal's scan system is significantly changed: the number of pings now depends on the age of the footprint, and footprints disappear after being scanned.",
+                    "type": "update"
+                },
+                {
+                    "title": "FO-12 Effectiveness Reduced",
+                    "description": "The effective range and performance of Ela's FO-12 are reduced to limit its effectiveness at longer distances.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "SASG-12 Accuracy Reduced",
+                    "description": "The SASG-12's accuracy is reduced to limit its effectiveness at range and during rapid firing.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "M-12 Damage Increased",
+                    "description": "The damage of Caveira's M-12 is increased.",
+                    "type": "buff"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Road to S.I. 2020",
                     "event_description": "Celebrate the Road to Six Invitational 2020 with this special event! Players can participate in unique challenges and earn exclusive rewards as they journey towards the grand tournament.",
                     "event_banner": "./events-assets/road-to-si-banner.jpg",
                     "event_bg": "./events-assets/road-to-si-background.jpg",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 54,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/2jPop_0hZCs?si=ggVgvXzIsFpoKG61"
@@ -3808,8 +4226,7 @@
                     "op_Name": "Wamai"
                 }
             ],
-            "released_maps": [
-            ],
+            "released_maps": [],
             "updated_maps": [
                 {
                     "map_Name": "Theme Park",
@@ -3914,17 +4331,88 @@
             "release_date": "03/2020",
             "season_banner": "./seasons-assets/void_edge-banner.jpg",
             "season_bg": "./seasons-assets/void_edge-background.jpg",
-            "changes": [],
+            "changes": [
+                {
+                    "title": "Oregon Rework",
+                    "description": "Oregon receives a major rework of its architecture, connections, rotations and objective sites.",
+                    "type": "update"
+                },
+                {
+                    "title": "Recruit: Loadout Rework",
+                    "description": "Recruit now uses predefined equipment sets instead of loadouts based on the selected CTU.",
+                    "type": "update"
+                },
+                {
+                    "title": "Lesion: GU Mine Initial Damage Removed",
+                    "description": "GU Mines no longer deal immediate damage when triggered.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Lesion: Increased GU Mine Damage Over Time",
+                    "description": "Damage dealt per tick by GU Mines increases from 4 to 6.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Lesion: Limited GU Mine Visibility",
+                    "description": "GU Mines are only visible to Lesion under specific proximity and line-of-sight conditions.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "GU Mines: DBNO Interaction Changed",
+                    "description": "Operators in a DBNO state no longer take damage from GU Mines.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Twitch: New Shock Drone System",
+                    "description": "Shock Drones switch to a rechargeable ammunition system instead of having a fixed number of shots.",
+                    "type": "update"
+                },
+                {
+                    "title": "Twitch: Shock Drone Damage Reduced",
+                    "description": "Shock Drone taser shots now deal 1 damage, shifting their focus toward gadget destruction rather than direct damage to operators.",
+                    "type": "nerf"
+                },
+                {
+                    "title": "Goyo: Volcán Triggering Changed",
+                    "description": "Dropping a Volcán shield no longer automatically triggers its explosion and fire propagation.",
+                    "type": "update"
+                },
+                {
+                    "title": "IQ: Detected Objective Sharing",
+                    "description": "Objectives detected by IQ's Electronics Detector are now revealed to her entire team in certain situations.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Improved DMR Environmental Destruction",
+                    "description": "DMRs receive increased environmental destruction power against destructible surfaces.",
+                    "type": "buff"
+                },
+                {
+                    "title": "Explosion Damage System Rework",
+                    "description": "The explosion damage system is significantly reworked with the introduction of shrapnel damage. Damage now depends more heavily on obstacles and surfaces between the explosion and its target.",
+                    "type": "update"
+                },
+                {
+                    "title": "Night Maps Removed",
+                    "description": "Night-time versions of maps are removed from Custom Games.",
+                    "type": "suppression"
+                },
+                {
+                    "title": "Barricade Destruction Changes",
+                    "description": "The behavior of debris generated when barricades are destroyed is adjusted to provide more consistent lines of sight.",
+                    "type": "update"
+                }
+            ],
             "event": [
                 {
                     "event_name": "Grand Larceny",
                     "event_description": "Grand Larceny is a limited-time event in Tom Clancy's Rainbow Six Siege. The event features a unique game mode where players can choose to play as either the thieves or the law enforcement. The objective of the event is to complete heists and escape with the loot while avoiding capture by the opposing team.",
                     "event_banner": "./events-assets/grand-larceny-banner.png",
                     "event_bg": "./events-assets/grand-larceny-background.png",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 40,
-                    "media":[
+                    "media": [
                         {
                             "type": "video",
                             "url": "https://www.youtube.com/embed/Ml7vmKtcx2I?si=VXgY3r13WmOO_y_T"
@@ -3936,10 +4424,10 @@
                     "event_description": "Golden Gun is a limited-time event in Tom Clancy's Rainbow Six Siege. The event features a unique game mode where players can wield powerful golden weapons and engage in intense firefights. The objective of the event is to eliminate the opposing team while utilizing the special golden weapons, which offer enhanced firepower and unique abilities.",
                     "event_banner": "./events-assets/golden-gun-banner.jpeg",
                     "event_bg": "./events-assets/golden-gun-banner.jpeg",
-                    "event_type" : "PvP",
-                    "event_format" : "5v5",
+                    "event_type": "PvP",
+                    "event_format": "5v5",
                     "event_opPlayable": 40,
-                    "media":[]
+                    "media": []
                 }
             ],
             "highRes": {
@@ -4009,8 +4497,7 @@
                     "op_Name": "Oryx"
                 }
             ],
-            "released_maps": [
-            ],
+            "released_maps": [],
             "updated_maps": [
                 {
                     "map_Name": "Oregon",
