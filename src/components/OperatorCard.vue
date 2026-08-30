@@ -134,7 +134,7 @@ onMounted(() => {
                     <section>
 
                         <h3
-                            class="text-xs font-black italic text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                            class="text-[11px] font-black italic text-primary uppercase tracking-[0.22em] mb-3 flex items-center gap-2">
                             <span class="w-1.5 h-1.5 bg-primary rotate-45"></span>
                             Primary Weapons
                         </h3>
@@ -142,20 +142,20 @@ onMounted(() => {
                         <div class="grid grid-cols-2 gap-3">
 
                             <div v-for="(weapon, index) in operatorDetails.loadout?.primary_weapons" :key="index"
-                                class="weapon-card">
-                                <div class="flex justify-between items-start">
-                                    <span class="text-[10px] font-bold text-slate-300 uppercase">
+                                class="weapon-card flex h-full min-h-[170px] flex-col justify-start">
+                                <div class="flex justify-between items-start leading-none">
+                                    <span class="text-[10px] font-bold text-slate-300 uppercase leading-none tracking-[0.12em]">
                                         {{ weapon.weapon_type }}
                                     </span>
                                 </div>
 
-                                <h4 class="text-sm font-black italic uppercase">
+                                <h4 class="text-[15px] font-black italic uppercase leading-[1] mt-1">
                                     {{ weapon.weapon_Name }}
                                 </h4>
 
-                                <div class="h-12 flex items-center justify-center py-1">
+                                <div class="mt-6 flex h-20 w-full items-center justify-center">
                                     <img v-if="weapon.weapon_Img" :src="weapon.weapon_Img" :alt="weapon.name"
-                                        class="max-h-32 object-contain" />
+                                        class="max-h-24 w-full object-contain" />
                                     <div v-else class="w-24 h-6 bg-white/10 rounded-sm"></div>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ onMounted(() => {
                     <section>
 
                         <h3
-                            class="text-xs font-black italic text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                            class="text-[11px] font-black italic text-primary uppercase tracking-[0.22em] mb-3 flex items-center gap-2">
                             <span class="w-1.5 h-1.5 bg-primary rotate-45"></span>
                             Secondary Weapons
                         </h3>
@@ -177,20 +177,20 @@ onMounted(() => {
                         <div class="grid grid-cols-2 gap-3">
 
                             <div v-for="(weapon, index) in operatorDetails.loadout?.secondary_weapons" :key="index"
-                                class="weapon-card">
-                                <div class="flex justify-between items-start">
-                                    <span class="text-[10px] font-bold text-slate-300 uppercase">
+                                class="weapon-card flex h-full min-h-[170px] flex-col justify-start">
+                                <div class="flex justify-between items-start leading-none">
+                                    <span class="text-[10px] font-bold text-slate-300 uppercase leading-none tracking-[0.12em]">
                                         {{ weapon.weapon_type }}
                                     </span>
                                 </div>
 
-                                <h4 class="text-sm font-black italic uppercase">
+                                <h4 class="text-[15px] font-black italic uppercase leading-[1] mt-1">
                                     {{ weapon.weapon_Name }}
                                 </h4>
 
-                                <div class="h-12 flex items-center justify-center py-1">
+                                <div class="mt-6 flex h-20 w-full items-center justify-center">
                                     <img v-if="weapon.weapon_Img" :src="weapon.weapon_Img" :alt="weapon.name"
-                                        class="max-h-32 object-contain" />
+                                        class="max-h-24 w-full object-contain" />
                                     <div v-else class="w-24 h-6 bg-white/10 rounded-sm"></div>
                                 </div>
                             </div>
@@ -204,7 +204,7 @@ onMounted(() => {
                     <section class="pb-8">
 
                         <h3
-                            class="text-xs font-black italic text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                            class="text-[11px] font-black italic text-primary uppercase tracking-[0.22em] mb-3 flex items-center gap-2">
                             <span class="w-1.5 h-1.5 bg-primary rotate-45"></span>
                             Gadgets
                         </h3>
