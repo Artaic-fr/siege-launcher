@@ -18,6 +18,25 @@ function getDepotPath() {
 
 let currentLoginProcess = null
 let currentProc = null
+let downloadState = { currentJob: null, queue: [] }
+
+function getDownloadState() {
+    return {
+        currentJob: downloadState.currentJob,
+        queue: [...(downloadState.queue || [])]
+    }
+}
+
+function syncDownloadState(state = { currentJob: null, queue: [] }) {
+    downloadState = {
+        currentJob: state.currentJob || null,
+        queue: Array.isArray(state.queue) ? [...state.queue] : []
+    }
+}
+
+function shouldBlockClose(state = getDownloadState()) {
+    return Boolean(state?.currentJob?.status === 'downloading')
+}
 
 //
 // =========================
@@ -31,7 +50,27 @@ class DownloadQueueManager {
         this.queue = []
         this.currentJob = null
         this.currentProcess = null
-        this.sendEvent = sendEvent
+        this.sendEvent = (channel, data) => {
+            try {
+                if (typeof sendEvent !== 'function') {
+                    return
+                }
+                sendEvent(channel, data)
+            } catch (error) {
+                if (error && /destroyed/i.test(error.message || String(error))) {
+                    return
+                }
+                throw error
+            }
+        }
+        syncDownloadState(this.getState())
+    }
+
+    getState() {
+        return {
+            currentJob: this.currentJob,
+            queue: [...this.queue]
+        }
     }
 
     addJob(job) {
@@ -54,6 +93,7 @@ class DownloadQueueManager {
         job.totalDepots = job.depots.length
 
         this.queue.push(job)
+        syncDownloadState(this.getState())
 
         this.sendEvent("queue-updated", this.queue)
         console.log("Current queue:", this.queue)
@@ -66,12 +106,14 @@ class DownloadQueueManager {
     runNext() {
         if (this.queue.length === 0) {
             this.currentJob = null
+            syncDownloadState(this.getState())
             this.sendEvent("queue-empty")
             return
         }
 
         this.currentJob = this.queue.shift()
         this.currentJob.status = "downloading"
+        syncDownloadState(this.getState())
 
         this.sendEvent("job-started", {
             jobId: this.currentJob.id,
@@ -103,6 +145,7 @@ class DownloadQueueManager {
                 })
 
                 this.currentJob = null
+                syncDownloadState(this.getState())
                 this.runNext()
                 return
             }
@@ -118,7 +161,7 @@ class DownloadQueueManager {
                 "-manifest", depot.steamdepot_manifest_id,
                 "-dir", fullGamePath,
                 "-username", userData.getSetting('steam.lastUsername'), '-remember-password',
-                "-max-downloads", "25"
+                "-max-downloads", "50"
             ]
 
             this.sendEvent("queue-log", `Running command: ${getDepotPath()} ${args.join(" ")}`)
@@ -153,6 +196,7 @@ class DownloadQueueManager {
                         })
                         this.stopCurrent()
                         this.currentJob = null
+                        syncDownloadState(this.getState())
                         return
                     }
                     const parsed = JSON.parse(output)
@@ -191,6 +235,7 @@ class DownloadQueueManager {
                     this.sendEvent("queue-log", `Error downloading depot ${depot.steamdepot_id}, code: ${code}`)
 
                     this.currentJob = null
+                    syncDownloadState(this.getState())
                     this.runNext()
                     return
                 }
@@ -212,17 +257,28 @@ class DownloadQueueManager {
     }
 
     cancelJob(seasonCode) {
-        if (this.currentJob && this.currentJob.id === seasonCode) {
+        const wasCurrent = this.currentJob && this.currentJob.id === seasonCode
+
+        if (wasCurrent) {
             this.stopCurrent()
+            this.currentJob = null
+            this.sendEvent("job-cancelled", { jobId: seasonCode })
         }
+
         this.queue = this.queue.filter(job => job.id !== seasonCode)
+        syncDownloadState(this.getState())
         this.sendEvent("queue-updated", this.queue)
+
+        if (!wasCurrent && this.queue.length > 0 && !this.currentJob) {
+            this.runNext()
+        }
     }
 
     cancelAllJobs() {
         this.stopCurrent()
         this.queue = []
         this.currentJob = null
+        syncDownloadState(this.getState())
         this.sendEvent("queue-updated", this.queue)
         this.sendEvent("queue-empty")
     }
@@ -233,6 +289,10 @@ class DownloadQueueManager {
             this.runNext()
         }
     }
+}
+
+function isDownloadInProgress() {
+    return shouldBlockClose(getDownloadState())
 }
 //
 // =========================
@@ -414,7 +474,7 @@ function checkBaseGameOwnership(callbacks = {}) {
             console.log('Texture pack owned')
         }
 
-        if(output.includes("Processing depot")){
+        if (output.includes("Processing depot")) {
             proc.kill()
             callbacks.onSuccess?.(ownedApps)
         }
@@ -442,5 +502,8 @@ module.exports = {
     loginWithQR,
     selectGameDir,
     getDepotPath,
-    checkBaseGameOwnership
+    checkBaseGameOwnership,
+    shouldBlockClose,
+    getDownloadState,
+    isDownloadInProgress
 }

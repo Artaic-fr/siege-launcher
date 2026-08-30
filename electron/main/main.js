@@ -1,6 +1,9 @@
-const { app, BrowserWindow, dialog, ipcMain } = require('electron')
+const { app, BrowserWindow, dialog, ipcMain, session } = require('electron')
 const path = require('path')
 const { autoUpdater } = require('electron-updater')
+const { isDownloadInProgress } = require('../services/depotManager.js')
+
+app.isQuiting = false
 
 require('../ipc/ipcHandlers')
 require('../ipc/settingsHandlers')
@@ -76,10 +79,23 @@ async function createWindow() {
 
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-      contextIsolation: true
+      contextIsolation: true,
+      nodeIntegration: false
     }
   })
+
   mainWindow = win
+
+  win.on('close', (event) => {
+    if (isDownloadInProgress() && !app.isQuiting) {
+      event.preventDefault()
+
+      if (!win.isDestroyed() && !win.webContents.isDestroyed()) {
+        win.webContents.send('download-close-confirmation-request')
+      }
+    }
+  })
+
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
   } else {
@@ -91,6 +107,33 @@ async function createWindow() {
     sendUpdateMessage('check-netcore')
   })
 }
+
+ipcMain.handle('confirm-close-download', () => {
+  app.isQuiting = true
+
+  const queueManager = global.__launcher_queue_manager
+  if (queueManager && typeof queueManager.cancelAllJobs === 'function') {
+    queueManager.cancelAllJobs()
+  }
+
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.close()
+  } else {
+    app.exit()
+  }
+
+  return true
+})
+
+app.on('before-quit', (event) => {
+  if (isDownloadInProgress() && !app.isQuiting) {
+    event.preventDefault()
+
+    if (mainWindow && !mainWindow.isDestroyed() && !mainWindow.webContents.isDestroyed()) {
+      mainWindow.webContents.send('download-close-confirmation-request')
+    }
+  }
+})
 
 app.whenReady().then(async () => {
   await settings.initStore(app)

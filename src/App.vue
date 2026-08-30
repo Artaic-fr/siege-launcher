@@ -15,6 +15,7 @@ const eventFilter = ref('all')
 const installedFilter = ref('all')
 const showSeasonContent = ref(false)
 const showSteamModal = ref(false)
+const showDownloadCloseConfirm = ref(false)
 
 const getRandomEventIndex = (seasonData) => {
   const events = Array.isArray(seasonData?.event) ? seasonData.event : []
@@ -50,6 +51,15 @@ const handleUpdateInstalledFilter = (value) => {
 
 const handleCloseSteamModal = () => {
   showSteamModal.value = false
+}
+
+const handleConfirmCloseDownload = async () => {
+  showDownloadCloseConfirm.value = false
+  await window.api.confirmCloseDownload()
+}
+
+const handleKeepAppOpen = () => {
+  showDownloadCloseConfirm.value = false
 }
 
 const handleUpdateShowSeasonContent = (value) => {
@@ -120,6 +130,10 @@ onMounted(async () => {
   initDownloadListeners()
   installedGames.value = await window.settings.getInstalled()
   await loadDisplayPreferences()
+
+  window.api.onDownloadCloseRequest(() => {
+    showDownloadCloseConfirm.value = true
+  })
 })
 
 window.game.gameLaunched((data) => {
@@ -168,6 +182,41 @@ watch(reconnectionRequired, (newVal) => {
     <Content v-if="selectedSeason" :season="selectedSeason" :display-mode="displayMode" :show-season-content="showSeasonContent" :selected-event-index="selectedSeasonEventIndex" :key="selectedSeasonId" />
     <SteamLoginModal v-if="showSteamModal" @close="handleCloseSteamModal" @login-success="handleLoginSuccess" />
     <NetCoreModal />
+
+    <div v-if="showDownloadCloseConfirm" class="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm" @click.self="handleKeepAppOpen">
+      <div class="w-full max-w-md overflow-hidden rounded-lg border border-white/10 bg-background-dark shadow-2xl">
+        <div class="border-b border-white/10 p-6">
+          <h2 class="flex items-center gap-3 text-lg font-black uppercase italic tracking-tighter text-white">
+            <span class="h-6 w-2 bg-primary"></span>
+            Download in progress
+          </h2>
+        </div>
+
+        <div class="space-y-5 p-6 text-sm text-slate-300">
+          <p>
+            A download is currently running. Closing the app will cancel it.
+          </p>
+          <p class="font-medium text-slate-200">
+            Do you want to stop the download and close the application?
+          </p>
+        </div>
+
+        <div class="flex justify-end gap-3 border-t border-white/10 bg-[#101827] p-4">
+          <button
+            class="rounded border border-white/10 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-widest text-slate-200 transition hover:bg-white/10"
+            @click="handleKeepAppOpen"
+          >
+            Keep app open
+          </button>
+          <button
+            class="rounded bg-primary px-4 py-2 text-xs font-black uppercase tracking-widest text-black transition hover:bg-primary/80"
+            @click="handleConfirmCloseDownload"
+          >
+            Close anyway
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

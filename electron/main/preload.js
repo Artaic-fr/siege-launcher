@@ -3,7 +3,9 @@ const { contextBridge, ipcRenderer, app } = require('electron')
 contextBridge.exposeInMainWorld('api', {
   getSeasons: () => ipcRenderer.invoke('get-seasons'),
   getOperators: (opName) => ipcRenderer.invoke('get-operators', opName),
-  getMods: () => ipcRenderer.invoke('get-mods')
+  getMods: () => ipcRenderer.invoke('get-mods'),
+  onDownloadCloseRequest: (cb) => ipcRenderer.on('download-close-confirmation-request', () => cb()),
+  confirmCloseDownload: () => ipcRenderer.invoke('confirm-close-download')
 })
 
 //Settings

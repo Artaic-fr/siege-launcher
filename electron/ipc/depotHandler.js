@@ -10,8 +10,20 @@ let queueManager = null
 
 ipcMain.handle("queue-init", (event) => {
   queueManager = new DownloadQueueManager((channel, data) => {
-    event.sender.send(channel, data)
+    try {
+      if (!event || !event.sender || event.sender.isDestroyed?.()) {
+        return
+      }
+      event.sender.send(channel, data)
+    } catch (error) {
+      if (error && /destroyed/i.test(error.message || String(error))) {
+        return
+      }
+      throw error
+    }
   })
+
+  global.__launcher_queue_manager = queueManager
 })
 
 ipcMain.handle("queue-add-job", (event, job) => {
